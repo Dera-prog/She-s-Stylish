@@ -17,7 +17,7 @@ Luxury womenswear boutique for Lagos — a mobile-first shopping app built from 
 
 Jeans and Leather Skirt · Jeans and Leather Trouser · Barrel Pants · Aso Oke Barrel Pants · Adire and Aso Oke Skirt · Knit Tops · Blazer Jacket · Corporate Dresses · Skirts · Accessories.
 
-31 pieces in the catalogue.
+51 pieces in the catalogue.
 
 ## Stack
 

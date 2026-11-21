@@ -38,7 +38,7 @@ const names = (categories.body ?? []).map((category) => category.name);
 check('requested categories present', wanted.every((name) => names.includes(name)), names.join(', '));
 
 const all = await json('/api/products');
-check('31 products', all.status === 200 && all.body.length === 31, `${all.body?.length}`);
+check('51 products', all.status === 200 && all.body.length === 51, `${all.body?.length}`);
 
 for (const name of names) {
   const list = await json(`/api/products?category=${encodeURIComponent(name)}`);
@@ -51,6 +51,9 @@ check(
   product.status === 200 && product.body.price === 96000 && product.body.category === 'Aso Oke Barrel Pants',
   JSON.stringify(product.body?.price),
 );
+
+const newest = await json('/api/products/crystal-bow-denim-skirt');
+check('new skirt seeded', newest.status === 200 && newest.body.price === 98000 && newest.body.category === 'Jeans and Leather Skirt', `${newest.status} ${newest.body?.price}`);
 
 const collections = await json('/api/collections');
 check('collections grouped', collections.status === 200 && collections.body.length === 3, JSON.stringify(collections.body));
