@@ -158,7 +158,7 @@
   top: 0;
   z-index: 20;
   display: flex;
-  gap: 8px;
+  gap: 7px;
   overflow-x: auto;
   padding: 12px 22px;
   background: rgba(255, 253, 248, 0.95);
@@ -173,6 +173,7 @@
 
 .filterbar .chip {
   background: var(--paper);
+  padding: 0 11px;
 }
 
 .filterbar .chip--on {
