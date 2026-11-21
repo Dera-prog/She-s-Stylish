@@ -246,6 +246,32 @@ export function createApp() {
     res.status(201).json(await loadOrder(id));
   });
 
+  app.get('/api/admin/orders', async (req, res) => {
+    if (req.get('x-admin-key') !== ADMIN_KEY) {
+      return res.status(401).json({ error: 'unauthorized' });
+    }
+    const { rows } = await query(
+      `select o.id, o.created_at, o.status, o.method, o.total, o.address,
+              coalesce(sum(i.qty), 0)::int as pieces
+       from orders o
+       left join order_items i on i.order_id = o.id
+       group by o.id
+       order by o.created_at desc
+       limit 100`,
+    );
+    res.json(
+      rows.map((row) => ({
+        id: row.id,
+        date: row.created_at.toISOString(),
+        status: row.status,
+        method: row.method,
+        total: row.total,
+        address: row.address,
+        pieces: row.pieces,
+      })),
+    );
+  });
+
   app.patch('/api/admin/orders/:id/status', async (req, res) => {
     if (req.get('x-admin-key') !== ADMIN_KEY) {
       return res.status(401).json({ error: 'unauthorized' });
@@ -279,6 +305,26 @@ export function createApp() {
       [email],
     );
     res.status(201).json({ ok: true, email });
+  });
+
+  app.post('/api/contact', async (req, res) => {
+    const name = String(req.body?.name ?? '').trim().slice(0, 120);
+    const email = String(req.body?.email ?? '').trim().toLowerCase();
+    const subject = String(req.body?.subject ?? '').trim().slice(0, 160);
+    const message = String(req.body?.message ?? '').trim().slice(0, 4000);
+
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) {
+      return res.status(400).json({ error: 'invalid_email' });
+    }
+    if (message.length < 10) {
+      return res.status(400).json({ error: 'message_too_short' });
+    }
+
+    await query(
+      'insert into contact_messages (name, email, subject, message) values ($1, $2, $3, $4)',
+      [name, email, subject, message],
+    );
+    res.status(201).json({ ok: true });
   });
 
   app.use('/api', (_req, res) => res.status(404).json({ error: 'not_found' }));

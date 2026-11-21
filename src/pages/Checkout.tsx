@@ -3,24 +3,26 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Screen } from '../components/Chrome';
 import { IconArrow, IconBack, IconCheck, IconLock, IconTruck } from '../components/Icons';
 import { byId, formatN } from '../lib/data';
-import { cartTotals, makeOrder, useStore } from '../lib/store';
+import { cartTotals, useStore } from '../lib/store';
+import { createOrder } from '../lib/api';
 
 const STATES = ['Lagos', 'Abuja (FCT)', 'Rivers', 'Oyo', 'Enugu', 'Kano', 'Kaduna', 'Delta'];
 
 export default function Checkout() {
   const nav = useNavigate();
   const { state, dispatch, toast } = useStore();
+  const saved =
+    state.addresses.find((a) => a.id === state.defaultAddress) ?? state.addresses[0] ?? null;
   const [step, setStep] = useState(1);
   const [method, setMethod] = useState<'standard' | 'express'>('standard');
-  const [pay, setPay] = useState<'card' | 'transfer' | 'delivery'>('card');
   const [placing, setPlacing] = useState(false);
   const [form, setForm] = useState({
     name: state.user?.name ?? '',
-    phone: state.user?.phone ?? '',
+    phone: state.user?.phone ?? saved?.phone ?? '',
     email: state.user?.email ?? '',
-    street: '',
-    city: 'Lekki',
-    stateName: 'Lagos',
+    street: saved?.line ?? '',
+    city: saved?.city ?? 'Lekki',
+    stateName: saved?.state ?? 'Lagos',
     landmark: '',
   });
 
@@ -58,6 +60,10 @@ export default function Checkout() {
         toast('Add your name, phone and street');
         return;
       }
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(form.email.trim())) {
+        toast('Add an email for your receipt');
+        return;
+      }
       setStep(2);
       return;
     }
@@ -65,13 +71,59 @@ export default function Checkout() {
       setStep(3);
       return;
     }
+    void place();
+  };
+
+  const place = async () => {
     setPlacing(true);
-    window.setTimeout(() => {
-      const address = `${form.street}, ${form.city}, ${form.stateName}, Nigeria`;
-      const order = makeOrder(state.cart, state.promo, method, state.orders, address);
+    try {
+      const address = [
+        form.street.trim(),
+        form.city.trim(),
+        form.stateName,
+        form.landmark.trim(),
+        'Nigeria',
+      ]
+        .filter(Boolean)
+        .join(', ');
+      const order = await createOrder({
+        items: state.cart.map((line) => ({
+          id: line.id,
+          size: line.size,
+          colour: line.colour,
+          qty: line.qty,
+        })),
+        method,
+        promo: state.promo,
+        address,
+        customer: {
+          name: form.name.trim(),
+          email: form.email.trim().toLowerCase(),
+          phone: form.phone.trim(),
+        },
+      });
       dispatch({ type: 'order', order });
+      const known = state.addresses.some(
+        (a) => a.line === form.street.trim() && a.city === form.city.trim(),
+      );
+      if (!known) {
+        dispatch({
+          type: 'address',
+          address: {
+            id: `a-${Date.now()}`,
+            label: 'Delivery',
+            line: form.street.trim(),
+            city: form.city.trim(),
+            state: form.stateName,
+            phone: form.phone.trim(),
+          },
+        });
+      }
       nav(`/confirmation/${order.id}`, { replace: true });
-    }, 1400);
+    } catch {
+      setPlacing(false);
+      toast('The order could not be placed. Check your connection and try again.');
+    }
   };
 
   return (
@@ -109,20 +161,22 @@ export default function Checkout() {
           <div className="block">
             <div className="block__head">
               <h2>Delivery details</h2>
-              <button
-                className="link"
-                onClick={() =>
-                  setForm((f) => ({
-                    ...f,
-                    street: '12 Admiralty Way',
-                    city: 'Lekki Phase 1',
-                    stateName: 'Lagos',
-                    landmark: 'Opposite the yacht club',
-                  }))
-                }
-              >
-                Use saved address
-              </button>
+              {saved && (
+                <button
+                  className="link"
+                  onClick={() =>
+                    setForm((f) => ({
+                      ...f,
+                      street: saved.line,
+                      city: saved.city,
+                      stateName: saved.state,
+                      phone: saved.phone || f.phone,
+                    }))
+                  }
+                >
+                  Use saved address
+                </button>
+              )}
             </div>
             <div className="field">
               <label htmlFor="ck-name">Full name</label>
@@ -207,55 +261,10 @@ export default function Checkout() {
           <div className="block">
             <div className="block__head">
               <h2>Payment</h2>
-              <span className="micro">Secured by Paystack</span>
             </div>
-            {[
-              { id: 'card' as const, title: 'Card', note: 'Visa, Mastercard, Verve' },
-              { id: 'transfer' as const, title: 'Bank transfer', note: 'Transfer to the house account' },
-              { id: 'delivery' as const, title: 'Pay on delivery', note: 'Card or cash at the door' },
-            ].map((m) => (
-              <button
-                key={m.id}
-                className={`opt ${pay === m.id ? 'opt--on' : ''}`}
-                style={{ width: '100%', textAlign: 'left' }}
-                onClick={() => setPay(m.id)}
-              >
-                <span className="opt__radio" />
-                <span className="opt__body">
-                  <span className="opt__title">
-                    <span>{m.title}</span>
-                  </span>
-                  <span className="opt__note">{m.note}</span>
-                </span>
-              </button>
-            ))}
-            {pay === 'card' && (
-              <>
-                <div className="field" style={{ marginTop: 10 }}>
-                  <label htmlFor="ck-card">Card number</label>
-                  <input id="ck-card" inputMode="numeric" placeholder="4084 0000 0000 0000" autoComplete="cc-number" />
-                </div>
-                <div className="fieldrow">
-                  <div className="field">
-                    <label htmlFor="ck-exp">Expiry</label>
-                    <input id="ck-exp" placeholder="MM / YY" autoComplete="cc-exp" />
-                  </div>
-                  <div className="field">
-                    <label htmlFor="ck-cvv">CVV</label>
-                    <input id="ck-cvv" inputMode="numeric" placeholder="123" autoComplete="cc-csc" />
-                  </div>
-                </div>
-              </>
-            )}
-            <div className="payicons">
-              <span>Visa</span>
-              <span>Mastercard</span>
-              <span>Verve</span>
-              <span>Paystack</span>
-            </div>
-            <div className="notice" style={{ marginTop: 14 }}>
-              <b>Demo checkout.</b> This is a product prototype — no card is charged and no payment
-              details are stored.
+            <div className="notice">
+              <b>Pay on delivery.</b> Settle by card or cash with the rider when your pieces arrive.
+              Nothing is charged now.
             </div>
           </div>
         </>

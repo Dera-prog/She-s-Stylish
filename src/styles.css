@@ -729,7 +729,7 @@ img {
   z-index: 6;
   top: 66px;
   left: 22px;
-  right: 148px;
+  right: 22px;
 }
 
 .ad__eyebrow {
@@ -773,10 +773,10 @@ img {
 .ad__modelwrap {
   position: absolute;
   z-index: 3;
-  left: -27px;
+  left: 16%;
   bottom: -8px;
   height: 64%;
-  width: 46%;
+  width: 58%;
   will-change: transform;
   animation: walkThrough 7s linear both;
 }
@@ -831,57 +831,6 @@ img {
   border-radius: 50%;
   background: radial-gradient(ellipse at center, rgba(80, 58, 36, 0.28), transparent 70%);
   filter: blur(5px);
-}
-
-.ad__rail {
-  position: absolute;
-  z-index: 7;
-  right: 18px;
-  top: 300px;
-  width: 112px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.ad__railhead {
-  font-size: 7px;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: #8a7c6b;
-  padding-bottom: 8px;
-  border-bottom: 1px solid rgba(160, 135, 100, 0.28);
-  display: flex;
-  justify-content: space-between;
-}
-
-.ad__item {
-  display: flex;
-  gap: 9px;
-  align-items: center;
-}
-
-.ad__item img {
-  width: 46px;
-  height: 56px;
-  object-fit: cover;
-  background: var(--cream);
-  border: 1px solid rgba(160, 135, 100, 0.16);
-}
-
-.ad__itemname {
-  font-size: 7.5px;
-  line-height: 1.35;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: #3b352d;
-}
-
-.ad__itemprice {
-  margin-top: 4px;
-  font-size: 8px;
-  color: #9a7d4d;
-  letter-spacing: 0.03em;
 }
 
 .ad__foot {
@@ -959,8 +908,6 @@ img {
   .ad__copy { top: 58px; }
   .ad__copy p { display: none; }
   .ad__modelwrap { height: 60%; }
-  .ad__rail { top: 250px; gap: 9px; }
-  .ad__item img { width: 40px; height: 48px; }
 }
 
 /* ---------- welcome ---------- */
@@ -1511,6 +1458,29 @@ img {
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: #eadfcd;
+}
+
+.cattile--text {
+  background: #f7f1e6;
+  box-shadow: inset 0 0 0 1px rgba(163, 132, 82, 0.22);
+}
+
+.cattile--text .cattile__body {
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  background: none;
+  color: var(--ink);
+  padding: 16px 14px;
+}
+
+.cattile--text .cattile__body h3 {
+  font-size: 17px;
+}
+
+.cattile--text .cattile__body p {
+  color: #8b7a60;
 }
 
 .rowlist {

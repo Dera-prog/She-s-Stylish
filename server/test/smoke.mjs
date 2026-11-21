@@ -38,17 +38,20 @@ const names = (categories.body ?? []).map((category) => category.name);
 check('requested categories present', wanted.every((name) => names.includes(name)), names.join(', '));
 
 const all = await json('/api/products');
-check('51 products', all.status === 200 && all.body.length === 51, `${all.body?.length}`);
+check('22 products', all.status === 200 && all.body.length === 22, `${all.body?.length}`);
 
-for (const name of names) {
+const live = await json('/api/products?category=Jeans%20and%20Leather%20Skirt');
+check('denim and leather line has pieces', live.status === 200 && live.body.length === 22, `${live.body?.length}`);
+
+for (const name of ['Jeans and Leather Trouser', 'Knit Tops', 'Accessories']) {
   const list = await json(`/api/products?category=${encodeURIComponent(name)}`);
-  check(`category has pieces: ${name}`, list.status === 200 && list.body.length > 0, `${list.body?.length}`);
+  check(`category still empty: ${name}`, list.status === 200 && list.body.length === 0, `${list.body?.length}`);
 }
 
-const product = await json('/api/products/aso-oke-barrel-pants');
+const product = await json('/api/products/leather-wrap-maxi');
 check(
   'product detail',
-  product.status === 200 && product.body.price === 96000 && product.body.category === 'Aso Oke Barrel Pants',
+  product.status === 200 && product.body.price === 148000 && product.body.category === 'Jeans and Leather Skirt',
   JSON.stringify(product.body?.price),
 );
 
@@ -64,7 +67,7 @@ const order = await json('/api/orders', {
   body: JSON.stringify({
     items: [
       { id: 'denim-midi-skirt', size: 'M', colour: 'Deep Indigo', qty: 1 },
-      { id: 'ribbed-knit-top', size: 'S', colour: 'Chocolate', qty: 1 },
+      { id: 'crystal-bow-denim-skirt', size: 'S', colour: 'Light Blue', qty: 1 },
     ],
     method: 'express',
     promo: 'STYLISH10',
@@ -76,10 +79,10 @@ const order = await json('/api/orders', {
 check('order created', order.status === 201, `${order.status} ${JSON.stringify(order.body?.error)}`);
 check('order id format', /^SS-10\d\d$/.test(order.body?.id ?? ''), order.body?.id);
 check('tracking format', /^NG-10\d\d-4821$/.test(order.body?.tracking ?? ''), order.body?.tracking);
-check('subtotal', order.body?.subtotal === 120000, `${order.body?.subtotal}`);
-check('discount 10%', order.body?.discount === 12000, `${order.body?.discount}`);
+check('subtotal', order.body?.subtotal === 166000, `${order.body?.subtotal}`);
+check('discount 10%', order.body?.discount === 16600, `${order.body?.discount}`);
 check('express delivery', order.body?.delivery === 7500, `${order.body?.delivery}`);
-check('total', order.body?.total === 115500, `${order.body?.total}`);
+check('total', order.body?.total === 156900, `${order.body?.total}`);
 check('status processing', order.body?.status === 'processing', order.body?.status);
 check('two lines', order.body?.lines?.length === 2, `${order.body?.lines?.length}`);
 check('two events', order.body?.events?.length === 2, `${order.body?.events?.length}`);
@@ -119,6 +122,32 @@ const unknown = await json('/api/orders', {
   }),
 });
 check('rejects unknown product', unknown.status === 400, `${unknown.status}`);
+
+const list = await json('/api/admin/orders', { headers: { 'x-admin-key': ADMIN_KEY } });
+check(
+  'admin lists the queue',
+  list.status === 200 && list.body.some((o) => o.id === order.body?.id) && typeof list.body[0]?.pieces === 'number',
+  `${list.status}`,
+);
+
+const contact = await json('/api/contact', {
+  method: 'POST',
+  headers: { 'content-type': 'application/json' },
+  body: JSON.stringify({
+    name: 'Smoke check',
+    email: 'smoke@shes-stylish.test',
+    subject: 'Smoke',
+    message: 'Checking the contact endpoint stores notes correctly.',
+  }),
+});
+check('contact accepts a message', contact.status === 201 && contact.body.ok === true, `${contact.status}`);
+
+const badContact = await json('/api/contact', {
+  method: 'POST',
+  headers: { 'content-type': 'application/json' },
+  body: JSON.stringify({ email: 'nope', message: 'short' }),
+});
+check('contact validates email', badContact.status === 400, `${badContact.status}`);
 
 const email = `smoke-${Date.now()}@shes-stylish.test`;
 const newsletter = await json('/api/newsletter', {

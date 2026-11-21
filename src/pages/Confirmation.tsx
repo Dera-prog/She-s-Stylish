@@ -1,13 +1,33 @@
+import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { byId, formatN } from '../lib/data';
-import { useStore } from '../lib/store';
+import { useStore, type Order } from '../lib/store';
+import { fetchOrder } from '../lib/api';
 import { IconArrow, IconCheck } from '../components/Icons';
 
 export default function Confirmation() {
   const { id = '' } = useParams();
-  const { state } = useStore();
-  const order = state.orders.find((o) => o.id === id);
+  const { state, dispatch } = useStore();
+  const [order, setOrder] = useState<Order | null>(
+    state.orders.find((o) => o.id === id) ?? null,
+  );
+
+  useEffect(() => {
+    let live = true;
+    fetchOrder(id)
+      .then((next) => {
+        if (!live) return;
+        setOrder(next);
+        dispatch({ type: 'orders', orders: [next] });
+      })
+      .catch(() => {
+        /* the order is already on screen from checkout */
+      });
+    return () => {
+      live = false;
+    };
+  }, [id, dispatch]);
 
   return (
     <div className="confirm">
@@ -35,9 +55,8 @@ export default function Confirmation() {
           It&rsquo;s <em>yours</em>.
         </h1>
         <p>
-          {order
-            ? 'Your order is confirmed and being wrapped in signature tissue and ribbon. We will write the moment it leaves the atelier.'
-            : 'Your order is confirmed. A receipt is on its way to your inbox.'}
+          Your order is confirmed and being wrapped in signature tissue and ribbon. Keep this page
+          or your order number to follow it here.
         </p>
         <div className="confirm__num">
           Order <b>{order?.id ?? id}</b>
@@ -68,7 +87,7 @@ export default function Confirmation() {
             );
           })}
           <div className="sum__row sum__row--total" style={{ border: 0 }}>
-            <span>Paid</span>
+            <span>Total on delivery</span>
             <span>{formatN(order.total)}</span>
           </div>
         </motion.div>

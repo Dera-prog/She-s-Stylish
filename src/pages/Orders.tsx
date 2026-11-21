@@ -1,9 +1,11 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { BackBar, Empty, Screen, TitleHead } from '../components/Chrome';
 import { IconArrow, IconBag, IconCheck, IconChevron, IconTruck } from '../components/Icons';
 import { byId, formatN } from '../lib/data';
-import { orderSteps, useStore, type OrderStatus } from '../lib/store';
+import { orderSteps, useStore, type Order, type OrderStatus } from '../lib/store';
+import { fetchOrder, sendMessage } from '../lib/api';
+import { useLiveOrders } from '../lib/useLiveOrders';
 
 const statusLabel: Record<OrderStatus, string> = {
   placed: 'Order placed',
@@ -26,6 +28,7 @@ const dt = (iso: string) =>
 
 export function OrdersPage() {
   const { state } = useStore();
+  useLiveOrders();
   return (
     <Screen>
       <BackBar title="My orders" />
@@ -66,8 +69,38 @@ export function OrdersPage() {
 
 export function TrackPage() {
   const { id = '' } = useParams();
-  const { state } = useStore();
-  const order = state.orders.find((o) => o.id === id);
+  const { state, dispatch } = useStore();
+  const stored = state.orders.find((o) => o.id === id) ?? null;
+  const [order, setOrder] = useState<Order | null>(stored);
+  const [failed, setFailed] = useState(false);
+
+  useEffect(() => {
+    let live = true;
+    fetchOrder(id)
+      .then((next) => {
+        if (!live) return;
+        setOrder(next);
+        dispatch({ type: 'orders', orders: [next] });
+      })
+      .catch(() => {
+        if (live) setFailed(true);
+      });
+    return () => {
+      live = false;
+    };
+  }, [id, dispatch]);
+
+  if (!order && !failed) {
+    return (
+      <Screen>
+        <BackBar title="Track order" />
+        <div className="empty">
+          <h2>Finding your order.</h2>
+          <p>One moment while we reach the house.</p>
+        </div>
+      </Screen>
+    );
+  }
 
   if (!order) {
     return (
@@ -193,7 +226,7 @@ export function TrackPage() {
         </Link>
       </div>
       <div className="confirm__micro" style={{ marginBottom: 26 }}>
-        Payment secured by Paystack · Support 9am–7pm WAT
+        Signature packaging · Support 9am–7pm WAT
       </div>
     </Screen>
   );
@@ -207,6 +240,8 @@ export function ReturnPage() {
   const [item, setItem] = useState(order?.lines[0]?.key ?? '');
   const [reason, setReason] = useState('Size or fit');
   const [note, setNote] = useState('');
+  const [email, setEmail] = useState(state.user?.email ?? '');
+  const [sending, setSending] = useState(false);
 
   if (!order) {
     return (
@@ -222,9 +257,33 @@ export function ReturnPage() {
     );
   }
 
-  const submit = () => {
-    toast('Return request sent');
-    nav(`/track/${order.id}`);
+  const submit = async () => {
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email.trim())) {
+      toast('Add the email we should reply to');
+      return;
+    }
+    const piece = order?.lines.find((l) => l.key === item);
+    setSending(true);
+    try {
+      await sendMessage({
+        name: state.user?.name ?? '',
+        email: email.trim().toLowerCase(),
+        subject: `Return request · ${order?.id ?? id}`,
+        message: [
+          `Order ${order?.id ?? id}`,
+          `Piece: ${piece?.name ?? piece?.id ?? '—'} · ${piece?.size ?? ''} · ${piece?.colour ?? ''}`,
+          `Reason: ${reason}`,
+          note.trim() ? `Note: ${note.trim()}` : '',
+        ]
+          .filter(Boolean)
+          .join('\n'),
+      });
+      toast('Return request sent');
+      nav(`/track/${order?.id ?? id}`);
+    } catch {
+      setSending(false);
+      toast('Could not send the request. Try again.');
+    }
   };
 
   return (
@@ -276,6 +335,17 @@ export function ReturnPage() {
           )}
         </select>
         <div className="field" style={{ marginTop: 12 }}>
+          <label htmlFor="return-email">Email</label>
+          <input
+            id="return-email"
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="Where should we reply?"
+            autoComplete="email"
+          />
+        </div>
+        <div className="field" style={{ marginTop: 12 }}>
           <label htmlFor="return-note">Anything else? (optional)</label>
           <textarea
             id="return-note"
@@ -300,8 +370,8 @@ export function ReturnPage() {
           pickup in Lagos, or send a return label for other states.
         </div>
 
-        <button className="btn" style={{ marginTop: 16 }} onClick={submit} disabled={!item}>
-          <span>Submit return request</span>
+        <button className="btn" style={{ marginTop: 16 }} onClick={submit} disabled={!item || sending}>
+          <span>{sending ? 'Sending…' : 'Submit return request'}</span>
           <IconArrow size={16} />
         </button>
       </div>

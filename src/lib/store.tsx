@@ -14,10 +14,20 @@ import { byId } from './data';
 export type CartLine = { key: string; id: string; size: string; colour: string; qty: number };
 export type OrderStatus = 'placed' | 'processing' | 'shipped' | 'out' | 'delivered';
 
+export type OrderLine = {
+  key: string;
+  id: string;
+  name?: string;
+  size: string;
+  colour: string;
+  qty: number;
+  price?: number;
+};
+
 export type Order = {
   id: string;
   date: string;
-  lines: CartLine[];
+  lines: OrderLine[];
   subtotal: number;
   delivery: number;
   discount: number;
@@ -28,7 +38,16 @@ export type Order = {
   method: 'standard' | 'express';
 };
 
-type User = { name: string; email: string; phone: string };
+export type User = { name: string; email: string; phone: string };
+
+export type Address = {
+  id: string;
+  label: string;
+  line: string;
+  city: string;
+  state: string;
+  phone: string;
+};
 
 type State = {
   user: User | null;
@@ -36,14 +55,18 @@ type State = {
   wishlist: string[];
   orders: Order[];
   promo: string | null;
+  addresses: Address[];
+  defaultAddress: string | null;
 };
 
 const initialState: State = {
-  user: { name: 'Ada Adebayo', email: 'ada.adebayo@example.com', phone: '+234 801 234 5678' },
+  user: null,
   cart: [],
-  wishlist: ['ribbed-navy-dress', 'espresso-bag'],
+  wishlist: [],
   orders: [],
   promo: null,
+  addresses: [],
+  defaultAddress: null,
 };
 
 type Action =
@@ -53,10 +76,12 @@ type Action =
   | { type: 'wish'; id: string }
   | { type: 'promo'; code: string | null }
   | { type: 'order'; order: Order }
-  | { type: 'orderstatus'; id: string; status: OrderStatus }
+  | { type: 'orders'; orders: Order[] }
   | { type: 'login'; user: User }
   | { type: 'logout' }
-  | { type: 'reset' };
+  | { type: 'address'; address: Address }
+  | { type: 'unaddress'; id: string }
+  | { type: 'defaultAddress'; id: string | null };
 
 function reducer(state: State, action: Action): State {
   switch (action.type) {
@@ -94,23 +119,49 @@ function reducer(state: State, action: Action): State {
       return { ...state, promo: action.code };
     case 'order':
       return { ...state, orders: [action.order, ...state.orders], cart: [], promo: null };
-    case 'orderstatus':
+    case 'orders': {
+      const fresh = new Map(action.orders.map((o) => [o.id, o]));
+      const known = new Set(state.orders.map((o) => o.id));
       return {
         ...state,
-        orders: state.orders.map((o) => (o.id === action.id ? { ...o, status: action.status } : o)),
+        orders: [
+          ...action.orders.filter((o) => !known.has(o.id)),
+          ...state.orders.map((o) => (fresh.has(o.id) ? { ...o, ...fresh.get(o.id) } : o)),
+        ],
       };
+    }
     case 'login':
       return { ...state, user: action.user };
     case 'logout':
       return { ...state, user: null, orders: [] };
-    case 'reset':
-      return initialState;
+    case 'address': {
+      const exists = state.addresses.some((a) => a.id === action.address.id);
+      const addresses = exists
+        ? state.addresses.map((a) => (a.id === action.address.id ? action.address : a))
+        : [...state.addresses, action.address];
+      return {
+        ...state,
+        addresses,
+        defaultAddress: state.defaultAddress ?? action.address.id,
+      };
+    }
+    case 'unaddress': {
+      const addresses = state.addresses.filter((a) => a.id !== action.id);
+      return {
+        ...state,
+        addresses,
+        defaultAddress:
+          state.defaultAddress === action.id ? (addresses[0]?.id ?? null) : state.defaultAddress,
+      };
+    }
+    case 'defaultAddress':
+      return { ...state, defaultAddress: action.id };
     default:
       return state;
   }
 }
 
-const KEY = 'shes-stylish-v1';
+const KEY = 'shes-stylish-v2';
 
 function loadState(): State {
   try {
@@ -118,11 +169,15 @@ function loadState(): State {
     if (!raw) return initialState;
     const parsed = JSON.parse(raw) as Partial<State>;
     return {
-      user: parsed.user ?? initialState.user,
-      cart: Array.isArray(parsed.cart) ? parsed.cart : [],
-      wishlist: Array.isArray(parsed.wishlist) ? parsed.wishlist : initialState.wishlist,
+      user: parsed.user ?? null,
+      cart: (Array.isArray(parsed.cart) ? parsed.cart : []).filter((line) => Boolean(byId(line.id))),
+      wishlist: (Array.isArray(parsed.wishlist) ? parsed.wishlist : []).filter((id) =>
+        Boolean(byId(id)),
+      ),
       orders: Array.isArray(parsed.orders) ? parsed.orders : [],
       promo: parsed.promo ?? null,
+      addresses: Array.isArray(parsed.addresses) ? parsed.addresses : [],
+      defaultAddress: parsed.defaultAddress ?? null,
     };
   } catch {
     return initialState;
@@ -189,38 +244,9 @@ export function useStore() {
   return ctx;
 }
 
-export function orderNumber(existing: Order[] = []) {
-  const base = 1024 + existing.length + 1;
-  return `SS-${base}`;
-}
-
-export function makeOrder(
-  cart: CartLine[],
-  promo: string | null,
-  method: 'standard' | 'express',
-  existing: Order[],
-  address = '12 Admiralty Way, Lekki Phase 1, Lagos, Nigeria',
-): Order {
-  const t = cartTotals(cart, promo, method);
-  const num = orderNumber(existing);
-  return {
-    id: num,
-    date: new Date().toISOString(),
-    lines: cart.map((l) => ({ ...l })),
-    subtotal: t.subtotal,
-    delivery: t.delivery,
-    discount: t.discount,
-    total: t.total,
-    status: 'processing',
-    tracking: `NG-${num.replace('SS-', '')}-4821`,
-    address,
-    method,
-  };
-}
-
 export const orderSteps: { key: OrderStatus; label: string; note: string }[] = [
   { key: 'placed', label: 'Order placed', note: 'Your pieces are reserved.' },
-  { key: 'processing', label: 'Processing', note: 'Payment confirmed. We are preparing your pieces.' },
+  { key: 'processing', label: 'Processing', note: 'We are preparing your pieces.' },
   { key: 'shipped', label: 'Shipped', note: 'Handed to our delivery partner.' },
   { key: 'out', label: 'Out for delivery', note: 'With your rider across Lagos.' },
   { key: 'delivered', label: 'Delivered', note: 'Signed for, with care.' },

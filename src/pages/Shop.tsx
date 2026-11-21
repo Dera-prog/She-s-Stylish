@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react';
 import { Link, Navigate, useParams } from 'react-router-dom';
-import { AppHead, BackBar, Screen, SectionHead } from '../components/Chrome';
+import { AppHead, BackBar, Empty, Screen, SectionHead } from '../components/Chrome';
 import { ProductCard } from '../components/ProductCard';
 import { IconArrow, IconChevron, IconSearch } from '../components/Icons';
 import { categories, collections, occasionIds, products, type Product } from '../lib/data';
@@ -36,19 +36,19 @@ const collectionModels: Record<string, string> = {
 
 const collectionCopy: Record<string, { title: string; story: string }> = {
   'soft-power': {
-    title: 'Power, softened.',
+    title: 'Denim, softened.',
     story:
-      'Powder-blue poplin beneath a midnight ribbed knit. A patent pump with a quiet bow. This is authority with a pulse — the pieces you reach for when the room needs to remember you.',
+      'Indigo cut clean, topstitched in red, finished with a slit that moves. The everyday power edit — structured denim and leather you can live in from morning to late.',
   },
   boardroom: {
-    title: 'Tailored, never tamed.',
+    title: 'Sharply cut.',
     story:
-      'A single-button Prince-of-Wales blazer, a chocolate silk tie, a gold-capped heel. Sharp lines and soft power, cut for a woman who sets the agenda.',
+      'Asymmetric hems, pinstriped peplums and a leather wrap that means business. Sharp lines and soft power, cut for a woman who sets the agenda.',
   },
   lavender: {
     title: 'A little joy, elegantly worn.',
     story:
-      'Brushed lavender fleece, butter-soft leather, gold that catches the evening light. The after-hours edit, made for the softest kind of confidence.',
+      'Crystal bows, lilac frills and butter-soft leather. The after-hours edit, made for the softest kind of confidence.',
   },
 };
 
@@ -78,15 +78,22 @@ export default function Shop() {
 
       <SectionHead title="Categories" />
       <div className="catgrid">
-        {categories.slice(1).map((c) => (
-          <Link key={c.name} className="cattile" to={`/shop/category/${encodeURIComponent(c.name)}`}>
-            <img src={c.image} alt="" />
-            <div className="cattile__body">
-              <h3>{c.name}</h3>
-              <p>{c.note}</p>
-            </div>
-          </Link>
-        ))}
+        {categories.slice(1).map((c) => {
+          const count = products.filter((p) => p.category === c.name).length;
+          return (
+            <Link
+              key={c.name}
+              className={`cattile${c.image ? '' : ' cattile--text'}`}
+              to={`/shop/category/${encodeURIComponent(c.name)}`}
+            >
+              {c.image && <img src={c.image} alt="" />}
+              <div className="cattile__body">
+                <h3>{c.name}</h3>
+                <p>{count > 0 ? `${count} ${count === 1 ? 'piece' : 'pieces'}` : 'Arriving soon'}</p>
+              </div>
+            </Link>
+          );
+        })}
       </div>
 
       <div className="divider-label">Browse</div>
@@ -153,6 +160,27 @@ export function CategoryPage() {
 
   if (!meta) return <Navigate to="/shop" replace />;
 
+  if (list.length === 0) {
+    return (
+      <Screen>
+        <BackBar
+          title={meta.name}
+          right={
+            <Link className="iconbtn" to="/search" aria-label="Search">
+              <IconSearch size={18} />
+            </Link>
+          }
+        />
+        <Empty
+          title={`${meta.name} is arriving.`}
+          copy="This line is still in the atelier. The denim and leather skirts are ready now — the rest follows soon."
+          to={`/shop/category/${encodeURIComponent('Jeans and Leather Skirt')}`}
+          cta="Shop jeans & leather"
+        />
+      </Screen>
+    );
+  }
+
   return (
     <Screen>
       <BackBar
@@ -163,44 +191,46 @@ export function CategoryPage() {
           </Link>
         }
       />
-      <div
-        style={{
-          position: 'relative',
-          margin: '4px 22px 0',
-          height: 188,
-          overflow: 'hidden',
-          background: 'var(--cream)',
-        }}
-      >
-        <img
-          src={meta.image}
-          alt=""
-          style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-        />
+      {meta.image && (
         <div
           style={{
-            position: 'absolute',
-            inset: 0,
-            background: 'linear-gradient(180deg, rgba(24,18,10,0.05) 30%, rgba(24,18,10,0.62))',
-          }}
-        />
-        <div
-          style={{
-            position: 'absolute',
-            left: 16,
-            bottom: 14,
-            right: 16,
-            color: '#fffaf0',
+            position: 'relative',
+            margin: '4px 22px 0',
+            height: 188,
+            overflow: 'hidden',
+            background: 'var(--cream)',
           }}
         >
-          <div className="micro" style={{ color: '#e8dcc8' }}>
-            {meta.note}
+          <img
+            src={meta.image}
+            alt=""
+            style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+          />
+          <div
+            style={{
+              position: 'absolute',
+              inset: 0,
+              background: 'linear-gradient(180deg, rgba(24,18,10,0.05) 30%, rgba(24,18,10,0.62))',
+            }}
+          />
+          <div
+            style={{
+              position: 'absolute',
+              left: 16,
+              bottom: 14,
+              right: 16,
+              color: '#fffaf0',
+            }}
+          >
+            <div className="micro" style={{ color: '#e8dcc8' }}>
+              {meta.note}
+            </div>
+            <h2 className="display" style={{ fontSize: 28, marginTop: 6 }}>
+              {meta.name}
+            </h2>
           </div>
-          <h2 className="display" style={{ fontSize: 28, marginTop: 6 }}>
-            {meta.name}
-          </h2>
         </div>
-      </div>
+      )}
       <div className="micro" style={{ padding: '16px 22px 0' }}>
         {list.length} {list.length === 1 ? 'piece' : 'pieces'} · prices in Naira
       </div>

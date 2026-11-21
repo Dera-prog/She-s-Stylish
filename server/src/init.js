@@ -31,7 +31,7 @@ export async function seedCatalog() {
        values ($1, $2, $3, $4)
        on conflict (name) do update
          set note = excluded.note, image = excluded.image, position = excluded.position`,
-      [category.name, category.note, category.image, index],
+      [category.name, category.note, category.image ?? '', index],
     );
   }
 
@@ -77,6 +77,10 @@ export async function seedCatalog() {
       ],
     );
   }
+
+  const kept = catalog.products.map((product) => product.id);
+  const pruned = await query('delete from products where not (id = any($1::text[]))', [kept]);
+  if (pruned.rowCount) console.log(`pruned ${pruned.rowCount} discontinued products`);
 
   const { rows } = await query('select count(*)::int as count from products');
   console.log(`catalogue ready: ${rows[0].count} products, ${categories.length} categories`);

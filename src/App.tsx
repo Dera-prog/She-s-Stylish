@@ -44,9 +44,9 @@ function App() {
           promised.
         </h2>
         <p>
-          A luxury womenswear boutique for Lagos — tailored lines, soft knits and gold that means
-          something. Built from the PRD and Figma design, with an animated splash and a three-act
-          walking campaign.
+          A luxury womenswear boutique for Lagos — denim softened, leather cut sharp, and pieces
+          that carry from the office to the evening. Enter the boutique to browse the collection or
+          replay the three-act campaign.
         </p>
         <div style={{ display: 'flex', gap: 18, marginTop: 26 }}>
           <Link className="stage__link" to="/" style={{ marginTop: 0 }}>

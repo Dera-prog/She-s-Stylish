@@ -45,17 +45,17 @@ export default function Welcome() {
         <div className="eyebrow">Welcome to the house</div>
         <h1>Dressed for every version of you.</h1>
         <p>
-          Considered tailoring, soft knits and gold that means something — curated in Lagos for
-          the woman who arrives as herself.
+          Denim softened, leather cut sharp, and pieces that move from the office to the evening —
+          curated in Lagos for the woman who arrives as herself.
         </p>
         <Link className="btn" to="/ads">
           <span>Get started</span>
           <IconArrow size={17} />
         </Link>
         <div className="welcome__login">
-          Already have an account?{' '}
+          Faster checkout?{' '}
           <Link to="/login">
-            <b>Log in</b>
+            <b>Add your details</b>
           </Link>
         </div>
       </motion.section>

@@ -165,7 +165,7 @@ export default function Bag() {
             </Link>
           </div>
           <div className="secure">
-            <IconLock size={12} /> Secure checkout · Paystack encrypted
+            <IconLock size={12} /> Secure checkout · delivered across Nigeria
           </div>
 
           <div className="quote-block" style={{ marginBottom: 26 }}>

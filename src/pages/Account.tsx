@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { BackBar, Screen, TitleHead } from '../components/Chrome';
-import { IconArrow, IconCheck, IconChevron, IconLock, IconSparkle } from '../components/Icons';
+import { IconArrow, IconCheck, IconChevron, IconSparkle } from '../components/Icons';
 import { useStore } from '../lib/store';
+import { sendMessage } from '../lib/api';
 
 export function EditProfile() {
   const nav = useNavigate();
@@ -47,43 +48,34 @@ export function EditProfile() {
   );
 }
 
-type Address = { id: number; label: string; line: string; city: string; phone: string; def: boolean };
-
-const seedAddresses: Address[] = [
-  {
-    id: 1,
-    label: 'Home',
-    line: '12 Admiralty Way, Lekki Phase 1',
-    city: 'Lagos',
-    phone: '+234 801 234 5678',
-    def: true,
-  },
-  {
-    id: 2,
-    label: 'Office',
-    line: '4A Musa Yar\u2019Adua Street, Victoria Island',
-    city: 'Lagos',
-    phone: '+234 803 987 6543',
-    def: false,
-  },
-];
-
 export function Addresses() {
-  const { toast } = useStore();
-  const [list, setList] = useState<Address[]>(seedAddresses);
+  const { state, dispatch, toast } = useStore();
   const [adding, setAdding] = useState(false);
-  const [draft, setDraft] = useState({ label: 'Home', line: '', city: 'Lagos', phone: '' });
+  const [draft, setDraft] = useState({
+    label: 'Home',
+    line: '',
+    city: 'Lagos',
+    state: 'Lagos',
+    phone: '',
+  });
 
   const add = () => {
     if (!draft.line.trim()) {
       toast('Add a street address');
       return;
     }
-    setList((l) => [
-      ...l,
-      { id: Date.now(), label: draft.label || 'Address', line: draft.line, city: draft.city, phone: draft.phone, def: l.length === 0 },
-    ]);
-    setDraft({ label: 'Home', line: '', city: 'Lagos', phone: '' });
+    dispatch({
+      type: 'address',
+      address: {
+        id: `a-${Date.now()}`,
+        label: draft.label.trim() || 'Address',
+        line: draft.line.trim(),
+        city: draft.city.trim() || 'Lagos',
+        state: draft.state.trim() || 'Lagos',
+        phone: draft.phone.trim(),
+      },
+    });
+    setDraft({ label: 'Home', line: '', city: 'Lagos', state: 'Lagos', phone: '' });
     setAdding(false);
     toast('Address saved');
   };
@@ -94,47 +86,61 @@ export function Addresses() {
       <TitleHead title="Deliveries" eyebrow="Where the ribbon arrives" />
 
       <div className="stack" style={{ marginTop: 18 }}>
-        {list.map((a) => (
-          <div className="addresscard" key={a.id} style={{ marginBottom: 10 }}>
-            <IconSparkle size={18} />
-            <div style={{ flex: 1 }}>
-              <b>
-                {a.label}{' '}
-                {a.def && <span className="pill pill--gold" style={{ marginLeft: 6 }}>Default</span>}
-              </b>
-              <br />
-              {a.line}
-              <br />
-              {a.city}, Nigeria
-              {a.phone ? (
-                <>
-                  <br />
-                  {a.phone}
-                </>
-              ) : null}
-              <div style={{ display: 'flex', gap: 14, marginTop: 10 }}>
-                <button
-                  className="textlink"
-                  onClick={() => {
-                    setList((l) => l.map((x) => ({ ...x, def: x.id === a.id })));
-                    toast('Default address updated');
-                  }}
-                >
-                  Make default
-                </button>
-                <button
-                  className="textlink"
-                  onClick={() => {
-                    setList((l) => l.filter((x) => x.id !== a.id));
-                    toast('Address removed');
-                  }}
-                >
-                  Remove
-                </button>
+        {state.addresses.length === 0 && (
+          <div className="notice">
+            No saved addresses yet. Add one here and checkout will fill it in for you.
+          </div>
+        )}
+        {state.addresses.map((a) => {
+          const isDefault = state.defaultAddress === a.id;
+          return (
+            <div className="addresscard" key={a.id} style={{ marginBottom: 10 }}>
+              <IconSparkle size={18} />
+              <div style={{ flex: 1 }}>
+                <b>
+                  {a.label}{' '}
+                  {isDefault && (
+                    <span className="pill pill--gold" style={{ marginLeft: 6 }}>
+                      Default
+                    </span>
+                  )}
+                </b>
+                <br />
+                {a.line}
+                <br />
+                {a.city}, {a.state}
+                {a.phone ? (
+                  <>
+                    <br />
+                    {a.phone}
+                  </>
+                ) : null}
+                <div style={{ display: 'flex', gap: 14, marginTop: 10 }}>
+                  {!isDefault && (
+                    <button
+                      className="textlink"
+                      onClick={() => {
+                        dispatch({ type: 'defaultAddress', id: a.id });
+                        toast('Default address updated');
+                      }}
+                    >
+                      Make default
+                    </button>
+                  )}
+                  <button
+                    className="textlink"
+                    onClick={() => {
+                      dispatch({ type: 'unaddress', id: a.id });
+                      toast('Address removed');
+                    }}
+                  >
+                    Remove
+                  </button>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
 
         {adding ? (
           <div style={{ marginTop: 10 }}>
@@ -152,9 +158,15 @@ export function Addresses() {
               <label htmlFor="ad-line">Street address</label>
               <input id="ad-line" value={draft.line} onChange={(e) => setDraft({ ...draft, line: e.target.value })} placeholder="House number and street" />
             </div>
-            <div className="field">
-              <label htmlFor="ad-phone">Phone</label>
-              <input id="ad-phone" value={draft.phone} onChange={(e) => setDraft({ ...draft, phone: e.target.value })} inputMode="tel" />
+            <div className="fieldrow">
+              <div className="field">
+                <label htmlFor="ad-state">State</label>
+                <input id="ad-state" value={draft.state} onChange={(e) => setDraft({ ...draft, state: e.target.value })} />
+              </div>
+              <div className="field">
+                <label htmlFor="ad-phone">Phone</label>
+                <input id="ad-phone" value={draft.phone} onChange={(e) => setDraft({ ...draft, phone: e.target.value })} inputMode="tel" />
+              </div>
             </div>
             <div className="split">
               <button className="btn" onClick={add}>
@@ -262,7 +274,6 @@ export function Preferences() {
   const [clothes, setClothes] = useState('M');
   const [shoes, setShoes] = useState('38');
   const [styles, setStyles] = useState<string[]>(['Tailoring', 'Occasion']);
-  const [pwd, setPwd] = useState({ next: '', confirm: '' });
 
   const toggleStyle = (s: string) =>
     setStyles((prev) => (prev.includes(s) ? prev.filter((x) => x !== s) : [...prev, s]));
@@ -308,30 +319,9 @@ export function Preferences() {
           ))}
         </div>
 
-        <div className="eyebrow" style={{ marginTop: 26 }}>
-          Password
-        </div>
-        <div className="field" style={{ marginTop: 12 }}>
-          <label htmlFor="pr-next">New password</label>
-          <input id="pr-next" type="password" value={pwd.next} onChange={(e) => setPwd({ ...pwd, next: e.target.value })} placeholder="••••••••" autoComplete="new-password" />
-        </div>
-        <div className="field">
-          <label htmlFor="pr-confirm">Confirm password</label>
-          <input id="pr-confirm" type="password" value={pwd.confirm} onChange={(e) => setPwd({ ...pwd, confirm: e.target.value })} placeholder="••••••••" autoComplete="new-password" />
-        </div>
-
-        <button
-          className="btn"
-          onClick={() => {
-            if (pwd.next && pwd.next !== pwd.confirm) {
-              toast('Passwords do not match');
-              return;
-            }
-            toast('Preferences saved');
-          }}
-        >
+        <button className="btn" onClick={() => toast('Preferences saved')}>
           <span>Save preferences</span>
-          <IconLock size={16} />
+          <IconCheck size={16} />
         </button>
       </div>
       <div style={{ height: 24 }} />
@@ -385,33 +375,22 @@ export function Settings() {
           <span>Personal information</span>
           <IconChevron size={15} className="chev" />
         </Link>
-        <button
-          className="list__row"
-          onClick={() => {
-            dispatch({ type: 'logout' });
-            toast('Signed out');
-            nav('/welcome');
-          }}
-        >
-          <span>Sign out</span>
-          <IconChevron size={15} className="chev" />
-        </button>
-        <button
-          className="list__row"
-          style={{ color: '#8a4b3a' }}
-          onClick={() => {
-            dispatch({ type: 'reset' });
-            dispatch({ type: 'logout' });
-            toast('Demo data cleared');
-            nav('/welcome');
-          }}
-        >
-          <span>Reset demo data</span>
-          <IconChevron size={15} className="chev" />
-        </button>
+        {state.user && (
+          <button
+            className="list__row"
+            onClick={() => {
+              dispatch({ type: 'logout' });
+              toast('Details cleared from this device');
+              nav('/welcome');
+            }}
+          >
+            <span>Clear my details</span>
+            <IconChevron size={15} className="chev" />
+          </button>
+        )}
 
         <div className="list__foot">
-          <span>Signed in as {state.user?.email ?? 'guest'}</span>
+          <span>{state.user ? `Details saved for ${state.user.email}` : 'Browsing as a guest'}</span>
           <span>v1.0</span>
         </div>
       </div>
@@ -479,22 +458,11 @@ export function Support() {
           <IconSparkle size={18} />
           <span className="opt__body">
             <span className="opt__title">
-              <span>Email the house</span>
-              <span className="opt__price">care@shesstylish.ng</span>
+              <span>Message the house</span>
             </span>
             <span className="opt__note">Replies within one business day · 9am–7pm WAT</span>
           </span>
         </Link>
-        <div className="opt" style={{ width: '100%', cursor: 'default' }}>
-          <IconCheck size={18} />
-          <span className="opt__body">
-            <span className="opt__title">
-              <span>WhatsApp</span>
-              <span className="opt__price">+234 801 234 5678</span>
-            </span>
-            <span className="opt__note">Fastest for delivery questions</span>
-          </span>
-        </div>
       </div>
       <div className="confirm__micro" style={{ marginBottom: 26 }}>
         The house · Lagos, Nigeria
@@ -505,15 +473,53 @@ export function Support() {
 
 export function Contact() {
   const nav = useNavigate();
-  const { toast } = useStore();
+  const { state, toast } = useStore();
+  const [name, setName] = useState(state.user?.name ?? '');
+  const [email, setEmail] = useState(state.user?.email ?? '');
   const [subject, setSubject] = useState('Order enquiry');
   const [message, setMessage] = useState('');
+  const [sending, setSending] = useState(false);
+
+  const send = async () => {
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email.trim())) {
+      toast('Add the email we should reply to');
+      return;
+    }
+    if (message.trim().length < 10) {
+      toast('Tell us a little more');
+      return;
+    }
+    setSending(true);
+    try {
+      await sendMessage({
+        name: name.trim(),
+        email: email.trim().toLowerCase(),
+        subject,
+        message: message.trim(),
+      });
+      toast('Message sent · we will reply by email');
+      nav('/support');
+    } catch {
+      setSending(false);
+      toast('Could not send the message. Try again.');
+    }
+  };
 
   return (
     <Screen>
       <BackBar title="Contact us" />
       <TitleHead title="Write to us." eyebrow="A real person reads every note" />
       <div className="stack" style={{ marginTop: 18 }}>
+        <div className="fieldrow">
+          <div className="field">
+            <label htmlFor="ct-name">Name</label>
+            <input id="ct-name" value={name} onChange={(e) => setName(e.target.value)} autoComplete="name" />
+          </div>
+          <div className="field">
+            <label htmlFor="ct-email">Email</label>
+            <input id="ct-email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} autoComplete="email" />
+          </div>
+        </div>
         <div className="field">
           <label htmlFor="ct-subject">Subject</label>
           <select id="ct-subject" className="select" value={subject} onChange={(e) => setSubject(e.target.value)}>
@@ -542,23 +548,12 @@ export function Contact() {
             }}
           />
         </div>
-        <button
-          className="btn"
-          onClick={() => {
-            if (!message.trim()) {
-              toast('Add a message first');
-              return;
-            }
-            toast('Message sent · we will reply by email');
-            nav('/support');
-          }}
-        >
-          <span>Send message</span>
+        <button className="btn" onClick={send} disabled={sending}>
+          <span>{sending ? 'Sending…' : 'Send message'}</span>
           <IconArrow size={16} />
         </button>
         <div className="notice" style={{ marginTop: 14 }}>
-          We answer within one business day, 9am–7pm WAT. For urgent delivery questions, WhatsApp
-          is fastest.
+          We answer within one business day, 9am–7pm WAT.
         </div>
       </div>
       <div style={{ height: 24 }} />

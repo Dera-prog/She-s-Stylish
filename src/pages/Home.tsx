@@ -36,7 +36,7 @@ export default function Home() {
 
       <Link className="searchbar" to="/search" style={{ marginTop: 16 }}>
         <IconSearch size={16} />
-        <span>Search silk, aso oke, leather…</span>
+        <span>Search denim, leather, crystal…</span>
       </Link>
 
       <Link className="hero" to="/collection/soft-power">
@@ -45,7 +45,7 @@ export default function Home() {
         <div className="hero__eyebrow">New season · The Soft Power Edit</div>
         <div className="hero__copy">
           <h2>
-            Power,
+            Denim,
             <br />
             <em>softened.</em>
           </h2>
@@ -88,12 +88,12 @@ export default function Home() {
             The Boardroom Edit
           </div>
           <h3>
-            Tailored,
+            Sharply
             <br />
-            never tamed.
+            cut.
           </h3>
           <p>
-            Prince-of-Wales check, chocolate silk and a gold-capped heel that means business.
+            Asymmetric hems, pinstriped peplums and a leather wrap that means business.
           </p>
           <span className="link-arrow">
             Shop the edit <IconArrow size={13} />

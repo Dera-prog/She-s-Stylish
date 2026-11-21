@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-21T22:01:04.745Z",
+  "generatedAt": "2026-11-21T22:46:20.736Z",
   "categories": [
     {
       "name": "All pieces",
@@ -13,47 +13,38 @@
     },
     {
       "name": "Jeans and Leather Trouser",
-      "image": "/assets/products/leather-trouser.jpg",
       "note": "Sleek, sharp, worn soft"
     },
     {
       "name": "Barrel Pants",
-      "image": "/assets/products/barrel-pants.jpg",
       "note": "The new trouser line"
     },
     {
       "name": "Aso Oke Barrel Pants",
-      "image": "/assets/products/aso-oke-barrel-pants.jpg",
       "note": "Handwoven, quietly bold"
     },
     {
       "name": "Adire and Aso Oke Skirt",
-      "image": "/assets/products/adire-skirt.jpg",
       "note": "Indigo and handwoven texture"
     },
     {
       "name": "Knit Tops",
-      "image": "/assets/products/ribbed-knit-top.jpg",
       "note": "Soft layers, everyday"
     },
     {
       "name": "Blazer Jacket",
-      "image": "/assets/products/black-blazer.jpg",
       "note": "Shoulders and structure"
     },
     {
       "name": "Corporate Dresses",
-      "image": "/assets/products/corporate-dress.jpg",
       "note": "Tailored for the room"
     },
     {
       "name": "Skirts",
-      "image": "/assets/products/check-mini-skirt.jpg",
       "note": "Short, sharp, considered"
     },
     {
       "name": "Accessories",
-      "image": "/assets/products/espresso-bag.jpg",
       "note": "The finishing touch"
     }
   ],
@@ -242,7 +233,7 @@
       "category": "Jeans and Leather Skirt",
       "sub": "Denim",
       "image": "/assets/products/crystal-bow-denim-skirt.jpg",
-      "badge": "NEW",
+      "badge": "BESTSELLER",
       "rating": 4.9,
       "reviews": 11,
       "colours": [
@@ -680,7 +671,7 @@
       "category": "Jeans and Leather Skirt",
       "sub": "Knit",
       "image": "/assets/products/lilac-ribbed-maxi.jpg",
-      "badge": "NEW",
+      "badge": "BESTSELLER",
       "rating": 4.9,
       "reviews": 15,
       "colours": [
@@ -712,7 +703,7 @@
       "category": "Jeans and Leather Skirt",
       "sub": "Denim",
       "image": "/assets/products/denim-midi-skirt.jpg",
-      "badge": "NEW",
+      "badge": "BESTSELLER",
       "rating": 4.7,
       "reviews": 12,
       "colours": [
@@ -737,529 +728,6 @@
       "care": "Machine wash cold, inside out",
       "collection": "The Soft Power Edit",
       "model": "/assets/model-office.png"
-    },
-    {
-      "id": "adire-skirt",
-      "name": "Adire Aso Oke midi skirt",
-      "price": 84000,
-      "category": "Adire and Aso Oke Skirt",
-      "sub": "Adire",
-      "image": "/assets/products/adire-skirt.jpg",
-      "badge": "NEW",
-      "rating": 4.8,
-      "reviews": 11,
-      "colours": [
-        {
-          "name": "Indigo",
-          "hex": "#2c3f63"
-        },
-        {
-          "name": "Ivory",
-          "hex": "#efe6d2"
-        }
-      ],
-      "sizes": [
-        "XS",
-        "S",
-        "M",
-        "L",
-        "XL"
-      ],
-      "desc": "Hand-dyed adire cotton gathered into a soft midi, finished with a handwoven Aso Oke waistband. Each skirt carries the small irregularities of the dye bath — no two are identical.",
-      "fabric": "Hand-dyed adire cotton, handwoven Aso Oke waistband",
-      "care": "Hand wash cold, dry in shade",
-      "collection": "The Soft Power Edit",
-      "model": "/assets/model-office.png"
-    },
-    {
-      "id": "aso-oke-barrel-pants",
-      "name": "Aso Oke barrel pants in terracotta",
-      "price": 96000,
-      "category": "Aso Oke Barrel Pants",
-      "sub": "Handwoven",
-      "image": "/assets/products/aso-oke-barrel-pants.jpg",
-      "badge": "NEW",
-      "rating": 4.9,
-      "reviews": 6,
-      "colours": [
-        {
-          "name": "Terracotta",
-          "hex": "#a8492b"
-        },
-        {
-          "name": "Ochre",
-          "hex": "#b98a3f"
-        }
-      ],
-      "sizes": [
-        "XS",
-        "S",
-        "M",
-        "L",
-        "XL"
-      ],
-      "desc": "A handwoven Aso Oke trouser with a rounded barrel leg and a wide, high waist. The Yoruba weave gives it a quiet texture that reads as modern tailoring from across the room.",
-      "fabric": "Handwoven Aso Oke cotton",
-      "care": "Dry clean only",
-      "collection": "The Boardroom Edit",
-      "model": "/assets/model-check.png"
-    },
-    {
-      "id": "barrel-pants",
-      "name": "Ivory barrel-leg trousers",
-      "price": 78000,
-      "category": "Barrel Pants",
-      "sub": "Trousers",
-      "image": "/assets/products/barrel-pants.jpg",
-      "rating": 4.7,
-      "reviews": 14,
-      "colours": [
-        {
-          "name": "Ivory",
-          "hex": "#efe8d9"
-        },
-        {
-          "name": "Black",
-          "hex": "#151515"
-        }
-      ],
-      "sizes": [
-        "XS",
-        "S",
-        "M",
-        "L",
-        "XL"
-      ],
-      "desc": "A rounded leg that tapers cleanly at the ankle, pressed to a centre crease. High-waisted enough to hold a shirt, easy enough to live in.",
-      "fabric": "Wool-blend crepe",
-      "care": "Dry clean only",
-      "collection": "The Soft Power Edit",
-      "model": "/assets/model-office.png"
-    },
-    {
-      "id": "leather-trouser",
-      "name": "Black leather straight-leg trousers",
-      "price": 112000,
-      "category": "Jeans and Leather Trouser",
-      "sub": "Leather",
-      "image": "/assets/products/leather-trouser.jpg",
-      "badge": "NEW",
-      "rating": 4.8,
-      "reviews": 9,
-      "colours": [
-        {
-          "name": "Black",
-          "hex": "#121212"
-        },
-        {
-          "name": "Espresso",
-          "hex": "#3b281f"
-        }
-      ],
-      "sizes": [
-        "XS",
-        "S",
-        "M",
-        "L",
-        "XL"
-      ],
-      "desc": "Soft lambskin cut into a straight, high-waisted trouser with a discreet ankle zip. The leather is supple enough to sit, sharp enough to walk into any room.",
-      "fabric": "Lambskin leather, cupro lining",
-      "care": "Leather specialist clean only",
-      "collection": "The Boardroom Edit",
-      "model": "/assets/model-check.png"
-    },
-    {
-      "id": "corporate-dress",
-      "name": "Belted navy corporate midi dress",
-      "price": 92000,
-      "category": "Corporate Dresses",
-      "sub": "Dresses",
-      "image": "/assets/products/corporate-dress.jpg",
-      "badge": "NEW",
-      "rating": 4.8,
-      "reviews": 13,
-      "colours": [
-        {
-          "name": "Midnight Navy",
-          "hex": "#1a2639"
-        },
-        {
-          "name": "Black",
-          "hex": "#131313"
-        }
-      ],
-      "sizes": [
-        "XS",
-        "S",
-        "M",
-        "L",
-        "XL"
-      ],
-      "desc": "A clean bateau neck, a short sleeve and a self-tie belt that brings the waist in exactly where you want it. The boardroom dress, without the costume.",
-      "fabric": "Stretch crepe",
-      "care": "Dry clean or hand wash cold",
-      "collection": "The Boardroom Edit",
-      "model": "/assets/model-check.png"
-    },
-    {
-      "id": "black-blazer",
-      "name": "The midnight single-button blazer",
-      "price": 156000,
-      "category": "Blazer Jacket",
-      "sub": "Tailoring",
-      "image": "/assets/products/black-blazer.jpg",
-      "rating": 4.9,
-      "reviews": 8,
-      "colours": [
-        {
-          "name": "Black",
-          "hex": "#111111"
-        }
-      ],
-      "sizes": [
-        "XS",
-        "S",
-        "M",
-        "L",
-        "XL"
-      ],
-      "desc": "A sharp-shouldered single-button blazer with a nipped waist and a long, clean lapel. Cut to end just below the hip, so it holds its shape over a dress or a trouser.",
-      "fabric": "Wool-blend tailoring",
-      "care": "Dry clean only",
-      "collection": "The Boardroom Edit",
-      "model": "/assets/model-check.png"
-    },
-    {
-      "id": "ribbed-knit-top",
-      "name": "Chocolate ribbed knit tee",
-      "price": 52000,
-      "category": "Knit Tops",
-      "sub": "Knitwear",
-      "image": "/assets/products/ribbed-knit-top.jpg",
-      "rating": 4.6,
-      "reviews": 17,
-      "colours": [
-        {
-          "name": "Chocolate",
-          "hex": "#4a2f26"
-        },
-        {
-          "name": "Ivory",
-          "hex": "#f1e9da"
-        }
-      ],
-      "sizes": [
-        "XS",
-        "S",
-        "M",
-        "L",
-        "XL"
-      ],
-      "desc": "A fine-rib knit with a high round neck and a short sleeve that follows the arm. The kind of top that disappears under tailoring and holds the room on its own.",
-      "fabric": "Viscose knit blend",
-      "care": "Hand wash cold, dry flat",
-      "collection": "The Soft Power Edit",
-      "model": "/assets/model-office.png"
-    },
-    {
-      "id": "striped-shirt",
-      "name": "Powder-blue poplin shirt",
-      "price": 48000,
-      "category": "Knit Tops",
-      "sub": "Shirts",
-      "image": "/assets/products/striped-shirt.jpg",
-      "badge": "NEW",
-      "rating": 4.7,
-      "reviews": 18,
-      "colours": [
-        {
-          "name": "Powder Blue",
-          "hex": "#b9c9e8"
-        },
-        {
-          "name": "Ivory",
-          "hex": "#f4eddf"
-        }
-      ],
-      "sizes": [
-        "XS",
-        "S",
-        "M",
-        "L",
-        "XL"
-      ],
-      "desc": "A crisp cotton poplin shirt with a considered, slightly oversized line. Layer it beneath knitwear or wear it alone with the cuff rolled once.",
-      "fabric": "100% cotton poplin",
-      "care": "Machine wash cold, line dry",
-      "collection": "The Soft Power Edit",
-      "model": "/assets/model-office.png"
-    },
-    {
-      "id": "ribbed-navy-dress",
-      "name": "Midnight ribbed knit midi dress",
-      "price": 85000,
-      "category": "Corporate Dresses",
-      "sub": "Knit dresses",
-      "image": "/assets/products/ribbed-navy-dress.jpg",
-      "badge": "BESTSELLER",
-      "rating": 4.8,
-      "reviews": 24,
-      "colours": [
-        {
-          "name": "Midnight Navy",
-          "hex": "#14182b"
-        },
-        {
-          "name": "Black",
-          "hex": "#111111"
-        },
-        {
-          "name": "Wine",
-          "hex": "#6d2033"
-        }
-      ],
-      "sizes": [
-        "XS",
-        "S",
-        "M",
-        "L",
-        "XL"
-      ],
-      "desc": "A second-skin ribbed knit that follows the body and falls to a clean midi hem. Designed to be worn with a shirt beneath or nothing at all.",
-      "fabric": "Viscose knit blend",
-      "care": "Hand wash cold, dry flat",
-      "collection": "The Soft Power Edit",
-      "model": "/assets/model-office.png"
-    },
-    {
-      "id": "patent-pumps",
-      "name": "Bow-detail patent pumps",
-      "price": 72000,
-      "category": "Accessories",
-      "sub": "Shoes",
-      "image": "/assets/products/patent-pumps.jpg",
-      "rating": 4.6,
-      "reviews": 12,
-      "colours": [
-        {
-          "name": "Black",
-          "hex": "#111111"
-        },
-        {
-          "name": "Butter",
-          "hex": "#efd9a0"
-        }
-      ],
-      "sizes": [
-        "36",
-        "37",
-        "38",
-        "39",
-        "40",
-        "41"
-      ],
-      "desc": "A pointed patent pump finished with a sculpted bow at the toe. The heel is high and deliberately quiet.",
-      "fabric": "Patent leather upper, leather sole",
-      "care": "Wipe with a soft dry cloth",
-      "collection": "The Soft Power Edit",
-      "model": "/assets/model-office.png"
-    },
-    {
-      "id": "top-handle-bag",
-      "name": "Structured top-handle bag",
-      "price": 125000,
-      "category": "Accessories",
-      "sub": "Bags",
-      "image": "/assets/products/top-handle-bag.jpg",
-      "badge": "BESTSELLER",
-      "rating": 4.9,
-      "reviews": 31,
-      "colours": [
-        {
-          "name": "Black Leather",
-          "hex": "#151515"
-        },
-        {
-          "name": "Espresso",
-          "hex": "#4a3226"
-        }
-      ],
-      "sizes": [
-        "One size"
-      ],
-      "desc": "A polished top-handle bag with a gold turn-lock. Structured enough for the office, refined enough for the evening.",
-      "fabric": "Grained leather, suede lining",
-      "care": "Store in the dust bag provided",
-      "collection": "The Soft Power Edit",
-      "model": "/assets/model-office.png"
-    },
-    {
-      "id": "check-blazer",
-      "name": "Prince-of-Wales tailored blazer",
-      "price": 148000,
-      "category": "Blazer Jacket",
-      "sub": "Tailoring",
-      "image": "/assets/products/check-blazer.jpg",
-      "badge": "NEW",
-      "rating": 4.9,
-      "reviews": 11,
-      "colours": [
-        {
-          "name": "Cocoa Check",
-          "hex": "#a08d7b"
-        }
-      ],
-      "sizes": [
-        "XS",
-        "S",
-        "M",
-        "L",
-        "XL"
-      ],
-      "desc": "A single-button blazer cut close to the waist with a sharp shoulder and a softly structured peplum. Tailoring that remembers you have a body.",
-      "fabric": "Wool-blend Prince-of-Wales check",
-      "care": "Dry clean only",
-      "collection": "The Boardroom Edit",
-      "model": "/assets/model-check.png"
-    },
-    {
-      "id": "check-mini-skirt",
-      "name": "Prince-of-Wales mini skirt",
-      "price": 78000,
-      "category": "Skirts",
-      "sub": "Skirts",
-      "image": "/assets/products/check-mini-skirt.jpg",
-      "rating": 4.7,
-      "reviews": 9,
-      "colours": [
-        {
-          "name": "Cocoa Check",
-          "hex": "#a08d7b"
-        }
-      ],
-      "sizes": [
-        "XS",
-        "S",
-        "M",
-        "L",
-        "XL"
-      ],
-      "desc": "The matching mini, cut to sit high on the waist with a clean, narrow line. Sharp with tights, softer with bare legs.",
-      "fabric": "Wool-blend Prince-of-Wales check",
-      "care": "Dry clean only",
-      "collection": "The Boardroom Edit",
-      "model": "/assets/model-check.png"
-    },
-    {
-      "id": "silk-tie",
-      "name": "Chocolate silk necktie",
-      "price": 32000,
-      "category": "Accessories",
-      "sub": "Silk",
-      "image": "/assets/products/silk-tie.jpg",
-      "rating": 4.5,
-      "reviews": 7,
-      "colours": [
-        {
-          "name": "Chocolate",
-          "hex": "#40251c"
-        }
-      ],
-      "sizes": [
-        "One size"
-      ],
-      "desc": "A slim silk tie in deep chocolate. The boardroom flourish that turns a white shirt into a point of view.",
-      "fabric": "100% mulberry silk",
-      "care": "Dry clean only",
-      "collection": "The Boardroom Edit",
-      "model": "/assets/model-check.png"
-    },
-    {
-      "id": "espresso-bag",
-      "name": "Espresso leather handbag",
-      "price": 135000,
-      "category": "Accessories",
-      "sub": "Bags",
-      "image": "/assets/products/espresso-bag.jpg",
-      "rating": 4.8,
-      "reviews": 14,
-      "colours": [
-        {
-          "name": "Espresso",
-          "hex": "#3d281d"
-        }
-      ],
-      "sizes": [
-        "One size"
-      ],
-      "desc": "A deep espresso leather bag with a gold lock and a hand-stitched top edge. Patience in object form.",
-      "fabric": "Smooth calf leather, gold hardware",
-      "care": "Store in the dust bag provided",
-      "collection": "The Boardroom Edit",
-      "model": "/assets/model-check.png"
-    },
-    {
-      "id": "gold-cap-pumps",
-      "name": "Gold-cap pumps",
-      "price": 82000,
-      "category": "Accessories",
-      "sub": "Shoes",
-      "image": "/assets/products/gold-cap-pumps.jpg",
-      "rating": 4.7,
-      "reviews": 16,
-      "colours": [
-        {
-          "name": "Black Leather",
-          "hex": "#141414"
-        }
-      ],
-      "sizes": [
-        "36",
-        "37",
-        "38",
-        "39",
-        "40",
-        "41"
-      ],
-      "desc": "A black leather pump with a pointed gold cap. One metallic note, nothing more.",
-      "fabric": "Leather upper, gold-plated toe",
-      "care": "Wipe with a soft dry cloth",
-      "collection": "The Boardroom Edit",
-      "model": "/assets/model-check.png"
-    },
-    {
-      "id": "lavender-sweatshirt",
-      "name": "Oversized brushed fleece sweatshirt",
-      "price": 64000,
-      "category": "Knit Tops",
-      "sub": "Knitwear",
-      "image": "/assets/products/lavender-sweatshirt.jpg",
-      "badge": "NEW",
-      "rating": 4.8,
-      "reviews": 21,
-      "colours": [
-        {
-          "name": "Lavender",
-          "hex": "#b6a2d6"
-        },
-        {
-          "name": "Ivory",
-          "hex": "#f2e9da"
-        }
-      ],
-      "sizes": [
-        "XS",
-        "S",
-        "M",
-        "L",
-        "XL"
-      ],
-      "desc": "Weightless brushed fleece in a washed lavender, cut oversized with dropped shoulders. The softest thing you own, styled with intent.",
-      "fabric": "Brushed cotton fleece",
-      "care": "Machine wash cold, tumble dry low",
-      "collection": "Lavender Hour",
-      "model": "/assets/model-lavender.png"
     },
     {
       "id": "butter-mini-skirt",
@@ -1288,305 +756,6 @@
       "care": "Leather specialist clean only",
       "collection": "Lavender Hour",
       "model": "/assets/model-lavender.png"
-    },
-    {
-      "id": "butter-pumps",
-      "name": "Pointed-toe pumps in butter",
-      "price": 76000,
-      "category": "Accessories",
-      "sub": "Shoes",
-      "image": "/assets/products/butter-pumps.jpg",
-      "rating": 4.5,
-      "reviews": 10,
-      "colours": [
-        {
-          "name": "Butter Yellow",
-          "hex": "#efd79a"
-        }
-      ],
-      "sizes": [
-        "36",
-        "37",
-        "38",
-        "39",
-        "40",
-        "41"
-      ],
-      "desc": "A pointed patent pump in warm butter. The easiest way to soften a sharp silhouette.",
-      "fabric": "Patent leather upper",
-      "care": "Wipe with a soft dry cloth",
-      "collection": "Lavender Hour",
-      "model": "/assets/model-lavender.png"
-    },
-    {
-      "id": "butter-shoulder-bag",
-      "name": "Structured leather shoulder bag",
-      "price": 118000,
-      "category": "Accessories",
-      "sub": "Bags",
-      "image": "/assets/products/butter-shoulder-bag.jpg",
-      "badge": "NEW",
-      "rating": 4.7,
-      "reviews": 6,
-      "colours": [
-        {
-          "name": "Butter Yellow",
-          "hex": "#efd79a"
-        }
-      ],
-      "sizes": [
-        "One size"
-      ],
-      "desc": "A compact shoulder bag in butter leather with a chain detail and a soft structure. Small, but never precious.",
-      "fabric": "Calf leather, gold chain",
-      "care": "Store in the dust bag provided",
-      "collection": "Lavender Hour",
-      "model": "/assets/model-lavender.png"
-    },
-    {
-      "id": "gold-collar",
-      "name": "Sculptural gold collar",
-      "price": 52000,
-      "category": "Accessories",
-      "sub": "Jewellery",
-      "image": "/assets/products/gold-collar.jpg",
-      "rating": 4.8,
-      "reviews": 13,
-      "colours": [
-        {
-          "name": "Gold",
-          "hex": "#c9a45c"
-        }
-      ],
-      "sizes": [
-        "One size"
-      ],
-      "desc": "A double-band collar in polished gold. Weighted to sit exactly where it should.",
-      "fabric": "18k gold-plated brass",
-      "care": "Keep dry, store in the pouch provided",
-      "collection": "Lavender Hour",
-      "model": "/assets/model-lavender.png"
-    },
-    {
-      "id": "gradient-sunglasses",
-      "name": "Gradient oversized sunglasses",
-      "price": 46000,
-      "category": "Accessories",
-      "sub": "Eyewear",
-      "image": "/assets/products/gradient-sunglasses.jpg",
-      "rating": 4.4,
-      "reviews": 5,
-      "colours": [
-        {
-          "name": "Lavender",
-          "hex": "#9a8cc2"
-        }
-      ],
-      "sizes": [
-        "One size"
-      ],
-      "desc": "Oversized frames with a lavender-to-clear gradient lens. A little drama, softly delivered.",
-      "fabric": "Acetate frame, UV400 lens",
-      "care": "Wipe with the cloth provided",
-      "collection": "Lavender Hour",
-      "model": "/assets/model-lavender.png"
-    },
-    {
-      "id": "knot-earrings",
-      "name": "Gold knot earrings",
-      "price": 38000,
-      "category": "Accessories",
-      "sub": "Jewellery",
-      "image": "/assets/products/knot-earrings.jpg",
-      "rating": 4.7,
-      "reviews": 19,
-      "colours": [
-        {
-          "name": "Gold",
-          "hex": "#c9a45c"
-        }
-      ],
-      "sizes": [
-        "One size"
-      ],
-      "desc": "Sculpted knots in warm gold — the earring that finishes everything without asking for attention.",
-      "fabric": "18k gold-plated brass",
-      "care": "Keep dry, store in the pouch provided",
-      "collection": "The Soft Power Edit",
-      "model": "/assets/model-office.png"
-    },
-    {
-      "id": "mesh-bracelets",
-      "name": "Mesh chain bracelet stack",
-      "price": 42000,
-      "category": "Accessories",
-      "sub": "Jewellery",
-      "image": "/assets/products/mesh-bracelets.jpg",
-      "rating": 4.6,
-      "reviews": 9,
-      "colours": [
-        {
-          "name": "Gold",
-          "hex": "#c9a45c"
-        }
-      ],
-      "sizes": [
-        "One size"
-      ],
-      "desc": "Two woven gold chains designed to be worn together. Quiet shine at the wrist.",
-      "fabric": "18k gold-plated brass",
-      "care": "Keep dry, store in the pouch provided",
-      "collection": "The Soft Power Edit",
-      "model": "/assets/model-office.png"
-    },
-    {
-      "id": "gold-watch",
-      "name": "Rectangular gold watch",
-      "price": 175000,
-      "category": "Accessories",
-      "sub": "Watches",
-      "image": "/assets/products/gold-watch.jpg",
-      "rating": 4.9,
-      "reviews": 12,
-      "colours": [
-        {
-          "name": "Gold",
-          "hex": "#c9a45c"
-        }
-      ],
-      "sizes": [
-        "One size"
-      ],
-      "desc": "A slim rectangular face on a fine gold bracelet. Time, considered.",
-      "fabric": "Gold-plated steel, sapphire glass",
-      "care": "Avoid water; service annually",
-      "collection": "The Soft Power Edit",
-      "model": "/assets/model-office.png"
-    },
-    {
-      "id": "gold-wristwatch",
-      "name": "Gold wristwatch",
-      "price": 185000,
-      "category": "Accessories",
-      "sub": "Watches",
-      "image": "/assets/products/gold-wristwatch.jpg",
-      "badge": "BESTSELLER",
-      "rating": 4.8,
-      "reviews": 22,
-      "colours": [
-        {
-          "name": "Gold",
-          "hex": "#c9a45c"
-        }
-      ],
-      "sizes": [
-        "One size"
-      ],
-      "desc": "A round gold watch with a champagne dial and a bracelet that catches the light. An heirloom in waiting.",
-      "fabric": "Gold-plated steel, mineral glass",
-      "care": "Avoid water; service annually",
-      "collection": "The Boardroom Edit",
-      "model": "/assets/model-check.png"
-    },
-    {
-      "id": "sculptural-earrings",
-      "name": "Sculptural drop earrings",
-      "price": 58000,
-      "category": "Accessories",
-      "sub": "Jewellery",
-      "image": "/assets/products/sculptural-earrings.jpg",
-      "rating": 4.7,
-      "reviews": 8,
-      "colours": [
-        {
-          "name": "18k Gold",
-          "hex": "#c9a45c"
-        }
-      ],
-      "sizes": [
-        "One size"
-      ],
-      "desc": "Curved gold drops with a mirror finish. Modern heirlooms for the woman who dresses for herself.",
-      "fabric": "18k gold-plated brass",
-      "care": "Keep dry, store in the pouch provided",
-      "collection": "The Boardroom Edit",
-      "model": "/assets/model-check.png"
-    },
-    {
-      "id": "oversized-sunglasses",
-      "name": "Oversized black sunglasses",
-      "price": 44000,
-      "category": "Accessories",
-      "sub": "Eyewear",
-      "image": "/assets/products/oversized-sunglasses.jpg",
-      "rating": 4.5,
-      "reviews": 7,
-      "colours": [
-        {
-          "name": "Black",
-          "hex": "#141414"
-        }
-      ],
-      "sizes": [
-        "One size"
-      ],
-      "desc": "Rounded oversized frames in glossy black. Incognito, elegantly.",
-      "fabric": "Acetate frame, UV400 lens",
-      "care": "Wipe with the cloth provided",
-      "collection": "The Boardroom Edit",
-      "model": "/assets/model-check.png"
-    },
-    {
-      "id": "poplin-shirt",
-      "name": "Crisp white cotton shirt",
-      "price": 46000,
-      "category": "Knit Tops",
-      "sub": "Shirts",
-      "image": "/assets/products/poplin-shirt.jpg",
-      "rating": 4.8,
-      "reviews": 26,
-      "colours": [
-        {
-          "name": "White",
-          "hex": "#fbfbf8"
-        }
-      ],
-      "sizes": [
-        "XS",
-        "S",
-        "M",
-        "L",
-        "XL"
-      ],
-      "desc": "The white shirt, perfected: a clean collar, a fluid body and a cuff that holds its shape.",
-      "fabric": "100% cotton poplin",
-      "care": "Machine wash cold, warm iron",
-      "collection": "The Boardroom Edit",
-      "model": "/assets/model-check.png"
-    },
-    {
-      "id": "stacked-rings",
-      "name": "Stacked gold ring set",
-      "price": 36000,
-      "category": "Accessories",
-      "sub": "Jewellery",
-      "image": "/assets/products/stacked-rings-2.jpg",
-      "rating": 4.6,
-      "reviews": 15,
-      "colours": [
-        {
-          "name": "Gold",
-          "hex": "#c9a45c"
-        }
-      ],
-      "sizes": [
-        "One size"
-      ],
-      "desc": "Three polished bands, made to be stacked or worn apart. Your hand, edited.",
-      "fabric": "18k gold-plated brass",
-      "care": "Keep dry, store in the pouch provided",
-      "collection": "Lavender Hour",
-      "model": "/assets/model-lavender.png"
     }
   ],
   "ads": [
@@ -1600,12 +769,6 @@
       ],
       "copy": "Powder-blue poplin beneath midnight ribbed knit. Authority, with a pulse.",
       "model": "/assets/model-office.png",
-      "look": [
-        "striped-shirt",
-        "ribbed-navy-dress",
-        "patent-pumps",
-        "top-handle-bag"
-      ],
       "accent": "#d8c7b2",
       "tone": "warm",
       "cta": "Continue"
@@ -1620,12 +783,6 @@
       ],
       "copy": "Prince-of-Wales check, a chocolate silk tie, a gold-capped heel that means business.",
       "model": "/assets/model-check.png",
-      "look": [
-        "check-blazer",
-        "check-mini-skirt",
-        "silk-tie",
-        "gold-cap-pumps"
-      ],
       "accent": "#c9b49d",
       "tone": "warm",
       "cta": "Continue"
@@ -1640,12 +797,6 @@
       ],
       "copy": "Brushed lavender fleece, butter-soft leather, and gold that catches the evening light.",
       "model": "/assets/model-lavender.png",
-      "look": [
-        "lavender-sweatshirt",
-        "butter-mini-skirt",
-        "butter-pumps",
-        "butter-shoulder-bag"
-      ],
       "accent": "#e3d3b2",
       "tone": "warm",
       "cta": "Enter the boutique"

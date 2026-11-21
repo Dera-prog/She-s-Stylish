@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
-import { ads, byId, formatN } from '../lib/data';
+import { ads } from '../lib/data';
 import { IconArrow } from '../components/Icons';
 
 const EASE = [0.65, 0, 0.35, 1] as const;
@@ -113,37 +113,6 @@ export default function Ads() {
                 <IconArrow size={13} />
               </button>
             </motion.div>
-          </div>
-
-          <div className="ad__rail">
-            <motion.div
-              className="ad__railhead"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.55 }}
-            >
-              <span>In this look</span>
-              <span>{ad.look.length}</span>
-            </motion.div>
-            {ad.look.map((id, k) => {
-              const p = byId(id);
-              if (!p) return null;
-              return (
-                <motion.div
-                  key={id}
-                  className="ad__item"
-                  initial={{ opacity: 0, x: 26 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.6, delay: 0.6 + k * 0.09, ease: EASE }}
-                >
-                  <img src={p.image} alt="" />
-                  <div>
-                    <div className="ad__itemname">{p.name.split(' ').slice(0, 2).join(' ')}</div>
-                    <div className="ad__itemprice">{formatN(p.price)}</div>
-                  </div>
-                </motion.div>
-              );
-            })}
           </div>
         </motion.div>
       </AnimatePresence>

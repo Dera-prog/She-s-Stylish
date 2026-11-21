@@ -1,9 +1,10 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { BackBar, Screen, TitleHead } from '../components/Chrome';
 import { IconArrow, IconSearch, IconSparkle } from '../components/Icons';
 import { formatN, products, categories } from '../lib/data';
 import { useStore, type OrderStatus } from '../lib/store';
+import { ADMIN_KEY_STORE, ApiError, advanceOrder, fetchAdminOrders, type AdminOrder } from '../lib/api';
 
 const label: Record<OrderStatus, string> = {
   placed: 'Order placed',
@@ -24,13 +25,42 @@ const nextStatus: Record<OrderStatus, OrderStatus | null> = {
 type Tab = 'overview' | 'orders' | 'catalogue';
 
 export default function Admin() {
-  const { state, dispatch, toast } = useStore();
+  const { dispatch, toast } = useStore();
   const [tab, setTab] = useState<Tab>('overview');
   const [q, setQ] = useState('');
+  const [key, setKey] = useState('');
+  const [entry, setEntry] = useState('');
+  const [orders, setOrders] = useState<AdminOrder[]>([]);
+  const [unlocked, setUnlocked] = useState(false);
+  const [busy, setBusy] = useState(false);
+  const [problem, setProblem] = useState<string | null>(null);
 
-  const revenue = state.orders.reduce((n, o) => n + o.total, 0);
-  const aov = state.orders.length ? Math.round(revenue / state.orders.length) : 0;
-  const sold = state.orders.reduce((n, o) => n + o.lines.reduce((m, l) => m + l.qty, 0), 0);
+  const unlock = async (candidate: string) => {
+    setBusy(true);
+    setProblem(null);
+    try {
+      const list = await fetchAdminOrders(candidate);
+      localStorage.setItem(ADMIN_KEY_STORE, candidate);
+      setKey(candidate);
+      setOrders(list);
+      setUnlocked(true);
+      setEntry('');
+    } catch (error) {
+      if (error instanceof ApiError && error.status === 401) {
+        localStorage.removeItem(ADMIN_KEY_STORE);
+        setProblem('That key did not match.');
+      } else {
+        setProblem('The order service is unavailable right now.');
+      }
+    } finally {
+      setBusy(false);
+    }
+  };
+
+  useEffect(() => {
+    const stored = localStorage.getItem(ADMIN_KEY_STORE);
+    if (stored) void unlock(stored);
+  }, []);
 
   const catalogue = useMemo(() => {
     const term = q.trim().toLowerCase();
@@ -40,31 +70,66 @@ export default function Admin() {
     );
   }, [q]);
 
-  if (!state.user) {
+  if (!unlocked) {
     return (
       <Screen>
         <BackBar title="Store admin" />
         <div className="empty">
           <img className="empty__mark" src="/assets/logo-mark-ink.png" alt="" />
           <h2>For the house only.</h2>
-          <p>Sign in to manage orders, inventory and the storefront.</p>
-          <Link className="btn" to="/login">
-            <span>Sign in</span>
-            <IconArrow size={15} />
-          </Link>
+          <p>Enter the store key to manage orders and the catalogue.</p>
+          <div style={{ width: '100%', maxWidth: 300 }}>
+            <div className="field" style={{ textAlign: 'left' }}>
+              <label htmlFor="admin-key">Store key</label>
+              <input
+                id="admin-key"
+                type="password"
+                value={entry}
+                onChange={(e) => setEntry(e.target.value)}
+                autoComplete="current-password"
+              />
+            </div>
+            <button
+              className="btn"
+              style={{ marginTop: 12 }}
+              disabled={busy || !entry.trim()}
+              onClick={() => void unlock(entry.trim())}
+            >
+              <span>{busy ? 'Checking…' : 'Unlock'}</span>
+              <IconArrow size={15} />
+            </button>
+          </div>
+          {problem && (
+            <div className="notice" style={{ margin: '18px 0 0', textAlign: 'left' }}>
+              {problem}
+            </div>
+          )}
         </div>
       </Screen>
     );
   }
 
-  const advance = (id: string, status: OrderStatus) => {
-    const next = nextStatus[status];
+  const revenue = orders.reduce((n, o) => n + o.total, 0);
+  const aov = orders.length ? Math.round(revenue / orders.length) : 0;
+  const sold = orders.reduce((n, o) => n + o.pieces, 0);
+  const awaiting = orders.filter((o) => o.status !== 'delivered').length;
+
+  const advance = async (order: AdminOrder) => {
+    const next = nextStatus[order.status];
     if (!next) {
       toast('Order already delivered');
       return;
     }
-    dispatch({ type: 'orderstatus', id, status: next });
-    toast(`${id} · ${label[next]}`);
+    try {
+      const updated = await advanceOrder(key, order.id, next);
+      setOrders((list) =>
+        list.map((x) => (x.id === order.id ? { ...x, status: updated.status } : x)),
+      );
+      dispatch({ type: 'orders', orders: [updated] });
+      toast(`${order.id} · ${label[next]}`);
+    } catch {
+      toast('Could not update the order. Try again.');
+    }
   };
 
   return (
@@ -91,7 +156,7 @@ export default function Admin() {
             <div className="metric">
               <div className="micro">Revenue</div>
               <b>{formatN(revenue)}</b>
-              <span>{state.orders.length} orders placed</span>
+              <span>{orders.length} orders placed</span>
             </div>
             <div className="metric">
               <div className="micro">Average order</div>
@@ -104,25 +169,24 @@ export default function Admin() {
               <span>Units in orders</span>
             </div>
             <div className="metric">
-              <div className="micro">Wishlist saves</div>
-              <b>{state.wishlist.length}</b>
-              <span>Saved by this customer</span>
+              <div className="micro">Awaiting delivery</div>
+              <b>{awaiting}</b>
+              <span>Still in the queue</span>
             </div>
           </div>
 
           <div className="divider-label">Recent orders</div>
-          {state.orders.length === 0 ? (
+          {orders.length === 0 ? (
             <div className="notice" style={{ margin: '12px 22px 0' }}>
-              <b>No orders yet.</b> Place a demo order from the storefront and it will appear here
-              instantly — statuses can then be advanced from the Orders tab.
+              <b>No orders yet.</b> Orders appear here as soon as checkout completes.
             </div>
           ) : (
             <div className="profile__orders" style={{ marginTop: 12 }}>
-              {state.orders.slice(0, 3).map((o) => (
+              {orders.slice(0, 3).map((o) => (
                 <Link className="profile__order" key={o.id} to={`/track/${o.id}`}>
                   <div>
                     <b>{o.id}</b>
-                    {o.lines.length} pieces · {formatN(o.total)}
+                    {o.pieces} pieces · {formatN(o.total)}
                   </div>
                   <span className={`pill ${o.status === 'delivered' ? 'pill--gold' : ''}`}>
                     {label[o.status]}
@@ -162,17 +226,14 @@ export default function Admin() {
 
       {tab === 'orders' && (
         <>
-          <TitleHead
-            title="Orders"
-            eyebrow="Fulfilment queue"
-          />
-          {state.orders.length === 0 ? (
+          <TitleHead title="Orders" eyebrow="Fulfilment queue" />
+          {orders.length === 0 ? (
             <div className="notice" style={{ margin: '16px 22px 0' }}>
               <b>The queue is clear.</b> New orders appear the moment checkout completes.
             </div>
           ) : (
             <div className="tbl" style={{ marginTop: 16 }}>
-              {state.orders.map((o) => (
+              {orders.map((o) => (
                 <div className="tbl__row" key={o.id} style={{ gridTemplateColumns: '1fr auto' }}>
                   <div>
                     <b>{o.id}</b>
@@ -181,14 +242,14 @@ export default function Admin() {
                         day: 'numeric',
                         month: 'short',
                       })}{' '}
-                      · {o.lines.length} pieces · {o.address.split(',')[0]}
+                      · {o.pieces} pieces · {o.address.split(',')[0]}
                     </span>
                   </div>
                   <div style={{ display: 'grid', justifyItems: 'end', gap: 6 }}>
                     <span className="price">{formatN(o.total)}</span>
                     <button
                       className={`status ${o.status === 'delivered' ? 'status--gold' : 'status--ink'}`}
-                      onClick={() => advance(o.id, o.status)}
+                      onClick={() => void advance(o)}
                     >
                       {label[o.status]} {o.status !== 'delivered' && '→'}
                     </button>

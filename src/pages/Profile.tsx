@@ -14,6 +14,7 @@ import {
 } from '../components/Icons';
 import { formatN } from '../lib/data';
 import { useStore } from '../lib/store';
+import { useLiveOrders } from '../lib/useLiveOrders';
 
 const statusLabel = {
   placed: 'Placed',
@@ -25,6 +26,7 @@ const statusLabel = {
 
 export default function Profile() {
   const { state, dispatch, toast } = useStore();
+  useLiveOrders();
   const user = state.user;
   const latest = state.orders.slice(0, 2);
 
@@ -34,9 +36,9 @@ export default function Profile() {
       <TitleHead title="Profile" eyebrow="A house of her own" />
 
       <div className="profile__card">
-        <div className="micro">{user ? 'Member since 2026' : 'Browsing as a guest'}</div>
+        <div className="micro">{user ? 'Your details' : 'Browsing as a guest'}</div>
         <h2>{user?.name ?? 'Welcome to the house'}</h2>
-        <p>{user?.email ?? 'Sign in to keep your orders and wishlist together'}</p>
+        <p>{user?.email ?? 'Add your name, email and phone to keep orders and wishlist together'}</p>
         {user ? (
           <p style={{ marginTop: 4 }}>{user.phone}</p>
         ) : (
@@ -45,7 +47,7 @@ export default function Profile() {
             to="/login"
             style={{ color: '#f3dfbc', marginTop: 16, display: 'inline-flex' }}
           >
-            Sign in <IconArrow size={13} />
+            Add your details <IconArrow size={13} />
           </Link>
         )}
       </div>
@@ -94,15 +96,15 @@ export default function Profile() {
         </div>
         <LinkRow label="Help & support" to="/support" icon={<IconSparkle size={17} />} />
         <LinkRow label="Contact us" to="/contact" icon={<IconGift size={17} />} />
-        <LinkRow label="Store admin (demo)" to="/admin" icon={<IconGrid size={17} />} />
+        <LinkRow label="Store admin" to="/admin" icon={<IconGrid size={17} />} />
 
         {user && (
           <LinkRow
-            label="Sign out"
+            label="Clear my details"
             icon={<IconUser size={17} />}
             onClick={() => {
               dispatch({ type: 'logout' });
-              toast('Signed out');
+              toast('Details cleared from this device');
             }}
           />
         )}
