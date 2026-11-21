@@ -2,7 +2,7 @@ import { useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { BackBar, Screen, TitleHead } from '../components/Chrome';
 import { IconArrow, IconSearch, IconSparkle } from '../components/Icons';
-import { formatN, products } from '../lib/data';
+import { formatN, products, categories } from '../lib/data';
 import { useStore, type OrderStatus } from '../lib/store';
 
 const label: Record<OrderStatus, string> = {
@@ -138,7 +138,7 @@ export default function Admin() {
             <div className="metric">
               <div className="micro">Live products</div>
               <b>{products.length}</b>
-              <span>Across 6 categories</span>
+              <span>Across {categories.length - 1} categories</span>
             </div>
             <div className="metric">
               <div className="micro">New in</div>

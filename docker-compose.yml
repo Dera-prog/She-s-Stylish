@@ -1,0 +1,38 @@
+name: shes-stylish
+
+services:
+  db:
+    image: postgres:17-alpine
+    container_name: shes-stylish-db
+    environment:
+      POSTGRES_DB: shes_stylish
+      POSTGRES_USER: shes
+      POSTGRES_PASSWORD: shes
+    volumes:
+      - shes-stylish-pg:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U shes -d shes_stylish"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+  api:
+    build: ./server
+    container_name: shes-stylish-api
+    environment:
+      DATABASE_URL: postgres://shes:shes@db:5432/shes_stylish
+      ADMIN_KEY: ${ADMIN_KEY:-dev-admin-key}
+      PORT: "4000"
+    ports:
+      - "4010:4000"
+    depends_on:
+      db:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1:4000/health"]
+      interval: 10s
+      timeout: 3s
+      retries: 10
+
+volumes:
+  shes-stylish-pg:

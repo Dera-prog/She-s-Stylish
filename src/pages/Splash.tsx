@@ -53,80 +53,43 @@ export default function Splash() {
       </div>
 
       <div className="splash__lockup">
-        <motion.div
-          className="splash__ring"
-          initial={{ scale: 0.82, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 1.25, ease: [0.22, 1, 0.36, 1] }}
+        <motion.svg
+          className="splash__halo"
+          viewBox="0 0 300 300"
+          fill="none"
+          aria-hidden
+          initial={{ opacity: 0, scale: 0.92 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1.6, ease: [0.22, 1, 0.36, 1] }}
         >
-          <svg className="splash__arc" viewBox="0 0 140 140" fill="none" aria-hidden>
-            <motion.circle
-              cx="70"
-              cy="70"
-              r="69"
-              stroke="rgba(193,160,106,0.65)"
-              strokeWidth="0.9"
-              strokeLinecap="round"
-              strokeDasharray="118 316"
-              style={{ transformOrigin: '70px 70px' }}
-              animate={{ rotate: 360 }}
-              transition={{ duration: 11, repeat: Infinity, ease: 'linear' }}
-            />
-            <motion.circle
-              cx="70"
-              cy="70"
-              r="60"
-              stroke="rgba(193,160,106,0.28)"
-              strokeWidth="0.7"
-              strokeLinecap="round"
-              strokeDasharray="34 340"
-              style={{ transformOrigin: '70px 70px' }}
-              animate={{ rotate: -360 }}
-              transition={{ duration: 17, repeat: Infinity, ease: 'linear' }}
-            />
-          </svg>
-          <div className="splash__mark">
-            <motion.img
-              src="/assets/logo-mark.png"
-              alt="She's Stylish monogram"
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 1.1, delay: 0.25, ease: 'easeOut' }}
-            />
-            <span className="splash__shimmer" />
-          </div>
-        </motion.div>
-
-        <h1 className="splash__word">
-          <span style={{ overflow: 'hidden' }}>
-            <motion.span
-              style={{ display: 'block' }}
-              initial={{ y: '115%' }}
-              animate={{ y: 0 }}
-              transition={{ duration: 0.95, delay: 0.65, ease: [0.22, 1, 0.36, 1] }}
-            >
-              She&rsquo;s
-            </motion.span>
-          </span>
-          <span style={{ overflow: 'hidden' }}>
-            <motion.span
-              style={{ display: 'block' }}
-              initial={{ y: '115%' }}
-              animate={{ y: 0 }}
-              transition={{ duration: 0.95, delay: 0.82, ease: [0.22, 1, 0.36, 1] }}
-            >
-              Stylish
-            </motion.span>
-          </span>
-        </h1>
+          <circle cx="150" cy="150" r="147" stroke="rgba(193,160,106,0.32)" strokeWidth="0.7" />
+          <circle
+            cx="150"
+            cy="150"
+            r="136"
+            stroke="rgba(193,160,106,0.2)"
+            strokeWidth="0.6"
+            strokeDasharray="1.5 7"
+          />
+        </motion.svg>
 
         <motion.div
-          className="splash__sub"
-          initial={{ opacity: 0, letterSpacing: '0.6em' }}
-          animate={{ opacity: 1, letterSpacing: '0.36em' }}
-          transition={{ duration: 1.2, delay: 1.15, ease: 'easeOut' }}
+          className="splash__brand"
+          initial={{ opacity: 0, scale: 0.93 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1.5, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
         >
-          Dress like you mean it
+          <img
+            className="splash__logo"
+            src="/assets/logo-lockup.png"
+            alt="She’s Stylish — luxury women’s fashion"
+          />
+          <motion.span
+            className="splash__shimmer"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.4, delay: 0.6 }}
+          />
         </motion.div>
       </div>
 

@@ -1,10 +1,14 @@
 export type Category =
-  | 'Dresses'
-  | 'Tops & bottoms'
-  | 'Workwear'
-  | 'Occasion'
-  | 'Accessories'
-  | 'Co-ords';
+  | 'Jeans and Leather Skirt'
+  | 'Jeans and Leather Trouser'
+  | 'Barrel Pants'
+  | 'Aso Oke Barrel Pants'
+  | 'Adire and Aso Oke Skirt'
+  | 'Knit Tops'
+  | 'Blazer Jacket'
+  | 'Corporate Dresses'
+  | 'Skirts'
+  | 'Accessories';
 
 export type Product = {
   id: string;
@@ -29,10 +33,172 @@ const img = (slug: string) => `/assets/products/${slug}.jpg`;
 
 export const products: Product[] = [
   {
+    id: 'denim-midi-skirt',
+    name: 'Indigo denim midi skirt',
+    price: 68000,
+    category: 'Jeans and Leather Skirt',
+    sub: 'Denim',
+    image: img('denim-midi-skirt'),
+    badge: 'NEW',
+    rating: 4.7,
+    reviews: 12,
+    colours: [
+      { name: 'Deep Indigo', hex: '#2b3a52' },
+      { name: 'Washed Blue', hex: '#6d83a3' },
+    ],
+    sizes: ['XS', 'S', 'M', 'L', 'XL'],
+    desc: 'A deep-indigo denim cut high at the waist and falling to a clean midi hem, with a front slit that moves when you do. It softens with every wear and never loses its line.',
+    fabric: '100% cotton denim, unlined',
+    care: 'Machine wash cold, inside out',
+    collection: 'The Soft Power Edit',
+    model: '/assets/model-office.png',
+  },
+  {
+    id: 'adire-skirt',
+    name: 'Adire Aso Oke midi skirt',
+    price: 84000,
+    category: 'Adire and Aso Oke Skirt',
+    sub: 'Adire',
+    image: img('adire-skirt'),
+    badge: 'NEW',
+    rating: 4.8,
+    reviews: 11,
+    colours: [
+      { name: 'Indigo', hex: '#2c3f63' },
+      { name: 'Ivory', hex: '#efe6d2' },
+    ],
+    sizes: ['XS', 'S', 'M', 'L', 'XL'],
+    desc: 'Hand-dyed adire cotton gathered into a soft midi, finished with a handwoven Aso Oke waistband. Each skirt carries the small irregularities of the dye bath — no two are identical.',
+    fabric: 'Hand-dyed adire cotton, handwoven Aso Oke waistband',
+    care: 'Hand wash cold, dry in shade',
+    collection: 'The Soft Power Edit',
+    model: '/assets/model-office.png',
+  },
+  {
+    id: 'aso-oke-barrel-pants',
+    name: 'Aso Oke barrel pants in terracotta',
+    price: 96000,
+    category: 'Aso Oke Barrel Pants',
+    sub: 'Handwoven',
+    image: img('aso-oke-barrel-pants'),
+    badge: 'NEW',
+    rating: 4.9,
+    reviews: 6,
+    colours: [
+      { name: 'Terracotta', hex: '#a8492b' },
+      { name: 'Ochre', hex: '#b98a3f' },
+    ],
+    sizes: ['XS', 'S', 'M', 'L', 'XL'],
+    desc: 'A handwoven Aso Oke trouser with a rounded barrel leg and a wide, high waist. The Yoruba weave gives it a quiet texture that reads as modern tailoring from across the room.',
+    fabric: 'Handwoven Aso Oke cotton',
+    care: 'Dry clean only',
+    collection: 'The Boardroom Edit',
+    model: '/assets/model-check.png',
+  },
+  {
+    id: 'barrel-pants',
+    name: 'Ivory barrel-leg trousers',
+    price: 78000,
+    category: 'Barrel Pants',
+    sub: 'Trousers',
+    image: img('barrel-pants'),
+    rating: 4.7,
+    reviews: 14,
+    colours: [
+      { name: 'Ivory', hex: '#efe8d9' },
+      { name: 'Black', hex: '#151515' },
+    ],
+    sizes: ['XS', 'S', 'M', 'L', 'XL'],
+    desc: 'A rounded leg that tapers cleanly at the ankle, pressed to a centre crease. High-waisted enough to hold a shirt, easy enough to live in.',
+    fabric: 'Wool-blend crepe',
+    care: 'Dry clean only',
+    collection: 'The Soft Power Edit',
+    model: '/assets/model-office.png',
+  },
+  {
+    id: 'leather-trouser',
+    name: 'Black leather straight-leg trousers',
+    price: 112000,
+    category: 'Jeans and Leather Trouser',
+    sub: 'Leather',
+    image: img('leather-trouser'),
+    badge: 'NEW',
+    rating: 4.8,
+    reviews: 9,
+    colours: [
+      { name: 'Black', hex: '#121212' },
+      { name: 'Espresso', hex: '#3b281f' },
+    ],
+    sizes: ['XS', 'S', 'M', 'L', 'XL'],
+    desc: 'Soft lambskin cut into a straight, high-waisted trouser with a discreet ankle zip. The leather is supple enough to sit, sharp enough to walk into any room.',
+    fabric: 'Lambskin leather, cupro lining',
+    care: 'Leather specialist clean only',
+    collection: 'The Boardroom Edit',
+    model: '/assets/model-check.png',
+  },
+  {
+    id: 'corporate-dress',
+    name: 'Belted navy corporate midi dress',
+    price: 92000,
+    category: 'Corporate Dresses',
+    sub: 'Dresses',
+    image: img('corporate-dress'),
+    badge: 'NEW',
+    rating: 4.8,
+    reviews: 13,
+    colours: [
+      { name: 'Midnight Navy', hex: '#1a2639' },
+      { name: 'Black', hex: '#131313' },
+    ],
+    sizes: ['XS', 'S', 'M', 'L', 'XL'],
+    desc: 'A clean bateau neck, a short sleeve and a self-tie belt that brings the waist in exactly where you want it. The boardroom dress, without the costume.',
+    fabric: 'Stretch crepe',
+    care: 'Dry clean or hand wash cold',
+    collection: 'The Boardroom Edit',
+    model: '/assets/model-check.png',
+  },
+  {
+    id: 'black-blazer',
+    name: 'The midnight single-button blazer',
+    price: 156000,
+    category: 'Blazer Jacket',
+    sub: 'Tailoring',
+    image: img('black-blazer'),
+    rating: 4.9,
+    reviews: 8,
+    colours: [{ name: 'Black', hex: '#111111' }],
+    sizes: ['XS', 'S', 'M', 'L', 'XL'],
+    desc: 'A sharp-shouldered single-button blazer with a nipped waist and a long, clean lapel. Cut to end just below the hip, so it holds its shape over a dress or a trouser.',
+    fabric: 'Wool-blend tailoring',
+    care: 'Dry clean only',
+    collection: 'The Boardroom Edit',
+    model: '/assets/model-check.png',
+  },
+  {
+    id: 'ribbed-knit-top',
+    name: 'Chocolate ribbed knit tee',
+    price: 52000,
+    category: 'Knit Tops',
+    sub: 'Knitwear',
+    image: img('ribbed-knit-top'),
+    rating: 4.6,
+    reviews: 17,
+    colours: [
+      { name: 'Chocolate', hex: '#4a2f26' },
+      { name: 'Ivory', hex: '#f1e9da' },
+    ],
+    sizes: ['XS', 'S', 'M', 'L', 'XL'],
+    desc: 'A fine-rib knit with a high round neck and a short sleeve that follows the arm. The kind of top that disappears under tailoring and holds the room on its own.',
+    fabric: 'Viscose knit blend',
+    care: 'Hand wash cold, dry flat',
+    collection: 'The Soft Power Edit',
+    model: '/assets/model-office.png',
+  },
+  {
     id: 'striped-shirt',
     name: 'Powder-blue poplin shirt',
     price: 48000,
-    category: 'Tops & bottoms',
+    category: 'Knit Tops',
     sub: 'Shirts',
     image: img('striped-shirt'),
     badge: 'NEW',
@@ -53,7 +219,7 @@ export const products: Product[] = [
     id: 'ribbed-navy-dress',
     name: 'Midnight ribbed knit midi dress',
     price: 85000,
-    category: 'Dresses',
+    category: 'Corporate Dresses',
     sub: 'Knit dresses',
     image: img('ribbed-navy-dress'),
     badge: 'BESTSELLER',
@@ -116,7 +282,7 @@ export const products: Product[] = [
     id: 'check-blazer',
     name: 'Prince-of-Wales tailored blazer',
     price: 148000,
-    category: 'Workwear',
+    category: 'Blazer Jacket',
     sub: 'Tailoring',
     image: img('check-blazer'),
     badge: 'NEW',
@@ -134,7 +300,7 @@ export const products: Product[] = [
     id: 'check-mini-skirt',
     name: 'Prince-of-Wales mini skirt',
     price: 78000,
-    category: 'Workwear',
+    category: 'Skirts',
     sub: 'Skirts',
     image: img('check-mini-skirt'),
     rating: 4.7,
@@ -202,7 +368,7 @@ export const products: Product[] = [
     id: 'lavender-sweatshirt',
     name: 'Oversized brushed fleece sweatshirt',
     price: 64000,
-    category: 'Tops & bottoms',
+    category: 'Knit Tops',
     sub: 'Knitwear',
     image: img('lavender-sweatshirt'),
     badge: 'NEW',
@@ -223,7 +389,7 @@ export const products: Product[] = [
     id: 'butter-mini-skirt',
     name: 'Butter leather mini skirt',
     price: 88000,
-    category: 'Co-ords',
+    category: 'Jeans and Leather Skirt',
     sub: 'Skirts',
     image: img('butter-mini-skirt'),
     rating: 4.6,
@@ -412,7 +578,7 @@ export const products: Product[] = [
     id: 'poplin-shirt',
     name: 'Crisp white cotton shirt',
     price: 46000,
-    category: 'Tops & bottoms',
+    category: 'Knit Tops',
     sub: 'Shirts',
     image: img('poplin-shirt'),
     rating: 4.8,
@@ -501,22 +667,46 @@ export const ads: Ad[] = [
 ];
 
 export const collections = [
-  { id: 'soft-power', name: 'The Soft Power Edit', count: 8, note: 'Quietly bold. Entirely you.', ids: ['striped-shirt', 'ribbed-navy-dress', 'patent-pumps', 'top-handle-bag'] },
-  { id: 'boardroom', name: 'The Boardroom Edit', count: 10, note: 'Tailoring, with teeth.', ids: ['check-blazer', 'check-mini-skirt', 'silk-tie', 'gold-cap-pumps'] },
-  { id: 'lavender', name: 'Lavender Hour', count: 6, note: 'A softer kind of power.', ids: ['lavender-sweatshirt', 'butter-mini-skirt', 'butter-pumps', 'butter-shoulder-bag'] },
+  { id: 'soft-power', name: 'The Soft Power Edit', note: 'Quietly bold. Entirely you.' },
+  { id: 'boardroom', name: 'The Boardroom Edit', note: 'Tailoring, with teeth.' },
+  { id: 'lavender', name: 'Lavender Hour', note: 'A softer kind of power.' },
 ];
 
 export const categories: { name: Category | 'All pieces'; image: string; note: string }[] = [
-  { name: 'All pieces', image: '/assets/products/ribbed-navy-dress.jpg', note: 'The full wardrobe' },
-  { name: 'Dresses', image: '/assets/products/ribbed-navy-dress.jpg', note: 'Every entrance, elevated' },
-  { name: 'Co-ords', image: '/assets/products/butter-mini-skirt.jpg', note: 'Considered pairings' },
-  { name: 'Workwear', image: '/assets/products/check-blazer.jpg', note: 'Tailored, with intent' },
-  { name: 'Occasion', image: '/assets/products/butter-shoulder-bag.jpg', note: 'For the evenings that matter' },
+  { name: 'All pieces', image: '/assets/products/denim-midi-skirt.jpg', note: 'The full wardrobe' },
+  { name: 'Jeans and Leather Skirt', image: '/assets/products/denim-midi-skirt.jpg', note: 'Denim, leather, cut close' },
+  { name: 'Jeans and Leather Trouser', image: '/assets/products/leather-trouser.jpg', note: 'Sleek, sharp, worn soft' },
+  { name: 'Barrel Pants', image: '/assets/products/barrel-pants.jpg', note: 'The new trouser line' },
+  { name: 'Aso Oke Barrel Pants', image: '/assets/products/aso-oke-barrel-pants.jpg', note: 'Handwoven, quietly bold' },
+  { name: 'Adire and Aso Oke Skirt', image: '/assets/products/adire-skirt.jpg', note: 'Indigo and handwoven texture' },
+  { name: 'Knit Tops', image: '/assets/products/ribbed-knit-top.jpg', note: 'Soft layers, everyday' },
+  { name: 'Blazer Jacket', image: '/assets/products/black-blazer.jpg', note: 'Shoulders and structure' },
+  { name: 'Corporate Dresses', image: '/assets/products/corporate-dress.jpg', note: 'Tailored for the room' },
+  { name: 'Skirts', image: '/assets/products/check-mini-skirt.jpg', note: 'Short, sharp, considered' },
   { name: 'Accessories', image: '/assets/products/espresso-bag.jpg', note: 'The finishing touch' },
-  { name: 'Tops & bottoms', image: '/assets/products/striped-shirt.jpg', note: 'The everyday edit' },
 ];
 
-export const popularSearches = ['Ribbed midi', 'Workwear', 'Gold jewellery', 'Leather bag', 'Lavender'];
+export const occasionIds = [
+  'corporate-dress',
+  'ribbed-navy-dress',
+  'adire-skirt',
+  'patent-pumps',
+  'butter-pumps',
+  'top-handle-bag',
+  'espresso-bag',
+  'sculptural-earrings',
+  'gold-collar',
+  'butter-shoulder-bag',
+];
+
+export const popularSearches = [
+  'Barrel pants',
+  'Aso Oke',
+  'Adire skirt',
+  'Leather trouser',
+  'Ribbed knit',
+  'Gold jewellery',
+];
 
 export const lookbook = [
   { model: '/assets/model-office.png', label: 'The office siren', note: 'Nine pieces, one mood.' },

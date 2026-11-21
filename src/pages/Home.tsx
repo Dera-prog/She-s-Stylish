@@ -36,7 +36,7 @@ export default function Home() {
 
       <Link className="searchbar" to="/search" style={{ marginTop: 16 }}>
         <IconSearch size={16} />
-        <span>Search silk, tailoring, gold…</span>
+        <span>Search silk, aso oke, leather…</span>
       </Link>
 
       <Link className="hero" to="/collection/soft-power">

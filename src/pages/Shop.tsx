@@ -3,7 +3,7 @@ import { Link, Navigate, useParams } from 'react-router-dom';
 import { AppHead, BackBar, Screen, SectionHead } from '../components/Chrome';
 import { ProductCard } from '../components/ProductCard';
 import { IconArrow, IconChevron, IconSearch } from '../components/Icons';
-import { categories, collections, products, type Product } from '../lib/data';
+import { categories, collections, occasionIds, products, type Product } from '../lib/data';
 
 type Sort = 'Curated' | 'Price · low' | 'Price · high' | 'Newest';
 
@@ -94,19 +94,19 @@ export default function Shop() {
         <Link className="rowlist__row" to="/browse/new">
           New arrivals
           <span>
-            04 pieces <IconChevron size={14} />
+            {products.filter((p) => p.badge === 'NEW').length} pieces <IconChevron size={14} />
           </span>
         </Link>
         <Link className="rowlist__row" to="/browse/best">
           Best sellers
           <span>
-            03 pieces <IconChevron size={14} />
+            {products.filter((p) => p.badge === 'BESTSELLER').length} pieces <IconChevron size={14} />
           </span>
         </Link>
         <Link className="rowlist__row" to="/browse/occasion">
           Occasion wear
           <span>
-            08 pieces <IconChevron size={14} />
+            {occasionIds.length} pieces <IconChevron size={14} />
           </span>
         </Link>
         <Link className="rowlist__row" to="/size-guide">
@@ -147,10 +147,6 @@ export function CategoryPage() {
   const list = useMemo(() => {
     let base: Product[];
     if (!meta || meta.name === 'All pieces') base = products;
-    else if (meta.name === 'Occasion')
-      base = products.filter(
-        (p) => p.category === 'Dresses' || p.sub === 'Bags' || p.sub === 'Shoes',
-      );
     else base = products.filter((p) => p.category === meta.name);
     return sortProducts(base, sort);
   }, [meta, name, sort]);
@@ -206,7 +202,7 @@ export function CategoryPage() {
         </div>
       </div>
       <div className="micro" style={{ padding: '16px 22px 0' }}>
-        {list.length} pieces · prices in Naira
+        {list.length} {list.length === 1 ? 'piece' : 'pieces'} · prices in Naira
       </div>
       <SortBar sort={sort} setSort={setSort} />
       <Grid list={list} />
@@ -269,7 +265,7 @@ export function CollectionPage() {
         />
         <div style={{ position: 'absolute', left: 18, top: 18, right: 18, color: '#fbf5e9' }}>
           <div className="micro" style={{ color: '#f2e6d2' }}>
-            {collection.name} · {collection.count} pieces
+            {collection.name} · {list.length} {list.length === 1 ? 'piece' : 'pieces'}
           </div>
         </div>
         <div className="display" style={{ position: 'absolute', left: 18, bottom: 18, right: 18, fontSize: 34, color: '#fffaf1' }}>
@@ -308,9 +304,7 @@ export function BrowsePage() {
     if (kind === 'new') base = products.filter((p) => p.badge === 'NEW');
     if (kind === 'best') base = products.filter((p) => p.badge === 'BESTSELLER');
     if (kind === 'occasion')
-      base = products.filter((p) =>
-        ['ribbed-navy-dress', 'patent-pumps', 'butter-pumps', 'top-handle-bag', 'espresso-bag', 'sculptural-earrings', 'gold-collar', 'butter-shoulder-bag'].includes(p.id),
-      );
+      base = products.filter((p) => occasionIds.includes(p.id));
     return sortProducts(base, sort);
   }, [kind, sort]);
 
@@ -333,7 +327,7 @@ export function BrowsePage() {
         <h1>{meta.title}</h1>
       </div>
       <div className="micro" style={{ padding: '14px 22px 0' }}>
-        {list.length} pieces
+        {list.length} {list.length === 1 ? 'piece' : 'pieces'}
       </div>
       <div style={{ height: 14 }} />
       <SortBar sort={sort} setSort={setSort} />
