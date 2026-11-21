@@ -5,7 +5,6 @@ import { ads, byId, formatN } from '../lib/data';
 import { IconArrow } from '../components/Icons';
 
 const EASE = [0.65, 0, 0.35, 1] as const;
-const SLIDE: [number, number, number, number] = [0.5, 0, 0.2, 1];
 
 export default function Ads() {
   const nav = useNavigate();
@@ -46,7 +45,26 @@ export default function Ads() {
         >
           <div className="ad__bg" />
           <div className="ad__arch" />
+        </motion.div>
+      </AnimatePresence>
 
+      <div
+        key={ad.id}
+        className={`ad__modelwrap${last ? ' ad__modelwrap--arrive' : ''}`}
+      >
+        <span className="ad__shadow" />
+        <img className="ad__model" src={ad.model} alt="" draggable={false} />
+      </div>
+
+      <AnimatePresence initial={false}>
+        <motion.div
+          key={`copy-${ad.id}`}
+          className="ad__layer"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0, transition: { duration: 0.2 } }}
+          transition={{ duration: 0.4, delay: 0.3 }}
+        >
           <div className="ad__copy">
             <motion.div
               className="ad__eyebrow"
@@ -129,27 +147,6 @@ export default function Ads() {
           </div>
         </motion.div>
       </AnimatePresence>
-
-      <AnimatePresence initial={false}>
-        <motion.div
-          key={ad.id}
-          className="ad__modelwrap"
-          initial={{ x: '-142%' }}
-          animate={{ x: 0 }}
-          exit={{ x: '142%' }}
-          transition={{ duration: 1.3, ease: SLIDE }}
-        >
-          <img className="ad__model" src={ad.model} alt="" draggable={false} />
-        </motion.div>
-      </AnimatePresence>
-
-      <motion.div
-        key={`shadow-${ad.id}`}
-        className="ad__shadow"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.7, delay: 0.5 }}
-      />
 
       <div className="ad__head">
         <div className="ad__count">

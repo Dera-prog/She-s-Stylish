@@ -46,19 +46,19 @@
 }
 
 .ad__model {
-  animation: stride 2.7s ease-in-out infinite;
+  animation: stride 1.5s ease-in-out infinite;
 }
 
 @keyframes stride {
   0%, 100% { transform: translateY(0) rotate(0deg); }
-  22% { transform: translateY(-3px) rotate(0.55deg); }
+  22% { transform: translateY(-3px) rotate(0.7deg); }
   50% { transform: translateY(0) rotate(0deg); }
-  74% { transform: translateY(-2px) rotate(-0.55deg); }
+  74% { transform: translateY(-2px) rotate(-0.7deg); }
 }
 
 .ad__shadow {
-  z-index: 2;
-  animation: shadowPulse 2.7s ease-in-out infinite;
+  z-index: 0;
+  animation: shadowPulse 1.5s ease-in-out infinite;
 }
 
 @keyframes shadowPulse {

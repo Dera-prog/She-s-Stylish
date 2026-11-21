@@ -773,15 +773,50 @@ img {
 .ad__modelwrap {
   position: absolute;
   z-index: 3;
-  left: -14px;
+  left: -27px;
   bottom: -8px;
   height: 64%;
+  width: 46%;
   will-change: transform;
+  animation: walkThrough 7s linear both;
+}
+
+.ad__modelwrap--arrive {
+  animation-name: walkArrive;
+}
+
+/* Walk in from the previous screen, hold for the copy, walk on into the next. */
+@keyframes walkThrough {
+  0% { transform: translateX(-100%); }
+  26% { transform: translateX(0); }
+  78% { transform: translateX(0); }
+  100% { transform: translateX(150%); }
+}
+
+@keyframes walkArrive {
+  0% { transform: translateX(-100%); }
+  26% { transform: translateX(0); }
+  100% { transform: translateX(0); }
+}
+
+.ad__layer {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.ad__layer .ad__copy {
+  pointer-events: auto;
 }
 
 .ad__model {
+  position: relative;
+  z-index: 1;
+  width: 100%;
   height: 100%;
-  width: auto;
+  object-fit: contain;
+  object-position: bottom center;
   filter: drop-shadow(0 26px 24px rgba(74, 55, 34, 0.16));
   user-select: none;
   pointer-events: none;
@@ -789,14 +824,13 @@ img {
 
 .ad__shadow {
   position: absolute;
-  z-index: 2;
-  left: 22px;
-  bottom: 14px;
-  width: 210px;
-  height: 26px;
+  left: 12%;
+  right: 12%;
+  bottom: -4px;
+  height: 22px;
   border-radius: 50%;
-  background: radial-gradient(ellipse at center, rgba(80, 58, 36, 0.22), transparent 70%);
-  filter: blur(4px);
+  background: radial-gradient(ellipse at center, rgba(80, 58, 36, 0.28), transparent 70%);
+  filter: blur(5px);
 }
 
 .ad__rail {
