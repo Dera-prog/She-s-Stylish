@@ -5,7 +5,7 @@ const { Pool } = pg;
 export const pool = new Pool({
   connectionString:
     process.env.DATABASE_URL ?? 'postgres://shes:shes@localhost:5434/shes_stylish',
-  max: 10,
+  max: process.env.VERCEL ? 2 : 10,
 });
 
 pool.on('error', (error) => {
