@@ -100,6 +100,8 @@ Production runs against a Neon Postgres database. The API is deployed as a Verce
 
 Provision a fresh database with `cd server && DATABASE_URL=... node scripts/migrate.mjs`; the schema and catalogue are idempotent, so re-running only adds or updates.
 
+Backups run daily at 02:00 WAT from the local machine: `cd server && DATABASE_URL=... node scripts/backup.mjs` writes `server/backups/shes-stylish-<timestamp>.json.gz` (all tables, gzipped) and keeps the newest 14. Restore with `DATABASE_URL=... node scripts/restore.mjs backups/<file>.json.gz`, which truncates and reloads every table in one transaction.
+
 ## Deploy
 
 The storefront deploys to Vercel as a static SPA with a catch-all rewrite to `index.html` (`vercel.json`). `VITE_API_URL` is set on the Vercel project to the hosted API above, so it is baked in at build time. `main` is production; `staging` is the integration branch.
