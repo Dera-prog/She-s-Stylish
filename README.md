@@ -90,6 +90,16 @@ node server/scripts/export-catalog.mjs   # src/lib/data.ts → server/data/catal
 
 The admin key comes from `ADMIN_KEY` (default `dev-admin-key`). Set it in the environment for anything beyond local development, and set the same value when unlocking `/admin`.
 
+## Hosted API
+
+Production runs against a Neon Postgres database. The API is deployed as a Vercel function from `server/`:
+
+- API project: `shes-stylish-api` (root directory `server`, region `lhr1`) — `https://shes-stylish-api.vercel.app/api`
+- Database: Neon project `shes-stylish` (eu-west-2), pooled connection string stored as `DATABASE_URL` on the API project
+- Store key: the `ADMIN_KEY` set on the API project, also kept in `.secrets/admin-key.txt` (gitignored)
+
+Provision a fresh database with `cd server && DATABASE_URL=... node scripts/migrate.mjs`; the schema and catalogue are idempotent, so re-running only adds or updates.
+
 ## Deploy
 
-The storefront deploys to Vercel as a static SPA with a catch-all rewrite to `index.html` (`vercel.json`). Set `VITE_API_URL` at build time so the deployed site reaches the API. `main` is production; `staging` is the integration branch.
+The storefront deploys to Vercel as a static SPA with a catch-all rewrite to `index.html` (`vercel.json`). `VITE_API_URL` is set on the Vercel project to the hosted API above, so it is baked in at build time. `main` is production; `staging` is the integration branch.
