@@ -1,0 +1,64 @@
+{
+  "name": "shes-stylish-desktop",
+  "productName": "She's Stylish",
+  "version": "1.0.0",
+  "private": true,
+  "description": "She's Stylish boutique desktop app",
+  "author": "She's Stylish",
+  "main": "electron/main.js",
+  "scripts": {
+    "postinstall": "node node_modules/electron/install.js",
+    "build:site": "node scripts/build-site.mjs",
+    "start": "npm run build:site && electron .",
+    "pack": "electron-builder --win --x64",
+    "dist": "npm run build:site && npm run pack"
+  },
+  "build": {
+    "appId": "com.shesstylish.desktop",
+    "productName": "She's Stylish",
+    "directories": {
+      "output": "release",
+      "buildResources": "build"
+    },
+    "files": [
+      "electron/**/*",
+      "app/**/*",
+      "build/icon.png",
+      "package.json"
+    ],
+    "asar": true,
+    "win": {
+      "icon": "build/icon.png",
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "She's Stylish",
+      "artifactName": "Shes-Stylish-Setup-${version}.exe"
+    },
+    "portable": {
+      "artifactName": "Shes-Stylish-${version}-portable.exe"
+    }
+  },
+  "devDependencies": {
+    "electron": "^45.4.1",
+    "electron-builder": "^26.18.0"
+  }
+}

@@ -44,6 +44,7 @@ src/lib/           catalogue data, reducer store and the API client
 src/styles.css     design system
 src/extra.css      motion and newer screen styles
 server/            Express API, schema, catalogue seed and smoke tests
+desktop/           Electron shell that ships the store as a Windows app
 docker-compose.yml Postgres 17 + API stack for local development
 ```
 
@@ -101,6 +102,19 @@ Production runs against a Neon Postgres database. The API is deployed as a Verce
 Provision a fresh database with `cd server && DATABASE_URL=... node scripts/migrate.mjs`; the schema and catalogue are idempotent, so re-running only adds or updates.
 
 Backups run daily at 02:00 WAT from the local machine: `cd server && DATABASE_URL=... node scripts/backup.mjs` writes `server/backups/shes-stylish-<timestamp>.json.gz` (all tables, gzipped) and keeps the newest 14. Restore with `DATABASE_URL=... node scripts/restore.mjs backups/<file>.json.gz`, which truncates and reloads every table in one transaction.
+
+## Desktop app
+
+`desktop/` wraps the storefront in Electron for Windows. The app serves the production site build from a private `app://` origin, so it opens instantly and keeps working while offline for browsing; orders, tracking and admin still go to the hosted API.
+
+```bash
+cd desktop
+npm install
+npm start   # build the site bundle, then open the app
+npm run dist # build Shes-Stylish-Setup-<version>.exe and a portable exe in desktop/release
+```
+
+`scripts/build-site.mjs` runs the storefront build with `VITE_API_URL` set to the hosted API (override with `DESKTOP_API_URL`), then copies `dist/` into `desktop/app/`. Re-run `npm run dist` after storefront changes.
 
 ## Deploy
 

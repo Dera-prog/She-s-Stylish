@@ -7,3 +7,7 @@ dist
 tmp-assets
 .secrets
 server/backups
+desktop/node_modules
+desktop/app
+desktop/build
+desktop/release
