@@ -48,13 +48,18 @@ export default function Ads() {
         </motion.div>
       </AnimatePresence>
 
-      <div
-        key={ad.id}
-        className={`ad__modelwrap${last ? ' ad__modelwrap--arrive' : ''}`}
-      >
-        <span className="ad__shadow" />
-        <img className="ad__model" src={ad.model} alt="" draggable={false} />
-      </div>
+      <AnimatePresence initial={false}>
+        <motion.figure
+          key={`look-${ad.id}`}
+          className="ad__look"
+          initial={{ opacity: 0, y: 26 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -18, transition: { duration: 0.3 } }}
+          transition={{ duration: 0.7, ease: EASE }}
+        >
+          <img src={ad.look} alt={ad.lookAlt} draggable={false} />
+        </motion.figure>
+      </AnimatePresence>
 
       <AnimatePresence initial={false}>
         <motion.div
