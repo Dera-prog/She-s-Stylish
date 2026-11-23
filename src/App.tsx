@@ -4,6 +4,8 @@ import { IconArrow } from './components/Icons';
 import Splash from './pages/Splash';
 import Welcome from './pages/Welcome';
 import Ads from './pages/Ads';
+import DesktopIntro from './pages/DesktopIntro';
+import { isDesktopApp } from './lib/platform';
 import Home from './pages/Home';
 import Shop, { BrowsePage, CategoryPage, CollectionPage } from './pages/Shop';
 import ProductPage from './pages/Product';
@@ -61,9 +63,12 @@ function App() {
       <div className="phone">
         <div className="viewport">
           <Routes>
-            <Route path="/" element={<Splash />} />
-            <Route path="/welcome" element={<Welcome />} />
-            <Route path="/ads" element={<Ads />} />
+            <Route path="/" element={isDesktopApp ? <DesktopIntro /> : <Splash />} />
+            <Route
+              path="/welcome"
+              element={isDesktopApp ? <Navigate to="/home" replace /> : <Welcome />}
+            />
+            <Route path="/ads" element={isDesktopApp ? <Navigate to="/home" replace /> : <Ads />} />
 
             <Route path="/home" element={<Home />} />
             <Route path="/shop" element={<Shop />} />

@@ -105,7 +105,7 @@ Backups run daily at 02:00 WAT from the local machine: `cd server && DATABASE_UR
 
 ## Desktop app
 
-`desktop/` wraps the storefront in Electron for Windows. The app serves the production site build from a private `app://` origin, so it opens instantly and keeps working while offline for browsing; orders, tracking and admin still go to the hosted API.
+`desktop/` wraps the storefront in Electron for Windows. The app serves the production site build from a private `app://` origin, so it opens instantly and keeps working while offline for browsing; orders, tracking and admin still go to the hosted API. It opens on a desktop-only intro — the mobile splash, welcome and three-act campaign are skipped inside the app.
 
 ```bash
 cd desktop
