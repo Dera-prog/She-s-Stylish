@@ -2,13 +2,10 @@ export type Category =
   | 'Jeans and Leather Skirt'
   | 'Jeans and Leather Trouser'
   | 'Barrel Pants'
-  | 'Aso Oke Barrel Pants'
   | 'Adire and Aso Oke Skirt'
   | 'Knit Tops'
   | 'Blazer Jacket'
-  | 'Corporate Dresses'
-  | 'Skirts'
-  | 'Accessories';
+  | 'Corporate Dresses';
 
 export type Product = {
   id: string;
@@ -547,13 +544,10 @@ export const categories: { name: Category | 'All pieces'; image?: string; note: 
   { name: 'Jeans and Leather Skirt', image: '/assets/products/denim-midi-skirt.jpg', note: 'Denim, leather, statement cuts' },
   { name: 'Jeans and Leather Trouser', note: 'Sleek, sharp, worn soft' },
   { name: 'Barrel Pants', note: 'The new trouser line' },
-  { name: 'Aso Oke Barrel Pants', note: 'Handwoven, quietly bold' },
   { name: 'Adire and Aso Oke Skirt', note: 'Indigo and handwoven texture' },
   { name: 'Knit Tops', note: 'Soft layers, everyday' },
   { name: 'Blazer Jacket', note: 'Shoulders and structure' },
   { name: 'Corporate Dresses', note: 'Tailored for the room' },
-  { name: 'Skirts', note: 'Short, sharp, considered' },
-  { name: 'Accessories', note: 'The finishing touch' },
 ];
 
 export const occasionIds = [
