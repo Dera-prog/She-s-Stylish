@@ -727,10 +727,9 @@ img {
 .ad__copy {
   position: absolute;
   z-index: 6;
-  bottom: 96px;
+  top: 66px;
   left: 22px;
   right: 22px;
-  text-align: center;
 }
 
 .ad__eyebrow {
@@ -740,7 +739,6 @@ img {
   color: var(--gold-2);
   display: flex;
   align-items: center;
-  justify-content: center;
   gap: 8px;
 }
 
@@ -754,7 +752,7 @@ img {
 .ad__title {
   font-family: var(--serif);
   font-weight: 400;
-  font-size: clamp(27px, 7.4vw, 33px);
+  font-size: clamp(30px, 8.6vw, 36px);
   line-height: 0.98;
   letter-spacing: -0.015em;
   margin: 12px 0 0;
@@ -765,36 +763,40 @@ img {
 }
 
 .ad__copy p {
-  margin: 11px auto 0;
+  margin: 13px 0 0;
   font-size: 10.5px;
   line-height: 1.65;
   color: #6d6154;
-  max-width: 285px;
+  max-width: 210px;
 }
 
-.ad__look {
+.ad__modelwrap {
   position: absolute;
-  inset: 0;
   z-index: 3;
-  overflow: hidden;
-  background: #f3eadb;
+  left: 16%;
+  bottom: -8px;
+  height: 64%;
+  width: 58%;
+  will-change: transform;
+  animation: walkThrough 7s linear both;
 }
 
-.ad__look::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background:
-    linear-gradient(180deg, rgba(246, 239, 227, 0.55) 0%, rgba(246, 239, 227, 0) 9%),
-    linear-gradient(180deg, rgba(246, 239, 227, 0) 54%, rgba(246, 239, 227, 0.72) 68%, #f6efe3 80%);
+.ad__modelwrap--arrive {
+  animation-name: walkArrive;
 }
 
-.ad__look img {
-  width: 100%;
-  height: auto;
-  user-select: none;
-  pointer-events: none;
+/* Walk in from the previous screen, hold for the copy, walk on into the next. */
+@keyframes walkThrough {
+  0% { transform: translateX(-100%); }
+  26% { transform: translateX(0); }
+  78% { transform: translateX(0); }
+  100% { transform: translateX(150%); }
+}
+
+@keyframes walkArrive {
+  0% { transform: translateX(-100%); }
+  26% { transform: translateX(0); }
+  100% { transform: translateX(0); }
 }
 
 .ad__layer {
@@ -806,6 +808,29 @@ img {
 
 .ad__layer .ad__copy {
   pointer-events: auto;
+}
+
+.ad__model {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: bottom center;
+  filter: drop-shadow(0 26px 24px rgba(74, 55, 34, 0.16));
+  user-select: none;
+  pointer-events: none;
+}
+
+.ad__shadow {
+  position: absolute;
+  left: 12%;
+  right: 12%;
+  bottom: -4px;
+  height: 22px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at center, rgba(80, 58, 36, 0.28), transparent 70%);
+  filter: blur(5px);
 }
 
 .ad__foot {
@@ -880,8 +905,9 @@ img {
 }
 
 @media (max-height: 700px) {
-  .ad__copy { bottom: 88px; }
+  .ad__copy { top: 58px; }
   .ad__copy p { display: none; }
+  .ad__modelwrap { height: 60%; }
 }
 
 /* ---------- welcome ---------- */

@@ -473,8 +473,7 @@ export type Ad = {
   eyebrow: string;
   title: [string, string];
   copy: string;
-  look: string;
-  lookAlt: string;
+  model: string;
   accent: string;
   tone: 'warm' | 'cool';
   cta: string;
@@ -487,9 +486,7 @@ export const ads: Ad[] = [
     eyebrow: 'The Soft Power Edit',
     title: ['Power,', 'softened.'],
     copy: 'Powder-blue poplin beneath midnight ribbed knit. Authority, with a pulse.',
-    look: '/assets/looks/look-office.jpg',
-    lookAlt:
-      'Lookbook plate: midnight navy ribbed knit midi dress layered over a powder-blue striped shirt, with patent bow pumps, a black top-handle bag and gold knot earrings, mesh bracelets and stacked rings.',
+    model: '/assets/model-office.png',
     accent: '#d8c7b2',
     tone: 'warm',
     cta: 'Continue',
@@ -500,9 +497,7 @@ export const ads: Ad[] = [
     eyebrow: 'The Boardroom Edit',
     title: ['Tailored,', 'never tamed.'],
     copy: 'Prince-of-Wales check, a chocolate silk tie, a gold-capped heel that means business.',
-    look: '/assets/looks/look-check.jpg',
-    lookAlt:
-      'Lookbook plate: Prince-of-Wales check tailored blazer and mini skirt over a white cotton shirt with a chocolate silk necktie, gold-cap pumps, espresso leather handbag, oversized sunglasses and gold jewellery.',
+    model: '/assets/model-check.png',
     accent: '#c9b49d',
     tone: 'warm',
     cta: 'Continue',
@@ -513,9 +508,7 @@ export const ads: Ad[] = [
     eyebrow: 'Lavender Hour',
     title: ['A little joy,', 'elegantly worn.'],
     copy: 'Brushed lavender fleece, butter-soft leather, and gold that catches the evening light.',
-    look: '/assets/looks/look-lavender.jpg',
-    lookAlt:
-      'Lookbook plate: oversized brushed lavender fleece sweatshirt with a butter-yellow leather mini skirt, matching butter-yellow pumps and shoulder bag, gradient sunglasses and gold chain jewellery.',
+    model: '/assets/model-lavender.png',
     accent: '#e3d3b2',
     tone: 'warm',
     cta: 'Enter the boutique',
