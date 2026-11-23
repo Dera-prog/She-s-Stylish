@@ -774,23 +774,25 @@ img {
 
 .ad__look {
   position: absolute;
+  inset: 0;
   z-index: 3;
-  top: 58px;
-  left: 0;
-  right: 0;
-  margin: 0 auto;
-  height: 58%;
-  max-width: 78%;
-  aspect-ratio: 736 / 1308;
-  background: #f3eadb;
-  box-shadow: 0 32px 62px rgba(64, 44, 22, 0.26), 0 6px 14px rgba(64, 44, 22, 0.1);
   overflow: hidden;
+  background: #f3eadb;
+}
+
+.ad__look::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(246, 239, 227, 0.55) 0%, rgba(246, 239, 227, 0) 9%),
+    linear-gradient(180deg, rgba(246, 239, 227, 0) 54%, rgba(246, 239, 227, 0.72) 68%, #f6efe3 80%);
 }
 
 .ad__look img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
   user-select: none;
   pointer-events: none;
 }
@@ -878,7 +880,6 @@ img {
 }
 
 @media (max-height: 700px) {
-  .ad__look { top: 50px; height: 56%; }
   .ad__copy { bottom: 88px; }
   .ad__copy p { display: none; }
 }
