@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { AppHead, Screen, SectionHead, MARK_INK } from '../components/Chrome';
 import { ProductCard } from '../components/ProductCard';
 import { IconArrow, IconSearch } from '../components/Icons';
-import { categories, products } from '../lib/data';
+import { categories, collections, products } from '../lib/data';
 import { useStore } from '../lib/store';
 
 function greeting() {
@@ -78,6 +78,22 @@ export default function Home() {
       <div className="hscroll">
         {wanted.map((p) => (
           <ProductCard key={p.id} product={p} />
+        ))}
+      </div>
+
+      <SectionHead title="The lookbook" to="/shop" link="Shop the pieces" />
+      <div className="hscroll">
+        {collections.map((c) => (
+          <Link key={c.id} className="lookcard" to={`/collection/${c.id}`}>
+            <img src={c.look} alt={c.lookAlt} />
+            <div className="lookcard__body">
+              <div className="micro">{c.note}</div>
+              <h3>{c.name}</h3>
+            </div>
+            <span className="lookcard__arrow">
+              <IconArrow size={14} />
+            </span>
+          </Link>
         ))}
       </div>
 

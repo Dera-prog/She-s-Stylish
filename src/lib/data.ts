@@ -516,9 +516,30 @@ export const ads: Ad[] = [
 ];
 
 export const collections = [
-  { id: 'soft-power', name: 'The Soft Power Edit', note: 'Quietly bold. Entirely you.' },
-  { id: 'boardroom', name: 'The Boardroom Edit', note: 'Tailoring, with teeth.' },
-  { id: 'lavender', name: 'Lavender Hour', note: 'A softer kind of power.' },
+  {
+    id: 'soft-power',
+    name: 'The Soft Power Edit',
+    note: 'Quietly bold. Entirely you.',
+    look: '/assets/looks/look-office.jpg',
+    lookAlt:
+      'Lookbook plate: midnight navy ribbed knit midi dress layered over a powder-blue striped shirt, with patent bow pumps, a black top-handle bag and gold jewellery.',
+  },
+  {
+    id: 'boardroom',
+    name: 'The Boardroom Edit',
+    note: 'Tailoring, with teeth.',
+    look: '/assets/looks/look-check.jpg',
+    lookAlt:
+      'Lookbook plate: Prince-of-Wales check tailored blazer and mini skirt with a white cotton shirt, chocolate silk necktie, gold-cap pumps and espresso leather handbag.',
+  },
+  {
+    id: 'lavender',
+    name: 'Lavender Hour',
+    note: 'A softer kind of power.',
+    look: '/assets/looks/look-lavender.jpg',
+    lookAlt:
+      'Lookbook plate: oversized brushed lavender fleece sweatshirt with a butter-yellow leather mini skirt, matching pumps and shoulder bag, gradient sunglasses and gold jewellery.',
+  },
 ];
 
 export const categories: { name: Category | 'All pieces'; image?: string; note: string }[] = [
