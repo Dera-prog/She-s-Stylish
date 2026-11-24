@@ -7,6 +7,7 @@ export type Category =
   | 'Knit'
   | 'Bodysuits'
   | 'Blazer Jacket'
+  | 'Fancy Jacket'
   | 'Corporate Dresses';
 
 export type Product = {
@@ -1332,6 +1333,72 @@ export const products: Product[] = [
     care: 'Hand wash cold, dry flat',
     collection: 'Lavender Hour',
   },
+  {
+    id: 'fancy-jacket-houndstooth',
+    name: 'Houndstooth ruched-sleeve jacket',
+    price: 138000,
+    category: 'Fancy Jacket',
+    sub: 'Houndstooth',
+    image: img('fancy-jacket-houndstooth-crop'),
+    badge: 'NEW',
+    rating: 4.8,
+    reviews: 6,
+    colours: [{ name: 'Camel Houndstooth', hex: '#b3a48e' }],
+    sizes: ['XS', 'S', 'M', 'L', 'XL'],
+    desc: 'A cropped jacket in camel and chocolate houndstooth with a high funnel collar and a snap placket, flap chest pockets, full ruched sleeves and a drawcord waist pulled in tight.',
+    fabric: 'Houndstooth tweed, snap front',
+    care: 'Dry clean only',
+    collection: 'The Boardroom Edit',
+  },
+  {
+    id: 'fancy-jacket-chocolate-snap',
+    name: 'Chocolate snap-front cropped jacket',
+    price: 124000,
+    category: 'Fancy Jacket',
+    sub: 'Cropped jacket',
+    image: img('fancy-jacket-chocolate-snap'),
+    rating: 4.7,
+    reviews: 5,
+    colours: [{ name: 'Chocolate', hex: '#6b4a3a' }],
+    sizes: ['XS', 'S', 'M', 'L', 'XL'],
+    desc: 'A chocolate cropped jacket with a spread collar, gold snap buttons on a curved placket and flap pockets, blouson sleeves gathered into tight cuffs.',
+    fabric: 'Twill, gold-tone snaps',
+    care: 'Dry clean only',
+    collection: 'Lavender Hour',
+  },
+  {
+    id: 'fancy-jacket-plaid-cropped',
+    name: 'Tartan cropped jacket',
+    price: 128000,
+    category: 'Fancy Jacket',
+    sub: 'Plaid',
+    image: img('fancy-jacket-plaid-cropped'),
+    badge: 'NEW',
+    rating: 4.8,
+    reviews: 8,
+    colours: [{ name: 'Blue Tartan', hex: '#5d7b86' }],
+    sizes: ['XS', 'S', 'M', 'L', 'XL'],
+    desc: 'A cropped collarless jacket in blue and charcoal tartan, buttoned down the front in antique gold with puffed sleeves and ribbed cuffs.',
+    fabric: 'Brushed plaid, antique-gold buttons',
+    care: 'Dry clean only',
+    collection: 'The Boardroom Edit',
+  },
+  {
+    id: 'fancy-jacket-rose-suede',
+    name: 'Rose faux-suede zip jacket',
+    price: 118000,
+    category: 'Fancy Jacket',
+    sub: 'Faux suede',
+    image: img('fancy-jacket-rose-suede'),
+    rating: 4.6,
+    reviews: 4,
+    colours: [{ name: 'Rose', hex: '#b4556b' }],
+    sizes: ['XS', 'S', 'M', 'L', 'XL'],
+    desc: 'A rose faux-suede jacket with a funnel collar and a silver zip front, seamed through the sleeves and finished with snap-tab cuffs.',
+    fabric: 'Faux suede, silver-tone zip',
+    care: 'Dry clean only',
+    collection: 'Lavender Hour',
+  },
 ];
 
 export const byId = (id: string) => products.find((p) => p.id === id);
@@ -1423,6 +1490,7 @@ export const categories: { name: Category | 'All pieces'; image?: string; note: 
   { name: 'Knit', image: '/assets/products/knit-green-cable-flare.jpg', note: 'Cable, rib and hand-finished detail' },
   { name: 'Bodysuits', image: '/assets/products/bodysuit-chocolate-overlay.jpg', note: 'Second-skin layering' },
   { name: 'Blazer Jacket', image: '/assets/products/blazer-grey-cape.jpg', note: 'Shoulders and structure' },
+  { name: 'Fancy Jacket', image: '/assets/products/fancy-jacket-houndstooth-crop.jpg', note: 'Tweed, tartan, statement crop' },
   { name: 'Corporate Dresses', note: 'Tailored for the room' },
 ];
 
