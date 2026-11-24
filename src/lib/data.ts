@@ -1989,3 +1989,169 @@ export const popularSearches = [
   'Midi',
 ];
 
+
+export type ReviewNote = { name: string; when: string; stars: number; text: string };
+
+export const reviewNotes: Record<string, { recommend: number; entries: ReviewNote[] }> = {
+  'dress-blue-draped-halter': {
+    recommend: 96,
+    entries: [
+      {
+        name: 'Adaeze N.',
+        when: '4 days ago',
+        stars: 5,
+        text: "The drape does all the work — no shapewear needed. I wore it to a wedding and three people asked where it was from.",
+      },
+      {
+        name: 'Tolu B.',
+        when: '2 weeks ago',
+        stars: 5,
+        text: "A true cobalt, not navy. It is long enough for heels and the neck tie stayed put all night.",
+      },
+      {
+        name: 'Zainab M.',
+        when: '3 weeks ago',
+        stars: 4,
+        text: "Beautiful weight and the folds fall well. I'm 5'9\" and it just grazes the floor, so plan your heels.",
+      },
+    ],
+  },
+  'ivory-lace-pencil-skirt': {
+    recommend: 98,
+    entries: [
+      {
+        name: 'Chiamaka E.',
+        when: '5 days ago',
+        stars: 5,
+        text: "The lace waist sits flat with no gaping. I wore it to work with a knit top and it read far more expensive than it is.",
+      },
+      {
+        name: 'Funmi A.',
+        when: '1 week ago',
+        stars: 5,
+        text: 'Ivory is properly opaque and the vent makes it easy to walk and sit. Ordered my usual M and the fit is exact.',
+      },
+      {
+        name: 'Ngozi O.',
+        when: '3 weeks ago',
+        stars: 5,
+        text: "The hem lace is stitched neatly with no loose threads. I have had it dry cleaned twice and it still looks new.",
+      },
+    ],
+  },
+  'polka-lace-hem-mini-skirt': {
+    recommend: 95,
+    entries: [
+      {
+        name: 'Damilola K.',
+        when: '2 days ago',
+        stars: 5,
+        text: "The burgundy lace is much richer in person. It sits high on the waist so it doesn't ride up when I sit.",
+      },
+      {
+        name: 'Temi A.',
+        when: '2 weeks ago',
+        stars: 5,
+        text: 'I worried the print would be too busy, but the dots are small enough to read as texture. Compliments at brunch.',
+      },
+      {
+        name: 'Bolanle F.',
+        when: '1 month ago',
+        stars: 4,
+        text: 'Lovely skirt and true to size. Mind the lace hem around zips — mine caught once, but it recovered.',
+      },
+    ],
+  },
+  'apricot-wrap-mini-skirt': {
+    recommend: 93,
+    entries: [
+      {
+        name: 'Simi O.',
+        when: '3 days ago',
+        stars: 5,
+        text: 'The two oranges together are gorgeous. The wrap sits like a peplum and the pleats move when you walk.',
+      },
+      {
+        name: 'Ada E.',
+        when: '1 week ago',
+        stars: 5,
+        text: "Heavier satin than I expected, so the fold holds. The waistband is snug — I'd size up if you're between.",
+      },
+      {
+        name: 'Kemi A.',
+        when: '3 weeks ago',
+        stars: 4,
+        text: 'Really pretty and well finished. Shorter than I would wear to the office, but perfect for dinners.',
+      },
+    ],
+  },
+  'burgundy-leather-yoke-mini': {
+    recommend: 96,
+    entries: [
+      {
+        name: 'Ese I.',
+        when: '4 days ago',
+        stars: 5,
+        text: 'The leather yoke is soft, not stiff, and the gold buttons look much more expensive than the price. Wore it with tights and boots.',
+      },
+      {
+        name: 'Lola B.',
+        when: '2 weeks ago',
+        stars: 5,
+        text: 'The gather starts at the right place on the hip, which is rare in a mini. True to size.',
+      },
+      {
+        name: 'Uche N.',
+        when: '1 month ago',
+        stars: 4,
+        text: "Beautiful colour and fully lined so it doesn't cling. The leather creases when you sit — normal, but worth knowing.",
+      },
+    ],
+  },
+  'black-tulle-lattice-midi': {
+    recommend: 94,
+    entries: [
+      {
+        name: 'Yemi T.',
+        when: '2 days ago',
+        stars: 5,
+        text: 'Dramatic without being costumey. The underskirt is long enough that nothing shows, and the tulle has a lovely swing.',
+      },
+      {
+        name: 'Halima S.',
+        when: '2 weeks ago',
+        stars: 5,
+        text: 'It is a lot of fabric, so pair it with something fitted — I wore a bodysuit. The volume is the point.',
+      },
+      {
+        name: 'Rukayat O.',
+        when: '3 weeks ago',
+        stars: 4,
+        text: 'Wore it to a gallery opening. Up close the lattice is ribbon; from across the room it reads as a print. Lovely.',
+      },
+    ],
+  },
+  'green-floral-drape-midi': {
+    recommend: 96,
+    entries: [
+      {
+        name: 'Chinwe U.',
+        when: '5 days ago',
+        stars: 5,
+        text: 'The lace waist is what sold me — it shows just enough. The print is muted, so it works for the office too.',
+      },
+      {
+        name: 'Ronke A.',
+        when: '2 weeks ago',
+        stars: 5,
+        text: "Lovely drape and the lining means it doesn't cling. I'm 5'6\" and it hits mid-calf exactly.",
+      },
+      {
+        name: 'Peace O.',
+        when: '1 month ago',
+        stars: 4,
+        text: 'Beautiful and true to size. The lace panel needs delicate handling — I hand wash mine rather than dry clean.',
+      },
+    ],
+  },
+};

@@ -11,7 +11,7 @@ import {
   IconShare,
   IconTruck,
 } from '../components/Icons';
-import { byId, formatN, products } from '../lib/data';
+import { byId, formatN, products, reviewNotes } from '../lib/data';
 import { useStore } from '../lib/store';
 
 function Acc({
@@ -49,6 +49,7 @@ export default function ProductPage() {
   const { id = '' } = useParams();
   const nav = useNavigate();
   const product = byId(id);
+  const reviewInfo = reviewNotes[id];
   const { state, dispatch, toast } = useStore();
   const [colour, setColour] = useState(0);
   const [size, setSize] = useState(product && product.sizes.length === 1 ? product.sizes[0] : '');
@@ -287,29 +288,35 @@ export default function ProductPage() {
           <div style={{ flex: 1 }}>
             <Stars value={product.rating} size={12} />
             <div style={{ marginTop: 6, fontSize: 9, color: '#8a7e71' }}>
-              94% would recommend · verified buyers
+              {reviewInfo?.recommend ?? 94}% would recommend · verified buyers
             </div>
           </div>
         </div>
-        <div className="review">
-          <div className="review__head">
-            <b>Amaka O.</b>
-            <span>Verified · 2 weeks ago</span>
+        {(reviewInfo?.entries ?? [
+          {
+            name: 'Amaka O.',
+            when: '2 weeks ago',
+            stars: 5,
+            text: 'The fabric is weightier than I expected in the best way. It holds its shape and the fit is exactly as described.',
+          },
+          {
+            name: 'Ifeoma A.',
+            when: '1 month ago',
+            stars: 4,
+            text: 'Wore it to a board meeting and then to dinner. It did both jobs beautifully.',
+          },
+        ]).map((entry) => (
+          <div className="review" key={entry.name}>
+            <div className="review__head">
+              <b>{entry.name}</b>
+              <span>Verified · {entry.when}</span>
+            </div>
+            <div style={{ marginTop: 5 }}>
+              <Stars value={entry.stars} size={9} />
+            </div>
+            <p>{entry.text}</p>
           </div>
-          <p>
-            &ldquo;The fabric is weightier than I expected in the best way. It holds its shape and
-            the fit is exactly as described.&rdquo;
-          </p>
-        </div>
-        <div className="review">
-          <div className="review__head">
-            <b>Ifeoma A.</b>
-            <span>Verified · 1 month ago</span>
-          </div>
-          <p>
-            &ldquo;Wore it to a board meeting and then to dinner. It did both jobs beautifully.&rdquo;
-          </p>
-        </div>
+        ))}
       </div>
 
       <SectionHead title="Complete the look" to="/shop" link="Shop all" />
