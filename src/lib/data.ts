@@ -1738,6 +1738,7 @@ export const products: Product[] = [
     category: 'Elegant Dresses',
     sub: 'Halter',
     image: img('dress-blue-draped-halter'),
+    badge: 'NEW',
     rating: 4.8,
     reviews: 7,
     colours: [{ name: 'Cobalt', hex: '#1c4b9e' }],
@@ -1754,6 +1755,7 @@ export const products: Product[] = [
     category: 'Jeans and Leather Skirt',
     sub: 'Pencil',
     image: img('ivory-lace-pencil-skirt'),
+    badge: 'NEW',
     rating: 4.9,
     reviews: 11,
     colours: [
@@ -1773,6 +1775,7 @@ export const products: Product[] = [
     category: 'Jeans and Leather Skirt',
     sub: 'Lace trim',
     image: img('polka-lace-hem-mini-skirt'),
+    badge: 'NEW',
     rating: 4.7,
     reviews: 4,
     colours: [
@@ -1792,6 +1795,7 @@ export const products: Product[] = [
     category: 'Jeans and Leather Skirt',
     sub: 'Wrap',
     image: img('apricot-wrap-mini-skirt'),
+    badge: 'NEW',
     rating: 4.6,
     reviews: 5,
     colours: [
@@ -1811,6 +1815,7 @@ export const products: Product[] = [
     category: 'Jeans and Leather Skirt',
     sub: 'Leather yoke',
     image: img('burgundy-leather-yoke-mini'),
+    badge: 'NEW',
     rating: 4.8,
     reviews: 7,
     colours: [
@@ -1830,6 +1835,7 @@ export const products: Product[] = [
     category: 'Jeans and Leather Skirt',
     sub: 'Tulle',
     image: img('black-tulle-lattice-midi'),
+    badge: 'NEW',
     rating: 4.7,
     reviews: 6,
     colours: [{ name: 'Black', hex: '#141416' }],
@@ -1846,6 +1852,7 @@ export const products: Product[] = [
     category: 'Jeans and Leather Skirt',
     sub: 'Draped',
     image: img('green-floral-drape-midi'),
+    badge: 'NEW',
     rating: 4.8,
     reviews: 8,
     colours: [

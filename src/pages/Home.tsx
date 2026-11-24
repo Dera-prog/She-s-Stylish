@@ -5,6 +5,13 @@ import { IconArrow, IconSearch } from '../components/Icons';
 import { byId, collections, type Product } from '../lib/data';
 import { useStore } from '../lib/store';
 
+const newInIds = [
+  'black-tulle-lattice-midi',
+  'burgundy-leather-yoke-mini',
+  'green-floral-drape-midi',
+  'apricot-wrap-mini-skirt',
+];
+
 const wantedIds = [
   'barrel-black-lace-waist',
   'dress-blue-draped-halter',
@@ -42,7 +49,9 @@ export default function Home() {
     month: 'long',
   });
 
-  const newIn: Product[] = [];
+  const newIn = newInIds
+    .map(byId)
+    .filter((p): p is Product => Boolean(p));
   const wanted = wantedIds
     .map(byId)
     .filter((p): p is Product => Boolean(p));
