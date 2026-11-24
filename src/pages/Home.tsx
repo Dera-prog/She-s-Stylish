@@ -2,8 +2,17 @@ import { Link } from 'react-router-dom';
 import { AppHead, Screen, SectionHead, MARK_INK } from '../components/Chrome';
 import { ProductCard } from '../components/ProductCard';
 import { IconArrow, IconSearch } from '../components/Icons';
-import { collections, type Product } from '../lib/data';
+import { byId, collections, type Product } from '../lib/data';
 import { useStore } from '../lib/store';
+
+const wantedIds = [
+  'barrel-black-lace-waist',
+  'dress-blue-draped-halter',
+  'ivory-lace-pencil-skirt',
+  'polka-lace-hem-mini-skirt',
+  'top-sheer-organza-ruffle',
+  'top-burgundy-leather-peplum',
+];
 
 const dashCategories = [
   'All pieces',
@@ -34,7 +43,9 @@ export default function Home() {
   });
 
   const newIn: Product[] = [];
-  const wanted: Product[] = [];
+  const wanted = wantedIds
+    .map(byId)
+    .filter((p): p is Product => Boolean(p));
 
   return (
     <Screen>
@@ -86,7 +97,7 @@ export default function Home() {
         ))}
       </div>
 
-      <SectionHead title="Most wanted" to="/browse/best" link="Shop best sellers" />
+      <SectionHead title="Most wanted" to="/shop" link="Shop all" />
       <div className="hscroll">
         {wanted.map((p) => (
           <ProductCard key={p.id} product={p} />
