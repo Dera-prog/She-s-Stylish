@@ -1185,10 +1185,28 @@ img {
   display: none;
 }
 
-.chips--wrap {
-  flex-wrap: wrap;
+.chips--grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
   overflow: visible;
   padding-bottom: 6px;
+}
+
+.chips--grid .chip {
+  height: auto;
+  min-height: 36px;
+  padding: 8px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  white-space: normal;
+  line-height: 1.45;
+}
+
+.chips--grid .chip:first-child {
+  grid-column: 1 / -1;
 }
 
 .chip {

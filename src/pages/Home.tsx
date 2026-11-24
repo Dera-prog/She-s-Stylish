@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { AppHead, Screen, SectionHead, MARK_INK } from '../components/Chrome';
 import { ProductCard } from '../components/ProductCard';
 import { IconArrow, IconSearch } from '../components/Icons';
-import { collections, products } from '../lib/data';
+import { collections, type Product } from '../lib/data';
 import { useStore } from '../lib/store';
 
 const dashCategories = [
@@ -33,8 +33,8 @@ export default function Home() {
     month: 'long',
   });
 
-  const newIn = products.filter((p) => p.badge === 'NEW').slice(0, 4);
-  const wanted: typeof products = [];
+  const newIn: Product[] = [];
+  const wanted: Product[] = [];
 
   return (
     <Screen>
@@ -67,7 +67,7 @@ export default function Home() {
         </div>
       </Link>
 
-      <div className="chips chips--wrap">
+      <div className="chips chips--grid">
         {dashCategories.map((name, i) => (
           <Link
             key={name}
