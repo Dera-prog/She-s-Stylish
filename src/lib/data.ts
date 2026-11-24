@@ -1785,7 +1785,14 @@ export const ads: Ad[] = [
   },
 ];
 
-export const collections = [
+export const collections: {
+  id: string;
+  name: string;
+  note: string;
+  look: string;
+  lookAlt: string;
+  ids?: string[];
+}[] = [
   {
     id: 'soft-power',
     name: 'The Soft Power Edit',
@@ -1809,6 +1816,7 @@ export const collections = [
     look: '/assets/looks/look-lavender.jpg',
     lookAlt:
       'Lookbook plate: oversized brushed lavender fleece sweatshirt with a butter-yellow leather mini skirt, matching pumps and shoulder bag, gradient sunglasses and gold jewellery.',
+    ids: ['butter-mini-skirt'],
   },
 ];
 

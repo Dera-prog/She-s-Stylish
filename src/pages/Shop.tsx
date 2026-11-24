@@ -247,7 +247,9 @@ export function CollectionPage() {
 
   const list = useMemo(() => {
     if (!collection) return [];
-    const base = products.filter((p) => p.collection === collection.name);
+    const base = collection.ids
+      ? products.filter((p) => collection.ids!.includes(p.id))
+      : products.filter((p) => p.collection === collection.name);
     return sortProducts(base, sort);
   }, [collection, sort]);
 

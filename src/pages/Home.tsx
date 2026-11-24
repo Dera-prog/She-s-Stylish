@@ -34,7 +34,7 @@ export default function Home() {
   });
 
   const newIn = products.filter((p) => p.badge === 'NEW').slice(0, 4);
-  const wanted = products.filter((p) => p.badge === 'BESTSELLER');
+  const wanted: typeof products = [];
 
   return (
     <Screen>
