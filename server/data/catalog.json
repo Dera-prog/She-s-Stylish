@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-21T22:46:20.736Z",
+  "generatedAt": "2026-11-24T10:58:59.131Z",
   "categories": [
     {
       "name": "All pieces",
@@ -17,65 +17,88 @@
     },
     {
       "name": "Barrel Pants",
+      "image": "/assets/products/barrel-check-wool.jpg",
       "note": "The new trouser line"
-    },
-    {
-      "name": "Aso Oke Barrel Pants",
-      "note": "Handwoven, quietly bold"
     },
     {
       "name": "Adire and Aso Oke Skirt",
       "note": "Indigo and handwoven texture"
     },
     {
-      "name": "Knit Tops",
-      "note": "Soft layers, everyday"
+      "name": "Tops",
+      "image": "/assets/products/top-sculpted-drape.jpg",
+      "note": "Sculpted shoulders, soft drape"
+    },
+    {
+      "name": "Knit",
+      "image": "/assets/products/knit-green-cable-flare.jpg",
+      "note": "Cable, rib and hand-finished detail"
+    },
+    {
+      "name": "Bodysuits",
+      "image": "/assets/products/bodysuit-chocolate-overlay.jpg",
+      "note": "Second-skin layering"
     },
     {
       "name": "Blazer Jacket",
+      "image": "/assets/products/blazer-grey-cape.jpg",
       "note": "Shoulders and structure"
+    },
+    {
+      "name": "Fancy Jacket",
+      "image": "/assets/products/fancy-jacket-houndstooth-crop.jpg",
+      "note": "Tweed, tartan, statement crop"
+    },
+    {
+      "name": "Elegant Dresses",
+      "image": "/assets/products/dress-emerald-drape-fringe.jpg",
+      "note": "Evening, floor-length, statement"
     },
     {
       "name": "Corporate Dresses",
       "note": "Tailored for the room"
-    },
-    {
-      "name": "Skirts",
-      "note": "Short, sharp, considered"
-    },
-    {
-      "name": "Accessories",
-      "note": "The finishing touch"
     }
   ],
   "collections": [
     {
       "id": "soft-power",
       "name": "The Soft Power Edit",
-      "note": "Quietly bold. Entirely you."
+      "note": "Quietly bold. Entirely you.",
+      "look": "/assets/looks/look-office.jpg",
+      "lookAlt": "Lookbook plate: midnight navy ribbed knit midi dress layered over a powder-blue striped shirt, with patent bow pumps, a black top-handle bag and gold jewellery."
     },
     {
       "id": "boardroom",
       "name": "The Boardroom Edit",
-      "note": "Tailoring, with teeth."
+      "note": "Tailoring, with teeth.",
+      "look": "/assets/looks/look-check.jpg",
+      "lookAlt": "Lookbook plate: Prince-of-Wales check tailored blazer and mini skirt with a white cotton shirt, chocolate silk necktie, gold-cap pumps and espresso leather handbag."
     },
     {
       "id": "lavender",
       "name": "Lavender Hour",
-      "note": "A softer kind of power."
+      "note": "A softer kind of power.",
+      "look": "/assets/looks/look-lavender.jpg",
+      "lookAlt": "Lookbook plate: oversized brushed lavender fleece sweatshirt with a butter-yellow leather mini skirt, matching pumps and shoulder bag, gradient sunglasses and gold jewellery.",
+      "ids": [
+        "butter-mini-skirt",
+        "polka-lace-hem-mini-skirt",
+        "apricot-wrap-mini-skirt",
+        "burgundy-leather-yoke-mini",
+        "black-tulle-lattice-midi",
+        "green-floral-drape-midi"
+      ]
     }
   ],
   "products": [
     {
       "id": "red-stitch-denim-skirt",
       "name": "Red-stitch indigo denim midi",
-      "price": 76000,
+      "price": 65000,
       "category": "Jeans and Leather Skirt",
       "sub": "Denim",
       "image": "/assets/products/red-stitch-denim-skirt.jpg",
       "badge": "NEW",
-      "rating": 4.7,
-      "reviews": 9,
       "colours": [
         {
           "name": "Deep Indigo",
@@ -93,7 +116,7 @@
         "L",
         "XL"
       ],
-      "desc": "Raw indigo denim cut to a clean midi with a front walk slit, every seam picked out in red topstitch. Structured enough for the office, easy enough for a Saturday.",
+      "desc": "Dark indigo denim cut straight to the calf, the front split edged in red topstitch that carries up every seam and around the waistband. Denim with a formal streak, from desk to dinner.",
       "fabric": "Rigid cotton denim, unlined",
       "care": "Machine wash cold, inside out",
       "collection": "The Soft Power Edit"
@@ -101,13 +124,11 @@
     {
       "id": "two-tone-denim-skirt",
       "name": "Two-tone denim pencil skirt",
-      "price": 88000,
+      "price": 72000,
       "category": "Jeans and Leather Skirt",
       "sub": "Denim",
       "image": "/assets/products/two-tone-denim-skirt.jpg",
       "badge": "NEW",
-      "rating": 4.8,
-      "reviews": 14,
       "colours": [
         {
           "name": "Washed Blue",
@@ -125,7 +146,7 @@
         "L",
         "XL"
       ],
-      "desc": "A light-wash yoke buttoned in brass over a deep navy pencil. Two denims, one clean line, and a back vent that keeps the stride honest.",
+      "desc": "A light-wash denim yoke, buttoned in brass across the hip, gives way to a deep navy pencil that opens in a side split. Two washes, one clean vertical line.",
       "fabric": "Cotton denim panels, unlined",
       "care": "Machine wash cold, hang dry",
       "collection": "The Soft Power Edit"
@@ -133,13 +154,11 @@
     {
       "id": "asymmetric-denim-skirt",
       "name": "Asymmetric-hem denim midi",
-      "price": 94000,
+      "price": 80000,
       "category": "Jeans and Leather Skirt",
       "sub": "Denim",
       "image": "/assets/products/asymmetric-denim-skirt.jpg",
       "badge": "NEW",
-      "rating": 4.6,
-      "reviews": 8,
       "colours": [
         {
           "name": "Dark Indigo",
@@ -157,7 +176,7 @@
         "L",
         "XL"
       ],
-      "desc": "A skirt that moves like a spiral — the seam sweeps across the front and releases into an asymmetric hem with a pale denim underside.",
+      "desc": "Dark denim wraps the waist and sweeps across the front in a diagonal seam, releasing into an uneven hem with a pale grey jersey reverse. The layered cut keeps the weight moving.",
       "fabric": "Cotton denim, contrast reverse",
       "care": "Machine wash cold, inside out",
       "collection": "The Boardroom Edit"
@@ -165,13 +184,11 @@
     {
       "id": "button-front-denim-maxi",
       "name": "Button-front denim A-line maxi",
-      "price": 82000,
+      "price": 68000,
       "category": "Jeans and Leather Skirt",
       "sub": "Denim",
       "image": "/assets/products/button-front-denim-maxi.jpg",
       "badge": "NEW",
-      "rating": 4.7,
-      "reviews": 16,
       "colours": [
         {
           "name": "Mid Blue",
@@ -189,7 +206,7 @@
         "L",
         "XL"
       ],
-      "desc": "A full A-line in mid-wash denim, closed by a run of brass shank buttons from waist to hem. Wear it buttoned to the ankle or open over a slip.",
+      "desc": "A high-waisted A-line in mid-blue denim, closed by brass shank buttons from waistband to ankle. Controlled through the hip, breaking wide at the hem.",
       "fabric": "Cotton denim, unlined",
       "care": "Machine wash cold, hang dry",
       "collection": "The Boardroom Edit"
@@ -197,13 +214,11 @@
     {
       "id": "denim-peplum-skirt",
       "name": "Denim peplum midi skirt",
-      "price": 90000,
+      "price": 76000,
       "category": "Jeans and Leather Skirt",
       "sub": "Denim",
       "image": "/assets/products/denim-peplum-skirt.jpg",
       "badge": "NEW",
-      "rating": 4.5,
-      "reviews": 6,
       "colours": [
         {
           "name": "Mid Blue",
@@ -221,7 +236,7 @@
         "L",
         "XL"
       ],
-      "desc": "Fitted through the hip, then gathered into a peplum flare from the knee. The button placket runs the whole way down and opens at the front slit.",
+      "desc": "Light-wash denim closes in a full button placket that runs to the knee, where the skirt gathers into a peplum flare and opens in a front split. Fitted above, generous below.",
       "fabric": "Stretch cotton denim, unlined",
       "care": "Machine wash cold, inside out",
       "collection": "Lavender Hour"
@@ -229,13 +244,11 @@
     {
       "id": "crystal-bow-denim-skirt",
       "name": "Crystal-bow denim midi",
-      "price": 98000,
+      "price": 88000,
       "category": "Jeans and Leather Skirt",
       "sub": "Denim",
       "image": "/assets/products/crystal-bow-denim-skirt.jpg",
       "badge": "BESTSELLER",
-      "rating": 4.9,
-      "reviews": 11,
       "colours": [
         {
           "name": "Light Blue",
@@ -253,7 +266,7 @@
         "L",
         "XL"
       ],
-      "desc": "Five crystal bows climb the front of a light-wash denim midi, balanced by a full-length button placket and a walking slit. Quiet sparkle, no fuss.",
+      "desc": "Three crystal bows sit at the side of a light-wash denim midi, spaced down a button placket that ends in a walking split. The shine is kept to one line.",
       "fabric": "Cotton denim, crystal embellishment",
       "care": "Hand wash cold, dry flat",
       "collection": "Lavender Hour"
@@ -261,12 +274,10 @@
     {
       "id": "side-button-denim-skirt",
       "name": "Side-placket denim midi",
-      "price": 74000,
+      "price": 62000,
       "category": "Jeans and Leather Skirt",
       "sub": "Denim",
       "image": "/assets/products/side-button-denim-skirt.jpg",
-      "rating": 4.6,
-      "reviews": 7,
       "colours": [
         {
           "name": "Mid Blue",
@@ -284,7 +295,7 @@
         "L",
         "XL"
       ],
-      "desc": "The button placket sits off-centre, opening into a long side slit. Clean at the waist, softly washed, and built to be worn with everything.",
+      "desc": "Mid-wash denim falls straight from the waist, closed by a button placket down the side seam that opens into a low split. Softened denim, sharp line.",
       "fabric": "Cotton denim, unlined",
       "care": "Machine wash cold, inside out",
       "collection": "The Soft Power Edit"
@@ -292,13 +303,11 @@
     {
       "id": "leather-wrap-maxi",
       "name": "Chocolate leather wrap maxi",
-      "price": 148000,
+      "price": 135000,
       "category": "Jeans and Leather Skirt",
       "sub": "Leather",
       "image": "/assets/products/leather-wrap-maxi.jpg",
       "badge": "NEW",
-      "rating": 4.8,
-      "reviews": 10,
       "colours": [
         {
           "name": "Espresso",
@@ -316,7 +325,7 @@
         "L",
         "XL"
       ],
-      "desc": "Glazed leather folds over a suede column, held at the hip by a hand-braided cord. It falls to the ankle and moves like one continuous piece.",
+      "desc": "Chocolate leather wraps across the hip in a folded layer, releasing into a floor-length skirt with a soft, weighted drape. One diagonal seam does all the work.",
       "fabric": "Glazed leather front, suede body",
       "care": "Specialist leather clean only",
       "collection": "The Boardroom Edit"
@@ -328,8 +337,6 @@
       "category": "Jeans and Leather Skirt",
       "sub": "Cotton sateen",
       "image": "/assets/products/blush-draped-skirt.jpg",
-      "rating": 4.6,
-      "reviews": 5,
       "colours": [
         {
           "name": "Blush",
@@ -347,7 +354,7 @@
         "L",
         "XL"
       ],
-      "desc": "A high-neck waistband, a utility pocket, and a length of navy webbing cinching the drape at one side. Soft volume, sharply edited.",
+      "desc": "Pale pink satin is draped from a high waist with a utility pocket at the hip and a length of navy webbing cinching one side. Soft volume, hardware awake.",
       "fabric": "Cotton sateen, webbing trim",
       "care": "Dry clean recommended",
       "collection": "The Soft Power Edit"
@@ -355,12 +362,10 @@
     {
       "id": "scarlet-stripe-skirt",
       "name": "Scarlet asymmetric skirt",
-      "price": 104000,
+      "price": 92000,
       "category": "Jeans and Leather Skirt",
       "sub": "Wool crepe",
       "image": "/assets/products/scarlet-stripe-skirt.jpg",
-      "rating": 4.7,
-      "reviews": 8,
       "colours": [
         {
           "name": "Scarlet",
@@ -378,7 +383,7 @@
         "L",
         "XL"
       ],
-      "desc": "A scarlet crepe wrap that hinges on the diagonal, revealing a striped cotton lining at the split. Belt it high and let the hem do the talking.",
+      "desc": "Scarlet crepe wraps on the diagonal and cuts away at the side to show a grey-striped reverse, finishing in an asymmetric hem. Dress it high and let the layers speak.",
       "fabric": "Wool-blend crepe, striped cotton lining",
       "care": "Dry clean only",
       "collection": "The Soft Power Edit"
@@ -386,13 +391,11 @@
     {
       "id": "fern-leather-pencil-skirt",
       "name": "Fern green leather pencil skirt",
-      "price": 138000,
+      "price": 125000,
       "category": "Jeans and Leather Skirt",
       "sub": "Leather",
       "image": "/assets/products/fern-leather-pencil-skirt.jpg",
       "badge": "NEW",
-      "rating": 4.9,
-      "reviews": 13,
       "colours": [
         {
           "name": "Fern",
@@ -410,20 +413,18 @@
         "L",
         "XL"
       ],
-      "desc": "Lamba leather in a confident green, closed by a covered button placket and opening into a floor-skimming side slit. Lined in cupro so it glides.",
-      "fabric": "Lamba leather, cupro lining",
+      "desc": "Fern green leather cut to a high-waisted pencil with covered buttons at the side and a long front slit. Lined so it slides over the body and falls clean at the ankle.",
+      "fabric": "Leather, cupro lining",
       "care": "Specialist leather clean only",
       "collection": "The Boardroom Edit"
     },
     {
       "id": "colourblock-knit-skirt",
       "name": "Colour-block knit midi",
-      "price": 86000,
+      "price": 74000,
       "category": "Jeans and Leather Skirt",
       "sub": "Knit",
       "image": "/assets/products/colourblock-knit-skirt.jpg",
-      "rating": 4.5,
-      "reviews": 9,
       "colours": [
         {
           "name": "Pink / Red",
@@ -440,7 +441,7 @@
         "L",
         "XL"
       ],
-      "desc": "Graphic diamonds in red, sky and blush over a pleated navy hem. A knit that behaves like a statement, with enough stretch to sit and move in.",
+      "desc": "Red, sky and blush diamonds are knit into a midi that ends in a deep pleated navy hem. The stretch follows the body and the pleats give the walk its swing.",
       "fabric": "Viscose-blend knit, pleated hem",
       "care": "Hand wash cold, dry flat",
       "collection": "The Soft Power Edit"
@@ -448,13 +449,11 @@
     {
       "id": "geometric-print-skirt",
       "name": "Geometric print A-line midi",
-      "price": 92000,
+      "price": 78000,
       "category": "Jeans and Leather Skirt",
       "sub": "Print",
       "image": "/assets/products/geometric-print-skirt.jpg",
       "badge": "NEW",
-      "rating": 4.6,
-      "reviews": 6,
       "colours": [
         {
           "name": "Forest",
@@ -472,20 +471,18 @@
         "L",
         "XL"
       ],
-      "desc": "Colour-blocked shapes in forest, cream and marigold, cut in a clean A-line with a front split. The print is loud; the silhouette keeps it composed.",
-      "fabric": "Structured twill",
+      "desc": "Forest, cream, marigold and blush polygons are arranged on a structured A-line that ends in a diagonal hem. The print is bold, but the cut keeps it close.",
+      "fabric": "Structured twill, unlined",
       "care": "Dry clean recommended",
       "collection": "The Boardroom Edit"
     },
     {
       "id": "sunlit-graphic-skirt",
       "name": "Sunlit graphic silk skirt",
-      "price": 96000,
+      "price": 82000,
       "category": "Jeans and Leather Skirt",
       "sub": "Silk",
       "image": "/assets/products/sunlit-graphic-skirt.jpg",
-      "rating": 4.8,
-      "reviews": 7,
       "colours": [
         {
           "name": "Sunlight",
@@ -503,7 +500,7 @@
         "L",
         "XL"
       ],
-      "desc": "A handkerchief hem in printed silk, all golden light and graphite lines. It catches the air as you walk and settles into the most flattering drape.",
+      "desc": "A scarf-print silk in gold, caramel and graphite wraps at the hip and falls into a draped, handkerchief hem. It moves with air and settles into a new line each time.",
       "fabric": "Printed silk, unlined",
       "care": "Dry clean only",
       "collection": "Lavender Hour"
@@ -511,12 +508,10 @@
     {
       "id": "rose-aline-maxi",
       "name": "Rose gathered A-line maxi",
-      "price": 112000,
+      "price": 108000,
       "category": "Jeans and Leather Skirt",
       "sub": "Duchess satin",
       "image": "/assets/products/rose-aline-maxi.jpg",
-      "rating": 4.7,
-      "reviews": 5,
       "colours": [
         {
           "name": "Rose",
@@ -534,7 +529,7 @@
         "L",
         "XL"
       ],
-      "desc": "A fitted waist with soft gathers released from each hip, falling in a wide floor-length sweep. Built for entrances, and for sitting still in them.",
+      "desc": "A deep rose satin gathered evenly at the waist and released into a full floor-length sweep. The volume runs all round, so it reads formal from any angle.",
       "fabric": "Duchess satin, lined",
       "care": "Dry clean only",
       "collection": "Lavender Hour"
@@ -542,12 +537,10 @@
     {
       "id": "ivory-pleated-skirt",
       "name": "Ivory pleated print skirt",
-      "price": 106000,
+      "price": 96000,
       "category": "Jeans and Leather Skirt",
       "sub": "Silk",
       "image": "/assets/products/ivory-pleated-skirt.jpg",
-      "rating": 4.6,
-      "reviews": 4,
       "colours": [
         {
           "name": "Ivory",
@@ -565,7 +558,7 @@
         "L",
         "XL"
       ],
-      "desc": "A knife-pleated ivory skirt with a wrap waistband and painterly prints drifting up from the hem. Uneven length, quietly romantic.",
+      "desc": "Ivory pleats fall from a wrapped waistband, with painterly print panels surfacing near an uneven hem. Soft and romantic, cut to move rather than stand.",
       "fabric": "Pleated silk-blend, unlined",
       "care": "Dry clean only",
       "collection": "The Soft Power Edit"
@@ -573,13 +566,11 @@
     {
       "id": "marigold-feather-skirt",
       "name": "Marigold feather-embellished skirt",
-      "price": 156000,
+      "price": 148000,
       "category": "Jeans and Leather Skirt",
       "sub": "Silk",
       "image": "/assets/products/marigold-feather-skirt.jpg",
       "badge": "NEW",
-      "rating": 4.9,
-      "reviews": 12,
       "colours": [
         {
           "name": "Marigold",
@@ -597,7 +588,7 @@
         "L",
         "XL"
       ],
-      "desc": "Hand-cut silk feathers stitched down a column of marigold crepe, each with a long thread that moves as you do. The kind of piece you keep for the night.",
+      "desc": "Silk feathers are stitched down the front of a marigold crepe column, each with a long thread that catches the air as you walk. The rest of the skirt stays plain.",
       "fabric": "Silk crepe with silk feather appliqué",
       "care": "Dry clean only",
       "collection": "Lavender Hour"
@@ -605,12 +596,10 @@
     {
       "id": "emerald-draped-maxi",
       "name": "Emerald draped maxi skirt",
-      "price": 128000,
+      "price": 115000,
       "category": "Jeans and Leather Skirt",
       "sub": "Faille",
       "image": "/assets/products/emerald-draped-maxi.jpg",
-      "rating": 4.7,
-      "reviews": 6,
       "colours": [
         {
           "name": "Emerald",
@@ -628,20 +617,18 @@
         "L",
         "XL"
       ],
-      "desc": "Emerald faille gathered into a knot at one hip and left to fall in long, serious folds to the floor. One seam, one knot, no restraint.",
-      "fabric": "Technical faillet, unlined",
+      "desc": "Emerald taffeta is gathered through the waist, folded at the hip and dropped into a high-low hem. Long, serious folds that break into a flash of leg at the front.",
+      "fabric": "Technical taffeta, unlined",
       "care": "Dry clean recommended",
       "collection": "The Soft Power Edit"
     },
     {
       "id": "pinstripe-peplum-skirt",
       "name": "Pinstripe peplum skirt",
-      "price": 124000,
+      "price": 105000,
       "category": "Jeans and Leather Skirt",
       "sub": "Wool",
       "image": "/assets/products/pinstripe-peplum-skirt.jpg",
-      "rating": 4.8,
-      "reviews": 9,
       "colours": [
         {
           "name": "Ivory",
@@ -659,7 +646,7 @@
         "L",
         "XL"
       ],
-      "desc": "A high ivory column broken by a pinstriped peplum that circles the hip and folds back on itself. Tailoring with a sense of humour.",
+      "desc": "An ivory column is interrupted by a white-pinstriped peplum that circles the hip and tumbles into pleats. Tailoring with a sense of humour, and its line intact.",
       "fabric": "Wool-blend suiting, lined",
       "care": "Dry clean only",
       "collection": "The Boardroom Edit"
@@ -667,13 +654,11 @@
     {
       "id": "lilac-ribbed-maxi",
       "name": "Lilac ribbed mermaid maxi",
-      "price": 108000,
+      "price": 98000,
       "category": "Jeans and Leather Skirt",
       "sub": "Knit",
       "image": "/assets/products/lilac-ribbed-maxi.jpg",
       "badge": "BESTSELLER",
-      "rating": 4.9,
-      "reviews": 15,
       "colours": [
         {
           "name": "Lilac",
@@ -691,7 +676,7 @@
         "L",
         "XL"
       ],
-      "desc": "Fine ribbing holds the body from waist to knee, then breaks into a cascade of ruffled, coiled frills at the hem. It hugs, it flares, it stays.",
+      "desc": "Fine lilac ribbing follows the body from waist to knee, then breaks into coiled, sculptural ruffles at the floor. It holds its shape and still moves.",
       "fabric": "Ribbed viscose knit",
       "care": "Hand wash cold, dry flat",
       "collection": "Lavender Hour"
@@ -699,13 +684,11 @@
     {
       "id": "denim-midi-skirt",
       "name": "Indigo denim midi skirt",
-      "price": 68000,
+      "price": 58000,
       "category": "Jeans and Leather Skirt",
       "sub": "Denim",
       "image": "/assets/products/denim-midi-skirt.jpg",
       "badge": "BESTSELLER",
-      "rating": 4.7,
-      "reviews": 12,
       "colours": [
         {
           "name": "Deep Indigo",
@@ -723,7 +706,7 @@
         "L",
         "XL"
       ],
-      "desc": "A deep-indigo denim cut high at the waist and falling to a clean midi hem, with a front slit that moves when you do. It softens with every wear and never loses its line.",
+      "desc": "Deep indigo denim sits high on the waist and falls straight to the midi hem, with a front seam that opens into a slit. It softens with wear and keeps its line.",
       "fabric": "100% cotton denim, unlined",
       "care": "Machine wash cold, inside out",
       "collection": "The Soft Power Edit",
@@ -732,12 +715,10 @@
     {
       "id": "butter-mini-skirt",
       "name": "Butter leather mini skirt",
-      "price": 88000,
+      "price": 95000,
       "category": "Jeans and Leather Skirt",
       "sub": "Skirts",
       "image": "/assets/products/butter-mini-skirt.jpg",
-      "rating": 4.6,
-      "reviews": 8,
       "colours": [
         {
           "name": "Butter Yellow",
@@ -751,11 +732,2174 @@
         "L",
         "XL"
       ],
-      "desc": "Soft leather in butter yellow, high-waisted with a side slit that moves. Wears like a second skin, reads like sunlight.",
+      "desc": "Butter-yellow leather in a clean, high-waisted mini with a short side split. Soft enough to sit close, bright enough to carry a whole outfit.",
       "fabric": "Lamb leather, satin lining",
       "care": "Leather specialist clean only",
       "collection": "Lavender Hour",
       "model": "/assets/model-lavender.png"
+    },
+    {
+      "id": "barrel-black-lace-waist",
+      "name": "Lace-trim black balloon pant",
+      "price": 68000,
+      "category": "Barrel Pants",
+      "sub": "Lace-trim",
+      "image": "/assets/products/barrel-black-lace-waist.jpg",
+      "badge": "NEW",
+      "colours": [
+        {
+          "name": "Black",
+          "hex": "#17171a"
+        }
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "desc": "A fluid black balloon leg that tapers at the ankle, finished with scalloped lace at the waist and a slim ribbon tie. Tailoring above, ease below.",
+      "fabric": "Woven shell, lace waist trim",
+      "care": "Hand wash cold, dry flat",
+      "collection": "Lavender Hour"
+    },
+    {
+      "id": "barrel-black-swan-clasp",
+      "name": "Swan-clasp black balloon trouser",
+      "price": 85000,
+      "category": "Barrel Pants",
+      "sub": "Leather trim",
+      "image": "/assets/products/barrel-black-swan-clasp.jpg",
+      "colours": [
+        {
+          "name": "Black",
+          "hex": "#141416"
+        }
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "desc": "Black barrel-leg trousers with a pressed crease and a curved leather belt set at one hip, clasped with a small gold swan. The contrast is all in the hardware.",
+      "fabric": "Woven shell, leather belt trim",
+      "care": "Dry clean recommended",
+      "collection": "The Boardroom Edit"
+    },
+    {
+      "id": "barrel-chocolate-turn-up",
+      "name": "Chocolate seamed balloon trouser",
+      "price": 74000,
+      "category": "Barrel Pants",
+      "sub": "Seamed",
+      "image": "/assets/products/barrel-chocolate-turn-up.jpg",
+      "colours": [
+        {
+          "name": "Chocolate",
+          "hex": "#4b3529"
+        }
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "desc": "Chocolate trousers cut high and closed with a single pale button, curved seams shaping a balloon leg that finishes in turn-up cuffs. Soft volume, sharp finish.",
+      "fabric": "Structured woven shell, panel seams",
+      "care": "Dry clean recommended",
+      "collection": "The Soft Power Edit"
+    },
+    {
+      "id": "barrel-olive-button-front",
+      "name": "Olive button-front balloon trouser",
+      "price": 72000,
+      "category": "Barrel Pants",
+      "sub": "Buttons",
+      "image": "/assets/products/barrel-olive-button-front.jpg",
+      "colours": [
+        {
+          "name": "Olive",
+          "hex": "#77785d"
+        }
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "desc": "Olive balloon trousers open on a diagonal placket of brass shank buttons that runs from the high waist to the narrow cuff. The buttons do the styling for you.",
+      "fabric": "Woven shell, metal shank buttons",
+      "care": "Dry clean recommended",
+      "collection": "The Boardroom Edit"
+    },
+    {
+      "id": "barrel-wine-corduroy-wrap",
+      "name": "Wine corduroy balloon trouser",
+      "price": 82000,
+      "category": "Barrel Pants",
+      "sub": "Corduroy",
+      "image": "/assets/products/barrel-wine-corduroy-wrap.jpg",
+      "badge": "NEW",
+      "colours": [
+        {
+          "name": "Wine",
+          "hex": "#6e2438"
+        }
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "desc": "Deep wine fine-wale corduroy is wrapped at the hip by a glossy leather panel that folds across the front and tapers into the balloon leg. Texture in place of a belt.",
+      "fabric": "Cotton corduroy, leather panel",
+      "care": "Specialist clean only",
+      "collection": "Lavender Hour"
+    },
+    {
+      "id": "barrel-ivory-cord-belt",
+      "name": "Ivory corduroy balloon pant",
+      "price": 78000,
+      "category": "Barrel Pants",
+      "sub": "Corduroy",
+      "image": "/assets/products/barrel-ivory-cord-belt.jpg",
+      "colours": [
+        {
+          "name": "Ivory",
+          "hex": "#e8e0cf"
+        },
+        {
+          "name": "Brown belt",
+          "hex": "#5a4032"
+        }
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "desc": "Ivory corduroy cut wide and round through the leg, with angled panel seams and a slim brown leather belt at the waist. A soft trouser with a strict top line.",
+      "fabric": "Cotton corduroy, leather belt",
+      "care": "Dry clean recommended",
+      "collection": "The Soft Power Edit"
+    },
+    {
+      "id": "barrel-ivory-drape",
+      "name": "Ivory draped balloon pant",
+      "price": 90000,
+      "category": "Barrel Pants",
+      "sub": "Drape",
+      "image": "/assets/products/barrel-ivory-drape.jpg",
+      "badge": "NEW",
+      "colours": [
+        {
+          "name": "Ivory",
+          "hex": "#ece6d8"
+        }
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "desc": "An asymmetric waistband folds over and buttons at one hip, releasing into a heavy crepe drape that rounds out at the hem. One button, one fold, plenty of volume.",
+      "fabric": "Fluid woven crepe",
+      "care": "Dry clean only",
+      "collection": "The Soft Power Edit"
+    },
+    {
+      "id": "barrel-check-wool",
+      "name": "Coffee check balloon trouser",
+      "price": 88000,
+      "category": "Barrel Pants",
+      "sub": "Check",
+      "image": "/assets/products/barrel-check-wool.jpg",
+      "badge": "NEW",
+      "colours": [
+        {
+          "name": "Brown check",
+          "hex": "#7a6754"
+        }
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "desc": "A coffee-and-cream check through a high-waisted balloon leg: sharp at the waist, round through the thigh, cropped at the ankle. Suiting that moves like a trouser.",
+      "fabric": "Check suiting",
+      "care": "Dry clean only",
+      "collection": "The Boardroom Edit"
+    },
+    {
+      "id": "barrel-olive-coated",
+      "name": "Olive coated balloon trouser",
+      "price": 98000,
+      "category": "Barrel Pants",
+      "sub": "Coated",
+      "image": "/assets/products/barrel-olive-coated.jpg",
+      "colours": [
+        {
+          "name": "Dark olive",
+          "hex": "#5a5c46"
+        }
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "desc": "Coated olive with a quiet sheen, pressed front creases and a clean high waist. The balloon leg keeps its shape from hip to cuff without stiffening.",
+      "fabric": "Coated woven shell",
+      "care": "Wipe clean with a damp cloth",
+      "collection": "Lavender Hour"
+    },
+    {
+      "id": "barrel-taupe-quilted",
+      "name": "Taupe quilted balloon pant",
+      "price": 76000,
+      "category": "Barrel Pants",
+      "sub": "Quilted",
+      "image": "/assets/products/barrel-taupe-quilted.jpg",
+      "colours": [
+        {
+          "name": "Taupe",
+          "hex": "#b9a697"
+        }
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "desc": "Taupe twill with scalloped front pocket flaps and diamond quilting across the knee, falling into a rounded, ankle-skimming leg. Utility detailing, softened by the cut.",
+      "fabric": "Cotton twill with quilted panels",
+      "care": "Dry clean recommended",
+      "collection": "The Soft Power Edit"
+    },
+    {
+      "id": "barrel-chocolate-pleat",
+      "name": "Chocolate pleated balloon pant",
+      "price": 80000,
+      "category": "Barrel Pants",
+      "sub": "Pleated",
+      "image": "/assets/products/barrel-chocolate-pleat.jpg",
+      "colours": [
+        {
+          "name": "Chocolate",
+          "hex": "#3d2a1f"
+        }
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "desc": "Deep pleats fall from a double-button waist tab into a full chocolate leg, gathered back in at the cuff. The volume starts at the waist and stays controlled.",
+      "fabric": "Fluid woven suiting",
+      "care": "Dry clean only",
+      "collection": "The Soft Power Edit"
+    },
+    {
+      "id": "barrel-black-leather-yoke",
+      "name": "Black leather-yoke balloon trouser",
+      "price": 95000,
+      "category": "Barrel Pants",
+      "sub": "Leather yoke",
+      "image": "/assets/products/barrel-black-leather-yoke.jpg",
+      "colours": [
+        {
+          "name": "Black",
+          "hex": "#151517"
+        }
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "desc": "A wide asymmetric leather yoke wraps the high waist before the leg releases into soft black volume. One clean line from hip to ankle.",
+      "fabric": "Woven shell with leather waist yoke",
+      "care": "Specialist clean only",
+      "collection": "The Boardroom Edit"
+    },
+    {
+      "id": "top-sculpted-drape",
+      "name": "Sculpted drape-shoulder top",
+      "price": 72000,
+      "category": "Tops",
+      "sub": "Sculpted",
+      "image": "/assets/products/top-sculpted-drape.jpg",
+      "badge": "NEW",
+      "colours": [
+        {
+          "name": "Black",
+          "hex": "#17171a"
+        }
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "desc": "Matte black crepe with princess seams through the body and heavy drape folded across the shoulders. The waist is sharp; the shoulders do the softening.",
+      "fabric": "Structured crepe, draped shoulder",
+      "care": "Dry clean only",
+      "collection": "The Boardroom Edit"
+    },
+    {
+      "id": "top-rust-bow",
+      "name": "Rust bow-shoulder top",
+      "price": 55000,
+      "category": "Tops",
+      "sub": "Crepe",
+      "image": "/assets/products/top-rust-bow.jpg",
+      "badge": "NEW",
+      "colours": [
+        {
+          "name": "Rust",
+          "hex": "#8a3f2f"
+        }
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "desc": "Rust satin-backed crepe wraps across the chest and ties in a bow at one shoulder, then narrows through the waist into a curved, asymmetric hem. Formal fabric, off-centre line.",
+      "fabric": "Satin-backed crepe, bow front",
+      "care": "Dry clean only",
+      "collection": "Lavender Hour"
+    },
+    {
+      "id": "top-ivory-peplum-sash",
+      "name": "Ivory peplum sash top",
+      "price": 78000,
+      "category": "Tops",
+      "sub": "Satin",
+      "image": "/assets/products/top-ivory-peplum-sash.jpg",
+      "colours": [
+        {
+          "name": "Ivory",
+          "hex": "#efe7d6"
+        }
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "desc": "Ivory crepe with a folded shoulder line, a cinched peplum waist and long sash tails falling past the hip. The volume is all in the tails; the body stays close.",
+      "fabric": "Structured satin-back crepe",
+      "care": "Dry clean only",
+      "collection": "The Soft Power Edit"
+    },
+    {
+      "id": "top-black-mesh-ruffle",
+      "name": "Black mesh ruffle top",
+      "price": 92000,
+      "category": "Tops",
+      "sub": "Mesh",
+      "image": "/assets/products/top-black-mesh-ruffle.jpg",
+      "colours": [
+        {
+          "name": "Black",
+          "hex": "#141416"
+        }
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "desc": "Fine black mesh gathered into one asymmetric ruffle that wraps a shoulder and falls down the side. Sheer where it counts, structured where it does not.",
+      "fabric": "Stretch mesh, ruffled trim",
+      "care": "Hand wash cold, dry flat",
+      "collection": "Lavender Hour"
+    },
+    {
+      "id": "top-crimson-raw-edge",
+      "name": "Crimson raw-edge jacket top",
+      "price": 86000,
+      "category": "Tops",
+      "sub": "Raw edge",
+      "image": "/assets/products/top-crimson-raw-edge.jpg",
+      "badge": "NEW",
+      "colours": [
+        {
+          "name": "Crimson",
+          "hex": "#a01f2d"
+        }
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "desc": "A crimson textured bustier jacket with fringed raw edges at every seam, cut away at the waist over a black underlayer. Built to look unfinished, made to hold its shape.",
+      "fabric": "Textured tweed with raw-edge trim",
+      "care": "Dry clean only",
+      "collection": "Lavender Hour"
+    },
+    {
+      "id": "top-cream-raw-edge",
+      "name": "Cream raw-edge puff-sleeve top",
+      "price": 68000,
+      "category": "Tops",
+      "sub": "Raw edge",
+      "image": "/assets/products/top-cream-raw-edge.jpg",
+      "colours": [
+        {
+          "name": "Cream",
+          "hex": "#f1ead9"
+        }
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "desc": "Cream textured cloth left raw and frayed at the seams, with rounded puff sleeves, a folded neckline and an asymmetric zip. Soft colour, deliberately rough edges.",
+      "fabric": "Textured cotton blend, raw edges",
+      "care": "Dry clean recommended",
+      "collection": "Lavender Hour"
+    },
+    {
+      "id": "top-denim-crop-jacket",
+      "name": "Cropped denim jacket top",
+      "price": 42000,
+      "category": "Tops",
+      "sub": "Denim",
+      "image": "/assets/products/top-denim-crop-jacket.jpg",
+      "colours": [
+        {
+          "name": "Indigo",
+          "hex": "#2c3a4e"
+        }
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "desc": "A cropped indigo denim jacket with an oversized fold collar, gold shank buttons and a self-tie waist. Contrast cuffs finish the sleeve; the crop keeps it sharp.",
+      "fabric": "Cotton denim, contrast lining",
+      "care": "Machine wash cold, inside out",
+      "collection": "Lavender Hour"
+    },
+    {
+      "id": "top-merlot-leather-corset",
+      "name": "Merlot leather-sleeve corset top",
+      "price": 82000,
+      "category": "Tops",
+      "sub": "Leather",
+      "image": "/assets/products/top-merlot-leather-corset.jpg",
+      "colours": [
+        {
+          "name": "Merlot",
+          "hex": "#5e1f2a"
+        }
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "desc": "A merlot felted corset with sculpted waist seams, framed by puffed leather sleeves and a row of gold shank buttons. Structured body, soft volume at the arm.",
+      "fabric": "Felted bodice with leather sleeves",
+      "care": "Specialist clean only",
+      "collection": "Lavender Hour"
+    },
+    {
+      "id": "top-camel-hooded-corset",
+      "name": "Camel hooded corset jacket",
+      "price": 76000,
+      "category": "Tops",
+      "sub": "Suede",
+      "image": "/assets/products/top-camel-hooded-corset.jpg",
+      "colours": [
+        {
+          "name": "Camel",
+          "hex": "#a5764f"
+        }
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "desc": "Camel suede panels a corset-cut jacket, with a hood at the neck, an exposed zip through the waist and ribbed cuffs. Sportswear shapes, kept dressy.",
+      "fabric": "Suede-panel shell, ribbed cuffs",
+      "care": "Dry clean recommended",
+      "collection": "Lavender Hour"
+    },
+    {
+      "id": "top-burgundy-satin-corset",
+      "name": "Burgundy satin corset top",
+      "price": 62000,
+      "category": "Tops",
+      "sub": "Satin",
+      "image": "/assets/products/top-burgundy-satin-corset.jpg",
+      "badge": "NEW",
+      "colours": [
+        {
+          "name": "Burgundy",
+          "hex": "#5c1622"
+        }
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "desc": "Deep burgundy satin with a V neckline, satin lapels and three frog closures down a boned waist. Wide folded cuffs balance the close fit.",
+      "fabric": "Satin, boned bodice",
+      "care": "Dry clean only",
+      "collection": "The Boardroom Edit"
+    },
+    {
+      "id": "top-grey-plaid-wrap",
+      "name": "Grey plaid knot-front blouse",
+      "price": 48000,
+      "category": "Tops",
+      "sub": "Check",
+      "image": "/assets/products/top-grey-plaid-wrap.jpg",
+      "colours": [
+        {
+          "name": "Grey check",
+          "hex": "#c9c6bd"
+        }
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "desc": "A grey check blouse gathered through a twisted knot at the shoulder, with blouson sleeves and a cinched waist. The wrap makes the volume feel deliberate.",
+      "fabric": "Cotton check, wrap tie",
+      "care": "Machine wash cold, hang dry",
+      "collection": "The Boardroom Edit"
+    },
+    {
+      "id": "top-sheer-organza-ruffle",
+      "name": "Sheer organza ruffle top",
+      "price": 84000,
+      "category": "Tops",
+      "sub": "Organza",
+      "image": "/assets/products/top-sheer-organza-ruffle.jpg",
+      "colours": [
+        {
+          "name": "Champagne",
+          "hex": "#e7e0d0"
+        }
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "desc": "Translucent ivory organza layered into soft, sculptural ruffles that stand away from the shoulder and hem. Light enough to move, firm enough to hold.",
+      "fabric": "Sheer organza, ruffled trim",
+      "care": "Hand wash cold, dry flat",
+      "collection": "Lavender Hour"
+    },
+    {
+      "id": "top-burgundy-leather-peplum",
+      "name": "Burgundy draped halter top",
+      "price": 80000,
+      "category": "Tops",
+      "sub": "Leather trim",
+      "image": "/assets/products/top-burgundy-leather-peplum.jpg",
+      "colours": [
+        {
+          "name": "Burgundy",
+          "hex": "#561a22"
+        }
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "desc": "Deep burgundy crepe drapes from a wrapped halter neckline, cinched by a glossy leather waistband and a short leather peplum. Soft above, hard at the waist.",
+      "fabric": "Draped crepe with leather waist",
+      "care": "Specialist clean only",
+      "collection": "Lavender Hour"
+    },
+    {
+      "id": "top-black-studded-leather",
+      "name": "Black studded leather top",
+      "price": 88000,
+      "category": "Tops",
+      "sub": "Leather",
+      "image": "/assets/products/top-black-studded-leather.jpg",
+      "badge": "NEW",
+      "colours": [
+        {
+          "name": "Black",
+          "hex": "#141414"
+        }
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "desc": "Black leather cut into a high-collar jacket top with flap pockets, gold studs at the closures and a peplum flaring over the hip. Heavy material, precise shape.",
+      "fabric": "Leather, gold studs",
+      "care": "Specialist leather clean only",
+      "collection": "The Boardroom Edit"
+    },
+    {
+      "id": "top-chocolate-satin-shirt",
+      "name": "Chocolate satin jewel-button shirt",
+      "price": 64000,
+      "category": "Tops",
+      "sub": "Satin",
+      "image": "/assets/products/top-chocolate-satin-shirt.jpg",
+      "colours": [
+        {
+          "name": "Chocolate",
+          "hex": "#4a2f28"
+        }
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "desc": "Chocolate satin with a draped wrap front, three jewel-set buttons at the placket and long bishop sleeves. The shine is deep rather than bright.",
+      "fabric": "Satin with crystal buttons",
+      "care": "Dry clean only",
+      "collection": "The Soft Power Edit"
+    },
+    {
+      "id": "top-pinstripe-wrap-shirt",
+      "name": "Pinstripe wrap shirt",
+      "price": 58000,
+      "category": "Tops",
+      "sub": "Pinstripe",
+      "image": "/assets/products/top-pinstripe-wrap-shirt.jpg",
+      "colours": [
+        {
+          "name": "Brown pinstripe",
+          "hex": "#57493c"
+        }
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "desc": "A chocolate pinstripe shirt wrapped at the waist and fastened with a leather tab and tie, falling into an asymmetric hem. Shirt tailoring, dressy intention.",
+      "fabric": "Cotton pinstripe, wrap front",
+      "care": "Machine wash cold, hang dry",
+      "collection": "The Boardroom Edit"
+    },
+    {
+      "id": "top-stone-asymmetric",
+      "name": "Stone asymmetric blouse",
+      "price": 52000,
+      "category": "Tops",
+      "sub": "Linen",
+      "image": "/assets/products/top-stone-asymmetric.jpg",
+      "colours": [
+        {
+          "name": "Stone",
+          "hex": "#cfc4b2"
+        }
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "desc": "Stone linen with an off-shoulder collar, gathered at one hip by a single jewel button and released into an asymmetric hem. The drape is loose; the button holds it.",
+      "fabric": "Linen, asymmetric hem",
+      "care": "Dry clean recommended",
+      "collection": "The Soft Power Edit"
+    },
+    {
+      "id": "top-white-sculpted",
+      "name": "White sculpted-neckline top",
+      "price": 74000,
+      "category": "Tops",
+      "sub": "Sculpted",
+      "image": "/assets/products/top-white-sculpted.jpg",
+      "colours": [
+        {
+          "name": "White",
+          "hex": "#f4f1ea"
+        }
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "desc": "A clean white top with a sculpted roll neckline that curves over the shoulder, cap sleeves and a fitted waist. Sharp, simple, and all about the neckline.",
+      "fabric": "Structured crepe, sculpted neckline",
+      "care": "Dry clean only",
+      "collection": "The Soft Power Edit"
+    },
+    {
+      "id": "top-olive-suede-wrap",
+      "name": "Olive suede wrap blouse",
+      "price": 66000,
+      "category": "Tops",
+      "sub": "Faux suede",
+      "image": "/assets/products/top-olive-suede-wrap.jpg",
+      "badge": "NEW",
+      "colours": [
+        {
+          "name": "Olive",
+          "hex": "#6b6a4d"
+        }
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "desc": "Olive faux suede with a soft collar, a wrap front tied at the waist and an asymmetric hem. The suede keeps the drape from going limp.",
+      "fabric": "Faux suede, wrap tie",
+      "care": "Dry clean recommended",
+      "collection": "The Soft Power Edit"
+    },
+    {
+      "id": "top-olive-belted-peplum",
+      "name": "Olive suede belted peplum top",
+      "price": 70000,
+      "category": "Tops",
+      "sub": "Suede",
+      "image": "/assets/products/top-olive-belted-peplum.jpg",
+      "colours": [
+        {
+          "name": "Olive",
+          "hex": "#6f6e50"
+        }
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "desc": "An olive suede top with a cowl neckline, wide sleeves and a square-buckle belt setting off a pleated peplum. Waist defined, volume below.",
+      "fabric": "Suede, self belt",
+      "care": "Specialist clean only",
+      "collection": "Lavender Hour"
+    },
+    {
+      "id": "bodysuit-chocolate-overlay",
+      "name": "Chocolate overlay bodysuit",
+      "price": 56000,
+      "category": "Bodysuits",
+      "sub": "Faux leather",
+      "image": "/assets/products/bodysuit-chocolate-overlay.jpg",
+      "badge": "NEW",
+      "colours": [
+        {
+          "name": "Chocolate",
+          "hex": "#4e352a"
+        }
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "desc": "A chocolate faux-leather overlay curves across one shoulder over a matching knit bodysuit, with gathered puff sleeves and ribbed cuffs. One palette, two finishes.",
+      "fabric": "Faux-leather overlay, knit bodysuit",
+      "care": "Hand wash cold, dry flat",
+      "collection": "Lavender Hour"
+    },
+    {
+      "id": "bodysuit-cream-overlay",
+      "name": "Cream overlay bodysuit",
+      "price": 52000,
+      "category": "Bodysuits",
+      "sub": "Faux leather",
+      "image": "/assets/products/bodysuit-cream-overlay.jpg",
+      "colours": [
+        {
+          "name": "Cream",
+          "hex": "#e9dfc9"
+        },
+        {
+          "name": "Taupe body",
+          "hex": "#9b7c67"
+        }
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "desc": "An ivory faux-leather overlay cuts a curved line across a taupe knit bodysuit, with puff sleeves and a high-cut leg. Clean edges, soft body.",
+      "fabric": "Faux-leather overlay, knit bodysuit",
+      "care": "Hand wash cold, dry flat",
+      "collection": "The Soft Power Edit"
+    },
+    {
+      "id": "bodysuit-taupe-overlay",
+      "name": "Taupe long-sleeve overlay bodysuit",
+      "price": 54000,
+      "category": "Bodysuits",
+      "sub": "Faux leather",
+      "image": "/assets/products/bodysuit-taupe-overlay.jpg",
+      "colours": [
+        {
+          "name": "Taupe",
+          "hex": "#6d5244"
+        },
+        {
+          "name": "Chocolate body",
+          "hex": "#5d4335"
+        }
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "desc": "A taupe leather-look overlay sits over a chocolate knit body, pointed at the waist and finished with long sleeves and ribbed cuffs. The contrast is all in tone.",
+      "fabric": "Faux-leather overlay, knit bodysuit",
+      "care": "Hand wash cold, dry flat",
+      "collection": "The Soft Power Edit"
+    },
+    {
+      "id": "bodysuit-beige-scoop",
+      "name": "Beige scoop overlay bodysuit",
+      "price": 45000,
+      "category": "Bodysuits",
+      "sub": "Faux leather",
+      "image": "/assets/products/bodysuit-beige-scoop.jpg",
+      "colours": [
+        {
+          "name": "Beige",
+          "hex": "#efe3d0"
+        },
+        {
+          "name": "Nude body",
+          "hex": "#a98d79"
+        }
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "desc": "A soft beige overlay sweeps across a scoop-neck nude bodysuit, with unstructured shoulders and a high-cut leg. Almost skin-toned, entirely deliberate.",
+      "fabric": "Faux-leather overlay, knit bodysuit",
+      "care": "Hand wash cold, dry flat",
+      "collection": "Lavender Hour"
+    },
+    {
+      "id": "bodysuit-camel-hooded",
+      "name": "Camel hooded zip bodysuit",
+      "price": 62000,
+      "category": "Bodysuits",
+      "sub": "Knit",
+      "image": "/assets/products/bodysuit-camel-hooded.jpg",
+      "badge": "NEW",
+      "colours": [
+        {
+          "name": "Camel",
+          "hex": "#b07a4a"
+        }
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "desc": "A cropped camel hoodie with a zip front and dropped shoulders, layered over a matching knit bodysuit. Soft sportswear, cut for a skirt.",
+      "fabric": "Brushed knit bodysuit with hood",
+      "care": "Machine wash cold, dry flat",
+      "collection": "Lavender Hour"
+    },
+    {
+      "id": "blazer-grey-cape",
+      "name": "Grey cape-sleeve blazer",
+      "price": 115000,
+      "category": "Blazer Jacket",
+      "sub": "Cape sleeve",
+      "image": "/assets/products/blazer-grey-cape.jpg",
+      "badge": "NEW",
+      "colours": [
+        {
+          "name": "Grey",
+          "hex": "#8d8d8d"
+        }
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "desc": "A fitted single-breasted blazer with wide notched lapels and cape sleeves that fall in soft tiers to the wrist. Three covered buttons keep the front quiet.",
+      "fabric": "Suiting, fabric-covered buttons",
+      "care": "Dry clean only",
+      "collection": "The Boardroom Edit"
+    },
+    {
+      "id": "blazer-camel-cape",
+      "name": "Camel cape-sleeve blazer",
+      "price": 120000,
+      "category": "Blazer Jacket",
+      "sub": "Cape sleeve",
+      "image": "/assets/products/blazer-camel-cape.jpg",
+      "colours": [
+        {
+          "name": "Camel",
+          "hex": "#a98f6a"
+        }
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "desc": "The same sculpted blazer in warm camel: wide lapels, tiered cape sleeves and covered buttons on a fitted, cropped body. Sharp shoulders, soft movement.",
+      "fabric": "Suiting, fabric-covered buttons",
+      "care": "Dry clean only",
+      "collection": "The Soft Power Edit"
+    },
+    {
+      "id": "blazer-cream-cape",
+      "name": "Cream asymmetric cape blazer",
+      "price": 130000,
+      "category": "Blazer Jacket",
+      "sub": "Cape",
+      "image": "/assets/products/blazer-cream-cape.jpg",
+      "badge": "NEW",
+      "colours": [
+        {
+          "name": "Cream",
+          "hex": "#ece5d6"
+        }
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "desc": "A cream textured blazer with a stand collar and an asymmetric cape panel across one shoulder, cinched by a gold clasp and finished with flap pockets. Tailoring, edited.",
+      "fabric": "Textured suiting",
+      "care": "Dry clean only",
+      "collection": "Lavender Hour"
+    },
+    {
+      "id": "knit-navy-burgundy-polo",
+      "name": "Navy horse-bit knit polo",
+      "price": 55000,
+      "category": "Knit",
+      "sub": "Knit polo",
+      "image": "/assets/products/knit-navy-burgundy-polo.jpg",
+      "badge": "NEW",
+      "colours": [
+        {
+          "name": "Navy",
+          "hex": "#232b45"
+        },
+        {
+          "name": "Burgundy",
+          "hex": "#7d1f2e"
+        }
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "desc": "A fitted navy knit polo with a burgundy spread collar and placket edge, closed at the throat by a gold horse-bit clasp. Cap sleeves and a ribbed band hem keep it sharp.",
+      "fabric": "Fine-gauge knit, gold-tone clasp",
+      "care": "Hand wash cold, dry flat",
+      "collection": "The Soft Power Edit"
+    },
+    {
+      "id": "knit-cream-burgundy-polo",
+      "name": "Cream horse-bit knit polo",
+      "price": 55000,
+      "category": "Knit",
+      "sub": "Knit polo",
+      "image": "/assets/products/knit-cream-burgundy-polo.jpg",
+      "badge": "NEW",
+      "colours": [
+        {
+          "name": "Cream",
+          "hex": "#efe9dc"
+        },
+        {
+          "name": "Burgundy",
+          "hex": "#7d1f2e"
+        }
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "desc": "The horse-bit polo in cream, a burgundy collar and placket trim framing the neck. The gold clasp sits at the throat and the body fits close to a ribbed hem.",
+      "fabric": "Fine-gauge knit, gold-tone clasp",
+      "care": "Hand wash cold, dry flat",
+      "collection": "The Boardroom Edit"
+    },
+    {
+      "id": "knit-chocolate-burgundy-polo",
+      "name": "Chocolate horse-bit knit polo",
+      "price": 58000,
+      "category": "Knit",
+      "sub": "Knit polo",
+      "image": "/assets/products/knit-chocolate-burgundy-polo.jpg",
+      "badge": "NEW",
+      "colours": [
+        {
+          "name": "Chocolate",
+          "hex": "#4a3533"
+        },
+        {
+          "name": "Burgundy",
+          "hex": "#7d1f2e"
+        }
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "desc": "Deep chocolate knit with a burgundy contrast collar and horse-bit clasp, cut close with cap sleeves and a ribbed waistband. Sits clean over tailoring.",
+      "fabric": "Fine-gauge knit, gold-tone clasp",
+      "care": "Hand wash cold, dry flat",
+      "collection": "Lavender Hour"
+    },
+    {
+      "id": "knit-cream-pleated-rib-crop",
+      "name": "Pleated-rib polo crop",
+      "price": 52000,
+      "category": "Knit",
+      "sub": "Rib crop",
+      "image": "/assets/products/knit-cream-pleated-rib-crop.jpg",
+      "colours": [
+        {
+          "name": "Cream",
+          "hex": "#efe9dc"
+        }
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "desc": "A cream cropped polo in a fine pleated rib, from a crisp white pointed collar through short pleated sleeves to a smooth ribbed waistband.",
+      "fabric": "Pleated rib knit, contrast collar",
+      "care": "Hand wash cold, dry flat",
+      "collection": "The Soft Power Edit"
+    },
+    {
+      "id": "knit-olive-zip-collar",
+      "name": "Olive zip-front knit jacket",
+      "price": 78000,
+      "category": "Knit",
+      "sub": "Knit jacket",
+      "image": "/assets/products/knit-olive-zip-collar.jpg",
+      "badge": "NEW",
+      "colours": [
+        {
+          "name": "Olive",
+          "hex": "#7d8038"
+        }
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "desc": "An olive ribbed knit jacket with a boxy cropped body, zipped to a brown faux-leather pointed collar, finished with ribbed cuffs and hem.",
+      "fabric": "Rib knit, faux-leather collar",
+      "care": "Hand wash cold, dry flat",
+      "collection": "The Boardroom Edit"
+    },
+    {
+      "id": "knit-olive-bit-detail",
+      "name": "Olive bit-placket crew",
+      "price": 62000,
+      "category": "Knit",
+      "sub": "Crew neck",
+      "image": "/assets/products/knit-olive-bit-detail.jpg",
+      "colours": [
+        {
+          "name": "Olive",
+          "hex": "#6f6d34"
+        }
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "desc": "A soft olive crew-neck knit with ribbed edges, the plain front broken by three silver horse-bit clasps down a short placket.",
+      "fabric": "Knit, silver-tone bit clasps",
+      "care": "Hand wash cold, dry flat",
+      "collection": "Lavender Hour"
+    },
+    {
+      "id": "knit-cream-scallop-polo",
+      "name": "Cream scallop-trim polo",
+      "price": 45000,
+      "category": "Knit",
+      "sub": "Knit polo",
+      "image": "/assets/products/knit-cream-scallop-polo.jpg",
+      "colours": [
+        {
+          "name": "Cream",
+          "hex": "#f1ece1"
+        }
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "desc": "A cream short-sleeve polo with an open collar edged in black scalloped crochet, short ribbed sleeves and a fitted body over a ribbed hem.",
+      "fabric": "Knit, crochet-trim collar",
+      "care": "Hand wash cold, dry flat",
+      "collection": "The Soft Power Edit"
+    },
+    {
+      "id": "knit-red-zigzag-polo",
+      "name": "Red zigzag-trim polo",
+      "price": 48000,
+      "category": "Knit",
+      "sub": "Knit polo",
+      "image": "/assets/products/knit-red-zigzag-polo.jpg",
+      "colours": [
+        {
+          "name": "Red",
+          "hex": "#a8263a"
+        }
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "desc": "A fitted red knit polo traced with white embroidered zigzag along the collar and placket, with short ribbed sleeves and a ribbed band hem.",
+      "fabric": "Knit, embroidered zigzag trim",
+      "care": "Hand wash cold, dry flat",
+      "collection": "Lavender Hour"
+    },
+    {
+      "id": "knit-ivory-bird-embroidery",
+      "name": "Ivory bird-embroidery knit",
+      "price": 72000,
+      "category": "Knit",
+      "sub": "Embroidered",
+      "image": "/assets/products/knit-ivory-bird-embroidery.jpg",
+      "badge": "NEW",
+      "colours": [
+        {
+          "name": "Ivory",
+          "hex": "#f3efe4"
+        }
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "desc": "An ivory sleeveless knit with a ribbed crew neck and armholes, worked across the front with embroidered birds and blossoms in muted green, rose and blue.",
+      "fabric": "Knit, embroidered front",
+      "care": "Hand wash cold, dry flat",
+      "collection": "Lavender Hour"
+    },
+    {
+      "id": "knit-beige-cable-denim-collar",
+      "name": "Beige cable knit with denim collar",
+      "price": 82000,
+      "category": "Knit",
+      "sub": "Cable knit",
+      "image": "/assets/products/knit-beige-cable-denim-collar.jpg",
+      "colours": [
+        {
+          "name": "Beige",
+          "hex": "#d5c3ae"
+        }
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "desc": "A beige cable knit with blouson sleeves and ribbed edges, topped by an attached soft denim pointed collar that opens into a deep V.",
+      "fabric": "Cable knit, denim collar",
+      "care": "Hand wash cold, dry flat",
+      "collection": "The Soft Power Edit"
+    },
+    {
+      "id": "knit-black-denim-collar",
+      "name": "Black knit with denim collar",
+      "price": 88000,
+      "category": "Knit",
+      "sub": "Cable knit",
+      "image": "/assets/products/knit-black-denim-collar.jpg",
+      "colours": [
+        {
+          "name": "Black",
+          "hex": "#171717"
+        }
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "desc": "A fine black knit finished with a denim pointed collar, denim placket and rolled denim cuffs, set with a crystal brooch at the chest.",
+      "fabric": "Fine-gauge knit, denim collar and cuffs",
+      "care": "Hand wash cold, dry flat",
+      "collection": "The Boardroom Edit"
+    },
+    {
+      "id": "knit-green-cable-flare",
+      "name": "Forest cable knit with flared hem",
+      "price": 68000,
+      "category": "Knit",
+      "sub": "Cable knit",
+      "image": "/assets/products/knit-green-cable-flare.jpg",
+      "colours": [
+        {
+          "name": "Forest Green",
+          "hex": "#3c5a34"
+        }
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "desc": "Forest-green cable panels run down a fitted sleeveless body, closing at the waist where the ribbed hem kicks out into a soft peplum flare.",
+      "fabric": "Cable knit, flared rib hem",
+      "care": "Hand wash cold, dry flat",
+      "collection": "Lavender Hour"
+    },
+    {
+      "id": "fancy-jacket-houndstooth",
+      "name": "Houndstooth ruched-sleeve jacket",
+      "price": 115000,
+      "category": "Fancy Jacket",
+      "sub": "Houndstooth",
+      "image": "/assets/products/fancy-jacket-houndstooth-crop.jpg",
+      "badge": "NEW",
+      "colours": [
+        {
+          "name": "Camel Houndstooth",
+          "hex": "#b3a48e"
+        }
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "desc": "A cropped camel-and-chocolate houndstooth jacket with a high funnel collar, snap placket, flap chest pockets, ruched sleeves and a drawcord waist pulled tight.",
+      "fabric": "Houndstooth tweed, snap front",
+      "care": "Dry clean only",
+      "collection": "The Boardroom Edit"
+    },
+    {
+      "id": "fancy-jacket-chocolate-snap",
+      "name": "Chocolate snap-front cropped jacket",
+      "price": 98000,
+      "category": "Fancy Jacket",
+      "sub": "Cropped jacket",
+      "image": "/assets/products/fancy-jacket-chocolate-snap.jpg",
+      "colours": [
+        {
+          "name": "Chocolate",
+          "hex": "#6b4a3a"
+        }
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "desc": "A chocolate cropped jacket with a spread collar, gold snaps on a curved placket and flap pockets, blouson sleeves gathered into tight cuffs.",
+      "fabric": "Twill, gold-tone snaps",
+      "care": "Dry clean only",
+      "collection": "Lavender Hour"
+    },
+    {
+      "id": "fancy-jacket-plaid-cropped",
+      "name": "Tartan cropped jacket",
+      "price": 105000,
+      "category": "Fancy Jacket",
+      "sub": "Plaid",
+      "image": "/assets/products/fancy-jacket-plaid-cropped.jpg",
+      "badge": "NEW",
+      "colours": [
+        {
+          "name": "Blue Tartan",
+          "hex": "#5d7b86"
+        }
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "desc": "A cropped collarless jacket in blue and charcoal tartan, buttoned in antique gold with puffed sleeves and ribbed cuffs.",
+      "fabric": "Brushed plaid, antique-gold buttons",
+      "care": "Dry clean only",
+      "collection": "The Boardroom Edit"
+    },
+    {
+      "id": "fancy-jacket-rose-suede",
+      "name": "Rose faux-suede zip jacket",
+      "price": 92000,
+      "category": "Fancy Jacket",
+      "sub": "Faux suede",
+      "image": "/assets/products/fancy-jacket-rose-suede.jpg",
+      "colours": [
+        {
+          "name": "Rose",
+          "hex": "#b4556b"
+        }
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "desc": "A rose faux-suede jacket with a funnel collar and silver zip front, seamed through the sleeves and finished with snap-tab cuffs.",
+      "fabric": "Faux suede, silver-tone zip",
+      "care": "Dry clean only",
+      "collection": "Lavender Hour"
+    },
+    {
+      "id": "dress-black-lace-waist",
+      "name": "Black satin lace-waist gown",
+      "price": 158000,
+      "category": "Elegant Dresses",
+      "sub": "Satin",
+      "image": "/assets/products/dress-black-lace-waist.jpg",
+      "colours": [
+        {
+          "name": "Black",
+          "hex": "#131313"
+        }
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "desc": "Black satin with a high mandarin collar and cap sleeves, the midriff cut away into sheer lace. The skirt wraps, knots at one hip and falls to a floor-length slit.",
+      "fabric": "Satin, sheer lace bodice",
+      "care": "Dry clean only",
+      "collection": "The Boardroom Edit"
+    },
+    {
+      "id": "dress-ivory-fringe-gown",
+      "name": "Ivory fringed off-shoulder gown",
+      "price": 228000,
+      "category": "Elegant Dresses",
+      "sub": "Fringed",
+      "image": "/assets/products/dress-ivory-fringe-gown.jpg",
+      "badge": "NEW",
+      "colours": [
+        {
+          "name": "Ivory",
+          "hex": "#efe9e0"
+        }
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "desc": "An ivory off-shoulder gown, draped smooth over the bodice and hip, the skirt built in tiers of beaded champagne, sand and charcoal fringe to a pointed hem.",
+      "fabric": "Bonded crepe, beaded fringe",
+      "care": "Dry clean only",
+      "collection": "Lavender Hour"
+    },
+    {
+      "id": "dress-emerald-drape-fringe",
+      "name": "Emerald draped fringe gown",
+      "price": 205000,
+      "category": "Elegant Dresses",
+      "sub": "Fringed",
+      "image": "/assets/products/dress-emerald-drape-fringe.jpg",
+      "badge": "NEW",
+      "colours": [
+        {
+          "name": "Emerald",
+          "hex": "#0f6d4f"
+        }
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "desc": "Emerald satin draped on the bias and wrapped at the waist of a one-shoulder gown, releasing into tiered fringe to the floor. The shine lives in the movement.",
+      "fabric": "Satin, fringed skirt",
+      "care": "Dry clean only",
+      "collection": "Lavender Hour"
+    },
+    {
+      "id": "dress-navy-star-fringe",
+      "name": "Navy star-jacquard fringe gown",
+      "price": 192000,
+      "category": "Elegant Dresses",
+      "sub": "Fringed",
+      "image": "/assets/products/dress-navy-star-fringe.jpg",
+      "badge": "NEW",
+      "colours": [
+        {
+          "name": "Midnight Navy",
+          "hex": "#1b2340"
+        }
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "desc": "Midnight star jacquard fits the body with cap sleeves and a V neck, the hip seam scalloped before four tiers of fringe fall to the floor.",
+      "fabric": "Star jacquard, fringed skirt",
+      "care": "Dry clean only",
+      "collection": "The Boardroom Edit"
+    },
+    {
+      "id": "dress-pale-blue-petal",
+      "name": "Pale blue organza petal gown",
+      "price": 258000,
+      "category": "Elegant Dresses",
+      "sub": "Organza",
+      "image": "/assets/products/dress-pale-blue-petal.jpg",
+      "colours": [
+        {
+          "name": "Powder Blue",
+          "hex": "#a9cbe8"
+        }
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "desc": "Pale blue organza petals, each edged in black, cascade from one shoulder over a sheer black tulle base. Layers that read light, edges that keep it sharp.",
+      "fabric": "Organza petals over tulle",
+      "care": "Dry clean only",
+      "collection": "Lavender Hour"
+    },
+    {
+      "id": "dress-lime-bow-gown",
+      "name": "Lime bow corset gown",
+      "price": 268000,
+      "category": "Elegant Dresses",
+      "sub": "Corset",
+      "image": "/assets/products/dress-lime-bow-gown.jpg",
+      "badge": "NEW",
+      "colours": [
+        {
+          "name": "Lime",
+          "hex": "#a8b32c"
+        },
+        {
+          "name": "Black",
+          "hex": "#131313"
+        }
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "desc": "A strapless black corset with lattice boning and lace-trimmed cups, wrapped at the waist by an oversized lime satin bow above a full pleated skirt.",
+      "fabric": "Satin, boned corset bodice",
+      "care": "Dry clean only",
+      "collection": "Lavender Hour"
+    },
+    {
+      "id": "dress-champagne-cowl",
+      "name": "Champagne draped-bodice gown",
+      "price": 150000,
+      "category": "Elegant Dresses",
+      "sub": "Satin",
+      "image": "/assets/products/dress-champagne-cowl.jpg",
+      "colours": [
+        {
+          "name": "Champagne",
+          "hex": "#e4cfb2"
+        }
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "desc": "A black bodice is wrapped in deep champagne satin, cowled and knotted at the waist, then released into a draped skirt with a sweeping train.",
+      "fabric": "Duchess satin, draped bodice",
+      "care": "Dry clean only",
+      "collection": "Lavender Hour"
+    },
+    {
+      "id": "dress-ivory-jacquard-column",
+      "name": "Ivory jacquard column with corsage",
+      "price": 172000,
+      "category": "Elegant Dresses",
+      "sub": "Jacquard",
+      "image": "/assets/products/dress-ivory-jacquard-column.jpg",
+      "colours": [
+        {
+          "name": "Ivory",
+          "hex": "#f2ece1"
+        }
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "desc": "A floor-length ivory column in tonal fern jacquard, its off-shoulder stand collar sculpted over one shoulder, finished with a lilac floral corsage.",
+      "fabric": "Floral jacquard, floral corsage",
+      "care": "Dry clean only",
+      "collection": "Lavender Hour"
+    },
+    {
+      "id": "dress-black-velvet-petal",
+      "name": "Black velvet petal gown",
+      "price": 210000,
+      "category": "Elegant Dresses",
+      "sub": "Velvet",
+      "image": "/assets/products/dress-black-velvet-petal.jpg",
+      "colours": [
+        {
+          "name": "Black",
+          "hex": "#121214"
+        }
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "desc": "Black velvet scalloped into petals outlined in fine gold piping, strapless, with a cluster of crystal flowers set at the bust.",
+      "fabric": "Velvet, gold piping, crystal appliqué",
+      "care": "Dry clean only",
+      "collection": "The Boardroom Edit"
+    },
+    {
+      "id": "dress-red-velvet-petal",
+      "name": "Red velvet petal gown",
+      "price": 215000,
+      "category": "Elegant Dresses",
+      "sub": "Velvet",
+      "image": "/assets/products/dress-red-velvet-petal.jpg",
+      "colours": [
+        {
+          "name": "Deep Red",
+          "hex": "#7d1420"
+        }
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "desc": "Deep red velvet petals fall from an off-shoulder band over a sheer organza yoke, building down the column to a ruched hem.",
+      "fabric": "Velvet petals over organza",
+      "care": "Dry clean only",
+      "collection": "Lavender Hour"
+    },
+    {
+      "id": "dress-black-sculpted-trumpet",
+      "name": "Black sculpted trumpet gown",
+      "price": 285000,
+      "category": "Elegant Dresses",
+      "sub": "Sculpted",
+      "image": "/assets/products/dress-black-sculpted-trumpet.jpg",
+      "badge": "NEW",
+      "colours": [
+        {
+          "name": "Black",
+          "hex": "#151515"
+        }
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "desc": "A strapless black column pleated down the body, flaring at the hip into two sculpted folds that break into trailing ribbon streamers.",
+      "fabric": "Pleated crepe, ribbon streamers",
+      "care": "Dry clean only",
+      "collection": "The Boardroom Edit"
+    },
+    {
+      "id": "dress-gold-drop-waist",
+      "name": "Gold satin drop-waist gown",
+      "price": 135000,
+      "category": "Elegant Dresses",
+      "sub": "Satin",
+      "image": "/assets/products/dress-gold-drop-waist.jpg",
+      "colours": [
+        {
+          "name": "Antique Gold",
+          "hex": "#c99a1e"
+        }
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "desc": "Gold satin with a halter neck and high collar, corset seams through the fitted bodice, and a dropped waist releasing into a gathered bubble skirt.",
+      "fabric": "Structured satin, gathered skirt",
+      "care": "Dry clean only",
+      "collection": "Lavender Hour"
+    },
+    {
+      "id": "dress-teal-off-shoulder",
+      "name": "Teal off-shoulder gown with train",
+      "price": 165000,
+      "category": "Elegant Dresses",
+      "sub": "Satin",
+      "image": "/assets/products/dress-teal-off-shoulder.jpg",
+      "colours": [
+        {
+          "name": "Teal",
+          "hex": "#0f7f8e"
+        }
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "desc": "Teal satin with a folded off-shoulder neckline edged in silver beading, draped from one shoulder into a floor-sweeping train.",
+      "fabric": "Satin, beaded neckline",
+      "care": "Dry clean only",
+      "collection": "The Boardroom Edit"
+    },
+    {
+      "id": "dress-ice-blue-fringe",
+      "name": "Ice-blue beaded fringe gown",
+      "price": 198000,
+      "category": "Elegant Dresses",
+      "sub": "Beaded",
+      "image": "/assets/products/dress-ice-blue-fringe.jpg",
+      "badge": "NEW",
+      "colours": [
+        {
+          "name": "Ice Blue",
+          "hex": "#8fc6ef"
+        }
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "desc": "Spaghetti straps and a sweetheart neckline above a fitted body beaded from ice blue into royal blue, cascading into a skirt of shimmering fringe.",
+      "fabric": "Beaded bodice, fringed skirt",
+      "care": "Dry clean only",
+      "collection": "Lavender Hour"
+    },
+    {
+      "id": "dress-midnight-beaded-fringe",
+      "name": "Midnight beaded fringe gown",
+      "price": 185000,
+      "category": "Elegant Dresses",
+      "sub": "Beaded",
+      "image": "/assets/products/dress-midnight-beaded-fringe.jpg",
+      "colours": [
+        {
+          "name": "Midnight",
+          "hex": "#16213f"
+        }
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "desc": "Thin straps and a straight neck over a body beaded in sparkling arcs, the pattern opening into long strands of fringe that fall past the hem.",
+      "fabric": "Beaded jersey, long fringe",
+      "care": "Dry clean only",
+      "collection": "The Boardroom Edit"
+    },
+    {
+      "id": "dress-rose-degrade-fringe",
+      "name": "Rose dégradé fringe gown",
+      "price": 178000,
+      "category": "Elegant Dresses",
+      "sub": "Fringed",
+      "image": "/assets/products/dress-rose-degrade-fringe.jpg",
+      "colours": [
+        {
+          "name": "Rose",
+          "hex": "#c89485"
+        }
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "desc": "A strapless bustier layered in fringed tiers that fade from champagne and rose at the chest to chocolate at the floor.",
+      "fabric": "Satin bustier, ombré fringe",
+      "care": "Dry clean only",
+      "collection": "Lavender Hour"
+    },
+    {
+      "id": "dress-ivory-beaded-strapless",
+      "name": "Ivory beaded strapless gown",
+      "price": 235000,
+      "category": "Elegant Dresses",
+      "sub": "Beaded",
+      "image": "/assets/products/dress-ivory-beaded-strapless.jpg",
+      "badge": "NEW",
+      "colours": [
+        {
+          "name": "Ivory",
+          "hex": "#f0ece4"
+        }
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "desc": "A pleated strapless bodice above a skirt layered in pearl and crystal beadwork scalloped through netting, finishing in a beaded fringe hem.",
+      "fabric": "Pleated bodice, beaded net overlay",
+      "care": "Dry clean only",
+      "collection": "Lavender Hour"
+    },
+    {
+      "id": "dress-sage-leaf-gown",
+      "name": "Sage leaf-petal gown",
+      "price": 275000,
+      "category": "Elegant Dresses",
+      "sub": "Petal",
+      "image": "/assets/products/dress-sage-leaf-gown.jpg",
+      "colours": [
+        {
+          "name": "Sage",
+          "hex": "#b7c4a5"
+        }
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "desc": "A sleeveless gown with a plunging V neck, its skirt built from layered sage leaf petals with a silver shimmer that spill into a sweeping hem.",
+      "fabric": "Organza petals, silver shimmer",
+      "care": "Dry clean only",
+      "collection": "Lavender Hour"
+    },
+    {
+      "id": "dress-white-lace-cutout",
+      "name": "White halter gown with lace cut-outs",
+      "price": 145000,
+      "category": "Elegant Dresses",
+      "sub": "Column",
+      "image": "/assets/products/dress-white-lace-cutout.jpg",
+      "colours": [
+        {
+          "name": "White",
+          "hex": "#f4f2ee"
+        }
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "desc": "A white halter column with a keyhole neck and cut-out sides framed in black lace, falling clean to the floor.",
+      "fabric": "Stretch crepe, lace panelling",
+      "care": "Dry clean only",
+      "collection": "The Boardroom Edit"
+    },
+    {
+      "id": "dress-silver-v-beaded",
+      "name": "Silver beaded deep-V gown",
+      "price": 242000,
+      "category": "Elegant Dresses",
+      "sub": "Beaded",
+      "image": "/assets/products/dress-silver-v-beaded.jpg",
+      "badge": "NEW",
+      "colours": [
+        {
+          "name": "Silver",
+          "hex": "#b9bcc0"
+        }
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "desc": "Silver satin with a deep V neckline and long bell sleeves, ruched around a beaded centre panel and finished with a flounced mermaid hem.",
+      "fabric": "Satin, beaded centre panel",
+      "care": "Dry clean only",
+      "collection": "Lavender Hour"
+    },
+    {
+      "id": "dress-blue-draped-halter",
+      "name": "Cobalt draped halter gown",
+      "price": 198000,
+      "category": "Elegant Dresses",
+      "sub": "Halter",
+      "image": "/assets/products/dress-blue-draped-halter.jpg",
+      "badge": "NEW",
+      "colours": [
+        {
+          "name": "Cobalt",
+          "hex": "#1c4b9e"
+        }
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "desc": "A single length of cobalt jersey tied at the nape and left to fall in fine horizontal pleats over the body, skimming the bust and hips before pooling at the floor. The halter neck keeps the shoulders bare.",
+      "fabric": "Bias-cut ribbed jersey, self-tie halter",
+      "care": "Hand wash cold, dry flat",
+      "collection": "The Soft Power Edit"
+    },
+    {
+      "id": "ivory-lace-pencil-skirt",
+      "name": "Ivory pencil skirt with black lace",
+      "price": 108000,
+      "category": "Jeans and Leather Skirt",
+      "sub": "Pencil",
+      "image": "/assets/products/ivory-lace-pencil-skirt.jpg",
+      "badge": "NEW",
+      "colours": [
+        {
+          "name": "Ivory",
+          "hex": "#f4f1ea"
+        },
+        {
+          "name": "Black Lace",
+          "hex": "#1a1a1c"
+        }
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "desc": "Ivory crepe cut close from waist to mid-calf and framed with scalloped black Chantilly lace at both the waistband and the hem. A short back vent keeps the step easy.",
+      "fabric": "Stretch crepe, Chantilly lace trim",
+      "care": "Dry clean only",
+      "collection": "The Boardroom Edit"
+    },
+    {
+      "id": "polka-lace-hem-mini-skirt",
+      "name": "Polka-dot lace-hem mini skirt",
+      "price": 82000,
+      "category": "Jeans and Leather Skirt",
+      "sub": "Lace trim",
+      "image": "/assets/products/polka-lace-hem-mini-skirt.jpg",
+      "badge": "NEW",
+      "colours": [
+        {
+          "name": "Powder Blue",
+          "hex": "#cfe0ef"
+        },
+        {
+          "name": "Burgundy",
+          "hex": "#6b1f2c"
+        }
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "desc": "Powder blue scattered with burgundy dots that shift in scale across the skirt, ending in a deep band of scalloped lace dyed to match. Straight through the hip and short by design.",
+      "fabric": "Printed woven shell, scalloped lace hem",
+      "care": "Dry clean only",
+      "collection": "Lavender Hour"
+    },
+    {
+      "id": "apricot-wrap-mini-skirt",
+      "name": "Apricot wrap pleated mini skirt",
+      "price": 86000,
+      "category": "Jeans and Leather Skirt",
+      "sub": "Wrap",
+      "image": "/assets/products/apricot-wrap-mini-skirt.jpg",
+      "badge": "NEW",
+      "colours": [
+        {
+          "name": "Apricot",
+          "hex": "#d9825a"
+        },
+        {
+          "name": "Terracotta",
+          "hex": "#b4552c"
+        }
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "desc": "An apricot mini wrapped once across the front and left to dip over a sharply pleated underlayer in a deeper terracotta. The clean waistband keeps it dressy; the pleats give it swing.",
+      "fabric": "Matte satin with pleated underlayer",
+      "care": "Dry clean only",
+      "collection": "Lavender Hour"
+    },
+    {
+      "id": "burgundy-leather-yoke-mini",
+      "name": "Burgundy leather-yoke mini skirt",
+      "price": 98000,
+      "category": "Jeans and Leather Skirt",
+      "sub": "Leather yoke",
+      "image": "/assets/products/burgundy-leather-yoke-mini.jpg",
+      "badge": "NEW",
+      "colours": [
+        {
+          "name": "Burgundy",
+          "hex": "#5c1f2e"
+        },
+        {
+          "name": "Antique Gold",
+          "hex": "#b08d3f"
+        }
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "desc": "A high burgundy waist in crinkled leather, closed down one side with three gold crest buttons and giving way to a gathered satin skirt that flares softly from the hip.",
+      "fabric": "Crinkled leather-look yoke, satin skirt",
+      "care": "Wipe clean with a soft cloth",
+      "collection": "Lavender Hour"
+    },
+    {
+      "id": "black-tulle-lattice-midi",
+      "name": "Black tulle lattice midi skirt",
+      "price": 104000,
+      "category": "Jeans and Leather Skirt",
+      "sub": "Tulle",
+      "image": "/assets/products/black-tulle-lattice-midi.jpg",
+      "badge": "NEW",
+      "colours": [
+        {
+          "name": "Black",
+          "hex": "#141416"
+        }
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "desc": "Fine black tulle caught under a lattice of ribbon, layered over a short opaque underskirt and left sheer below the knee. Full through the sweep, weightless on.",
+      "fabric": "Layered tulle with ribbon lattice",
+      "care": "Dry clean only",
+      "collection": "Lavender Hour"
+    },
+    {
+      "id": "green-floral-drape-midi",
+      "name": "Green floral draped midi skirt",
+      "price": 96000,
+      "category": "Jeans and Leather Skirt",
+      "sub": "Draped",
+      "image": "/assets/products/green-floral-drape-midi.jpg",
+      "badge": "NEW",
+      "colours": [
+        {
+          "name": "Sage",
+          "hex": "#7f9280"
+        },
+        {
+          "name": "Bronze",
+          "hex": "#8a5a20"
+        }
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "desc": "A sage floral print gathered diagonally from the hip and falling straight to a mid-calf hem, with a black lace yoke at the waist that shows a flash of skin.",
+      "fabric": "Printed mesh over satin lining, lace waist",
+      "care": "Dry clean only",
+      "collection": "Lavender Hour"
     }
   ],
   "ads": [

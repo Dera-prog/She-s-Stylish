@@ -13,8 +13,6 @@ CREATE TABLE IF NOT EXISTS products (
   sub TEXT NOT NULL DEFAULT '',
   image TEXT NOT NULL,
   badge TEXT,
-  rating NUMERIC(2, 1) NOT NULL DEFAULT 0,
-  reviews INT NOT NULL DEFAULT 0,
   description TEXT NOT NULL DEFAULT '',
   fabric TEXT NOT NULL DEFAULT '',
   care TEXT NOT NULL DEFAULT '',
@@ -23,6 +21,9 @@ CREATE TABLE IF NOT EXISTS products (
   colours JSONB NOT NULL DEFAULT '[]'::jsonb,
   sizes TEXT[] NOT NULL DEFAULT '{}'
 );
+
+-- Ratings live only in product_reviews; drop the old seeded columns.
+ALTER TABLE products DROP COLUMN IF EXISTS rating, DROP COLUMN IF EXISTS reviews;
 
 CREATE INDEX IF NOT EXISTS products_category_idx ON products (category);
 
@@ -69,6 +70,23 @@ CREATE TABLE IF NOT EXISTS newsletter_subscribers (
   email TEXT PRIMARY KEY,
   created_at TIMESTAMPTZ NOT NULL DEFAULT now()
 );
+
+CREATE TABLE IF NOT EXISTS product_reviews (
+  id SERIAL PRIMARY KEY,
+  product_id TEXT NOT NULL REFERENCES products(id) ON DELETE CASCADE,
+  name TEXT NOT NULL,
+  email TEXT NOT NULL,
+  rating SMALLINT NOT NULL CHECK (rating BETWEEN 1 AND 5),
+  body TEXT NOT NULL,
+  status TEXT NOT NULL DEFAULT 'published' CHECK (status IN ('published', 'hidden')),
+  created_at TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+
+CREATE UNIQUE INDEX IF NOT EXISTS product_reviews_one_per_buyer
+  ON product_reviews (product_id, lower(email));
+
+CREATE INDEX IF NOT EXISTS product_reviews_product_idx
+  ON product_reviews (product_id, created_at DESC);
 
 CREATE TABLE IF NOT EXISTS contact_messages (
   id SERIAL PRIMARY KEY,

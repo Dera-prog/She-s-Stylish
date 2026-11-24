@@ -35,12 +35,20 @@ export async function seedCatalog() {
     );
   }
 
-  for (const product of catalog.products) {
-    await query(
+  const keptCategories = categories.map((category) => category.name);
+  const stale = await query(
+    `delete from categories c
+     where not (c.name = any($1::text[]))
+       and not exists (select 1 from products p where p.category = c.name)`,
+    [keptCategories],
+  );
+  if (stale.rowCount) console.log(`pruned ${stale.rowCount} retired categories`);
+
+  for (const product of catalog.products) {    await query(
       `insert into products
-         (id, name, price, category, sub, image, badge, rating, reviews,
+         (id, name, price, category, sub, image, badge,
           description, fabric, care, collection, model, colours, sizes)
-       values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15::jsonb, $16)
+       values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13::jsonb, $14)
        on conflict (id) do update set
          name = excluded.name,
          price = excluded.price,
@@ -48,8 +56,6 @@ export async function seedCatalog() {
          sub = excluded.sub,
          image = excluded.image,
          badge = excluded.badge,
-         rating = excluded.rating,
-         reviews = excluded.reviews,
          description = excluded.description,
          fabric = excluded.fabric,
          care = excluded.care,
@@ -65,8 +71,6 @@ export async function seedCatalog() {
         product.sub,
         product.image,
         product.badge ?? null,
-        product.rating,
-        product.reviews,
         product.desc,
         product.fabric,
         product.care,

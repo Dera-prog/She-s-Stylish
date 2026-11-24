@@ -185,11 +185,18 @@ export function Toast() {
 }
 
 export function Stars({ value, size = 9 }: { value: number; size?: number }) {
-  const full = Math.round(value);
+  const pct = Math.max(0, Math.min(5, value)) * 20;
   return (
-    <span className="stars" style={{ fontSize: size }} aria-label={`${value} out of 5`}>
-      {'★★★★★'.slice(0, full)}
-      <span style={{ opacity: 0.28 }}>{'★★★★★'.slice(full)}</span>
+    <span
+      className="stars"
+      style={{ fontSize: size }}
+      role="img"
+      aria-label={`${value} out of 5`}
+    >
+      {'★★★★★'}
+      <span className="stars__fill" style={{ width: `${pct}%` }} aria-hidden="true">
+        {'★★★★★'}
+      </span>
     </span>
   );
 }

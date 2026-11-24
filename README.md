@@ -80,12 +80,15 @@ node server/scripts/export-catalog.mjs   # src/lib/data.ts → server/data/catal
 | --- | --- | --- |
 | GET | `/api/categories` | Catalogue categories |
 | GET | `/api/products?category=&q=&sort=` | Browse / search, sort by price or newest |
-| GET | `/api/products/:id` | Product detail |
+| GET | `/api/products/:id` | Product detail with live rating aggregate |
+| GET | `/api/products/:id/reviews` | Published reviews and summary |
+| POST | `/api/products/:id/reviews` | Customer review, one per email per piece |
 | GET | `/api/collections` | Edits with product counts |
 | POST | `/api/orders` | Server-priced order with promo, delivery and tracking |
 | GET | `/api/orders/:id` · `/api/track/:identifier` | Order record and tracking timeline |
 | GET | `/api/admin/orders` | Fulfilment queue (`x-admin-key`) |
 | PATCH | `/api/admin/orders/:id/status` | Advance status (`x-admin-key`) |
+| GET · PATCH | `/api/admin/reviews` · `/api/admin/reviews/:id` | Moderate reviews (`x-admin-key`) |
 | POST | `/api/contact` | Contact and return requests |
 | POST | `/api/newsletter` | Email capture |
 

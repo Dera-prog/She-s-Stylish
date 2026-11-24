@@ -26,6 +26,51 @@ const rowToProduct = (row) => ({
   sizes: row.sizes,
 });
 
+const PRODUCT_WITH_STATS = `select p.*,
+    coalesce(round(avg(r.rating)::numeric, 1), 0) as rating,
+    count(r.id)::int as reviews
+  from products p
+  left join product_reviews r on r.product_id = p.id and r.status = 'published'
+`;
+
+const loadReviewSummary = async (productId) => {
+  const { rows } = await query(
+    `select count(*)::int as count,
+            coalesce(round(avg(rating)::numeric, 1), 0) as average,
+            coalesce(round(100.0 * count(*) filter (where rating >= 4) / nullif(count(*), 0)), 0) as recommend
+     from product_reviews
+     where product_id = $1 and status = 'published'`,
+    [productId],
+  );
+  const row = rows[0];
+  return {
+    count: row.count,
+    average: Number(row.average),
+    recommend: row.count ? Number(row.recommend) : null,
+  };
+};
+
+const reviewEntry = (row) => ({
+  id: row.id,
+  name: row.name,
+  rating: row.rating,
+  body: row.body,
+  date: row.created_at.toISOString(),
+  verified: row.verified,
+});
+
+const REVIEW_ROWS = `select r.id, r.name, r.rating, r.body, r.created_at,
+    exists (
+      select 1 from order_items i
+      join orders o on o.id = i.order_id
+      where i.product_id = r.product_id
+        and lower(o.customer->>'email') = lower(r.email)
+    ) as verified
+  from product_reviews r
+  where r.product_id = $1 and r.status = 'published'
+  order by r.created_at desc
+  limit 100`;
+
 async function loadOrder(identifier) {
   const { rows } = await query(
     'select * from orders where id = $1 or tracking = $1 limit 1',
@@ -98,34 +143,88 @@ export function createApp() {
 
     if (category) {
       values.push(String(category));
-      filters.push(`category = $${values.length}`);
+      filters.push(`p.category = $${values.length}`);
     }
     if (q) {
       values.push(`%${String(q).trim()}%`);
       filters.push(
-        `(name ilike $${values.length} or description ilike $${values.length} or sub ilike $${values.length})`,
+        `(p.name ilike $${values.length} or p.description ilike $${values.length} or p.sub ilike $${values.length})`,
       );
     }
 
     const orderBy = {
-      'price-low': 'price asc',
-      'price-high': 'price desc',
-      newest: "case when badge = 'NEW' then 0 else 1 end, name asc",
-      curated: 'name asc',
-    }[String(sort)] ?? 'name asc';
+      'price-low': 'p.price asc',
+      'price-high': 'p.price desc',
+      newest: "case when p.badge = 'NEW' then 0 else 1 end, p.name asc",
+      curated: 'p.name asc',
+    }[String(sort)] ?? 'p.name asc';
 
     const where = filters.length ? `where ${filters.join(' and ')}` : '';
     const { rows } = await query(
-      `select * from products ${where} order by ${orderBy} limit 100`,
+      `${PRODUCT_WITH_STATS} ${where} group by p.id order by ${orderBy} limit 250`,
       values,
     );
     res.json(rows.map(rowToProduct));
   });
 
   app.get('/api/products/:id', async (req, res) => {
-    const { rows } = await query('select * from products where id = $1', [req.params.id]);
+    const { rows } = await query(
+      `${PRODUCT_WITH_STATS} where p.id = $1 group by p.id`,
+      [req.params.id],
+    );
     if (!rows[0]) return res.status(404).json({ error: 'product_not_found' });
     res.json(rowToProduct(rows[0]));
+  });
+
+  app.get('/api/products/:id/reviews', async (req, res) => {
+    const product = await query('select 1 from products where id = $1', [req.params.id]);
+    if (!product.rows[0]) return res.status(404).json({ error: 'product_not_found' });
+
+    const [summary, list] = await Promise.all([
+      loadReviewSummary(req.params.id),
+      query(REVIEW_ROWS, [req.params.id]),
+    ]);
+    res.json({ summary, entries: list.rows.map(reviewEntry) });
+  });
+
+  app.post('/api/products/:id/reviews', async (req, res) => {
+    const payload = req.body ?? {};
+    const name = String(payload.name ?? '').trim().slice(0, 80);
+    const email = String(payload.email ?? '').trim().toLowerCase();
+    const rating = Number(payload.rating);
+    const body = String(payload.body ?? '').trim().slice(0, 1500);
+
+    if (name.length < 2) return res.status(400).json({ error: 'name_required' });
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) {
+      return res.status(400).json({ error: 'invalid_email' });
+    }
+    if (!Number.isInteger(rating) || rating < 1 || rating > 5) {
+      return res.status(400).json({ error: 'invalid_rating' });
+    }
+    if (body.length < 10) return res.status(400).json({ error: 'review_too_short' });
+
+    const product = await query('select 1 from products where id = $1', [req.params.id]);
+    if (!product.rows[0]) return res.status(404).json({ error: 'product_not_found' });
+
+    let inserted;
+    try {
+      inserted = await query(
+        `insert into product_reviews (product_id, name, email, rating, body)
+         values ($1, $2, $3, $4, $5)
+         returning id`,
+        [req.params.id, name, email, rating, body],
+      );
+    } catch (error) {
+      if (error.code === '23505') return res.status(409).json({ error: 'already_reviewed' });
+      throw error;
+    }
+
+    const [summary, list] = await Promise.all([
+      loadReviewSummary(req.params.id),
+      query(REVIEW_ROWS, [req.params.id]),
+    ]);
+    const created = list.rows.find((row) => row.id === inserted.rows[0].id);
+    res.status(201).json({ summary, entry: reviewEntry(created) });
   });
 
   app.get('/api/collections', async (_req, res) => {
@@ -293,6 +392,49 @@ export function createApp() {
       [req.params.id, status, STATUS_NOTES[status]],
     );
     res.json(await loadOrder(req.params.id));
+  });
+
+  app.get('/api/admin/reviews', async (req, res) => {
+    if (req.get('x-admin-key') !== ADMIN_KEY) {
+      return res.status(401).json({ error: 'unauthorized' });
+    }
+    const { rows } = await query(
+      `select r.id, r.product_id, p.name as product_name, r.name, r.email, r.rating,
+              r.body, r.status, r.created_at
+       from product_reviews r
+       join products p on p.id = r.product_id
+       order by r.created_at desc
+       limit 200`,
+    );
+    res.json(
+      rows.map((row) => ({
+        id: row.id,
+        productId: row.product_id,
+        productName: row.product_name,
+        name: row.name,
+        email: row.email,
+        rating: row.rating,
+        body: row.body,
+        status: row.status,
+        date: row.created_at.toISOString(),
+      })),
+    );
+  });
+
+  app.patch('/api/admin/reviews/:id', async (req, res) => {
+    if (req.get('x-admin-key') !== ADMIN_KEY) {
+      return res.status(401).json({ error: 'unauthorized' });
+    }
+    const { status } = req.body ?? {};
+    if (!['published', 'hidden'].includes(status)) {
+      return res.status(400).json({ error: 'invalid_status' });
+    }
+    const { rows } = await query(
+      'update product_reviews set status = $1 where id = $2 returning id, status',
+      [status, req.params.id],
+    );
+    if (!rows[0]) return res.status(404).json({ error: 'review_not_found' });
+    res.json(rows[0]);
   });
 
   app.post('/api/newsletter', async (req, res) => {

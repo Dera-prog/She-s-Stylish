@@ -136,3 +136,30 @@ export async function sendMessage(payload: {
 }): Promise<void> {
   await request<{ ok: boolean }>('/contact', { method: 'POST', body: JSON.stringify(payload) });
 }
+
+export type ReviewSummary = { count: number; average: number; recommend: number | null };
+
+export type Review = {
+  id: number;
+  name: string;
+  rating: number;
+  body: string;
+  date: string;
+  verified: boolean;
+};
+
+export type ReviewBundle = { summary: ReviewSummary; entries: Review[] };
+
+export async function fetchReviews(productId: string): Promise<ReviewBundle> {
+  return request<ReviewBundle>(`/products/${encodeURIComponent(productId)}/reviews`);
+}
+
+export async function submitReview(
+  productId: string,
+  payload: { name: string; email: string; rating: number; body: string },
+): Promise<{ summary: ReviewSummary; entry: Review }> {
+  return request(`/products/${encodeURIComponent(productId)}/reviews`, {
+    method: 'POST',
+    body: JSON.stringify(payload),
+  });
+}

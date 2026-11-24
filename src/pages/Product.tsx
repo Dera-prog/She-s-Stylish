@@ -1,4 +1,4 @@
-import { useState, type ReactNode } from 'react';
+import { useEffect, useState, type FormEvent, type ReactNode } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { BackBar, Empty, Screen, SectionHead, Stars } from '../components/Chrome';
 import { ProductCard } from '../components/ProductCard';
@@ -11,7 +11,14 @@ import {
   IconShare,
   IconTruck,
 } from '../components/Icons';
-import { byId, formatN, products, reviewNotes } from '../lib/data';
+import { byId, formatN, products } from '../lib/data';
+import {
+  ApiError,
+  fetchReviews,
+  submitReview,
+  type ReviewBundle,
+  type ReviewSummary,
+} from '../lib/api';
 import { useStore } from '../lib/store';
 
 function Acc({
@@ -45,16 +52,215 @@ function Acc({
   );
 }
 
+function reviewWhen(iso: string) {
+  const days = Math.floor((Date.now() - new Date(iso).getTime()) / 86_400_000);
+  if (days <= 0) return 'today';
+  if (days === 1) return 'yesterday';
+  if (days < 14) return `${days} days ago`;
+  if (days < 60) return `${Math.round(days / 7)} weeks ago`;
+  return new Date(iso).toLocaleDateString('en-NG', { day: 'numeric', month: 'short', year: 'numeric' });
+}
+
+const reviewErrors: Record<string, string> = {
+  name_required: 'Please enter your name.',
+  invalid_email: 'Please enter a valid email address.',
+  invalid_rating: 'Choose a rating from one to five stars.',
+  review_too_short: 'Please write at least a sentence.',
+  already_reviewed: 'That email has already reviewed this piece.',
+  unreachable: 'The review service is unreachable right now. Please try again later.',
+};
+
+function reviewErrorText(error: unknown) {
+  if (error instanceof ApiError && error.code && reviewErrors[error.code]) {
+    return reviewErrors[error.code];
+  }
+  return 'Could not publish your review. Please try again.';
+}
+
+function ReviewsSection({
+  productId,
+  bundle,
+  status,
+  onBundle,
+}: {
+  productId: string;
+  bundle: ReviewBundle | null;
+  status: 'loading' | 'ready' | 'error';
+  onBundle: (bundle: ReviewBundle) => void;
+}) {
+  const { state, toast } = useStore();
+  const [open, setOpen] = useState(false);
+  const [name, setName] = useState(state.user?.name ?? '');
+  const [email, setEmail] = useState(state.user?.email ?? '');
+  const [rating, setRating] = useState(5);
+  const [body, setBody] = useState('');
+  const [posting, setPosting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const summary: ReviewSummary = bundle?.summary ?? { count: 0, average: 0, recommend: null };
+  const entries = bundle?.entries ?? [];
+
+  const submit = async (event: FormEvent) => {
+    event.preventDefault();
+    setPosting(true);
+    setError(null);
+    try {
+      const result = await submitReview(productId, { name, email, rating, body });
+      onBundle({ summary: result.summary, entries: [result.entry, ...entries] });
+      setBody('');
+      setOpen(false);
+      toast('Review published');
+    } catch (err) {
+      setError(reviewErrorText(err));
+    } finally {
+      setPosting(false);
+    }
+  };
+
+  return (
+    <>
+      <div className="divider-label">Reviews</div>
+      <div className="ratingbox">
+        <div>
+          <b>{summary.count ? summary.average.toFixed(1) : '—'}</b>
+          <span>
+            {summary.count} {summary.count === 1 ? 'review' : 'reviews'}
+          </span>
+        </div>
+        <div style={{ flex: 1 }}>
+          <Stars value={summary.average} size={12} />
+          <div style={{ marginTop: 6, fontSize: 9, color: '#8a7e71' }}>
+            {summary.count && summary.recommend !== null
+              ? `${summary.recommend}% would recommend`
+              : 'No reviews yet'}
+          </div>
+        </div>
+      </div>
+
+      {status !== 'error' && (
+        <>
+          <button
+            className="btn btn--ghost btn--sm"
+            style={{ marginTop: 12 }}
+            onClick={() => setOpen((value) => !value)}
+            aria-expanded={open}
+          >
+            <span>{open ? 'Close review form' : 'Write a review'}</span>
+          </button>
+          {open && (
+            <form className="revform" onSubmit={submit}>
+              <div className="field">
+                <label htmlFor="rv-name">Your name</label>
+                <input
+                  id="rv-name"
+                  value={name}
+                  onChange={(event) => setName(event.target.value)}
+                  autoComplete="name"
+                />
+              </div>
+              <div className="field">
+                <label htmlFor="rv-email">Email (never shown)</label>
+                <input
+                  id="rv-email"
+                  type="email"
+                  value={email}
+                  onChange={(event) => setEmail(event.target.value)}
+                  placeholder="you@email.com"
+                  autoComplete="email"
+                />
+              </div>
+              <div className="field">
+                <label>Your rating</label>
+                <div className="revstars">
+                  {[1, 2, 3, 4, 5].map((star) => (
+                    <button
+                      key={star}
+                      type="button"
+                      className={star <= rating ? 'on' : ''}
+                      aria-label={`${star} star${star === 1 ? '' : 's'}`}
+                      aria-pressed={star === rating}
+                      onClick={() => setRating(star)}
+                    >
+                      ★
+                    </button>
+                  ))}
+                </div>
+              </div>
+              <div className="field">
+                <label htmlFor="rv-body">Your review</label>
+                <textarea
+                  id="rv-body"
+                  value={body}
+                  onChange={(event) => setBody(event.target.value)}
+                  placeholder="How does it fit, how did it wear?"
+                  rows={4}
+                />
+              </div>
+              {error && <div className="formerr">{error}</div>}
+              <button className="btn btn--sm" disabled={posting}>
+                <span>{posting ? 'Publishing…' : 'Publish review'}</span>
+                <IconArrow size={14} />
+              </button>
+            </form>
+          )}
+        </>
+      )}
+
+      {status === 'loading' && <div className="review__empty">Loading reviews…</div>}
+      {status === 'error' && (
+        <div className="review__empty">Reviews are unavailable right now. Please try again later.</div>
+      )}
+      {status === 'ready' && entries.length === 0 && (
+        <div className="review__empty">Be the first to write one.</div>
+      )}
+      {entries.map((entry) => (
+        <div className="review" key={entry.id}>
+          <div className="review__head">
+            <b>{entry.name}</b>
+            <span>
+              {entry.verified ? 'Verified purchase · ' : ''}
+              {reviewWhen(entry.date)}
+            </span>
+          </div>
+          <div style={{ marginTop: 5 }}>
+            <Stars value={entry.rating} size={9} />
+          </div>
+          <p>{entry.body}</p>
+        </div>
+      ))}
+    </>
+  );
+}
+
 export default function ProductPage() {
   const { id = '' } = useParams();
   const nav = useNavigate();
   const product = byId(id);
-  const reviewInfo = reviewNotes[id];
   const { state, dispatch, toast } = useStore();
   const [colour, setColour] = useState(0);
   const [size, setSize] = useState(product && product.sizes.length === 1 ? product.sizes[0] : '');
   const [open, setOpen] = useState<string | null>('details');
   const [slide, setSlide] = useState(1);
+  const [reviewBundle, setReviewBundle] = useState<ReviewBundle | null>(null);
+  const [reviewStatus, setReviewStatus] = useState<'loading' | 'ready' | 'error'>('loading');
+
+  useEffect(() => {
+    let alive = true;
+    setReviewStatus('loading');
+    setReviewBundle(null);
+    fetchReviews(id)
+      .then((bundle) => {
+        if (!alive) return;
+        setReviewBundle(bundle);
+        setReviewStatus('ready');
+      })
+      .catch(() => {
+        if (alive) setReviewStatus('error');
+      });
+    return () => {
+      alive = false;
+    };
+  }, [id]);
 
   if (!product) {
     return (
@@ -152,9 +358,17 @@ export default function ProductPage() {
         </div>
         <div className="pdp__price">{formatN(product.price)}</div>
         <div className="pdp__rating">
-          <Stars value={product.rating} />
+          <Stars value={reviewBundle?.summary.average ?? 0} />
           <span>
-            {product.rating} · {product.reviews} reviews
+            {reviewBundle && reviewBundle.summary.count > 0
+              ? `${reviewBundle.summary.average.toFixed(1)} · ${reviewBundle.summary.count} ${
+                  reviewBundle.summary.count === 1 ? 'review' : 'reviews'
+                }`
+              : reviewStatus === 'error'
+                ? 'Reviews unavailable'
+                : reviewStatus === 'loading'
+                  ? 'Loading reviews…'
+                  : 'No reviews yet'}
           </span>
         </div>
 
@@ -279,44 +493,15 @@ export default function ProductPage() {
           </div>
         </Acc>
 
-        <div className="divider-label">Reviews</div>
-        <div className="ratingbox">
-          <div>
-            <b>{product.rating}</b>
-            <span>{product.reviews} reviews</span>
-          </div>
-          <div style={{ flex: 1 }}>
-            <Stars value={product.rating} size={12} />
-            <div style={{ marginTop: 6, fontSize: 9, color: '#8a7e71' }}>
-              {reviewInfo?.recommend ?? 94}% would recommend · verified buyers
-            </div>
-          </div>
-        </div>
-        {(reviewInfo?.entries ?? [
-          {
-            name: 'Amaka O.',
-            when: '2 weeks ago',
-            stars: 5,
-            text: 'The fabric is weightier than I expected in the best way. It holds its shape and the fit is exactly as described.',
-          },
-          {
-            name: 'Ifeoma A.',
-            when: '1 month ago',
-            stars: 4,
-            text: 'Wore it to a board meeting and then to dinner. It did both jobs beautifully.',
-          },
-        ]).map((entry) => (
-          <div className="review" key={entry.name}>
-            <div className="review__head">
-              <b>{entry.name}</b>
-              <span>Verified · {entry.when}</span>
-            </div>
-            <div style={{ marginTop: 5 }}>
-              <Stars value={entry.stars} size={9} />
-            </div>
-            <p>{entry.text}</p>
-          </div>
-        ))}
+        <ReviewsSection
+          productId={product.id}
+          bundle={reviewBundle}
+          status={reviewStatus}
+          onBundle={(bundle) => {
+            setReviewBundle(bundle);
+            setReviewStatus('ready');
+          }}
+        />
       </div>
 
       <SectionHead title="Complete the look" to="/shop" link="Shop all" />
