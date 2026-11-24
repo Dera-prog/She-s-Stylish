@@ -1185,6 +1185,12 @@ img {
   display: none;
 }
 
+.chips--wrap {
+  flex-wrap: wrap;
+  overflow: visible;
+  padding-bottom: 6px;
+}
+
 .chip {
   flex: none;
   height: 32px;

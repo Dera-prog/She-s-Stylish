@@ -2,8 +2,20 @@ import { Link } from 'react-router-dom';
 import { AppHead, Screen, SectionHead, MARK_INK } from '../components/Chrome';
 import { ProductCard } from '../components/ProductCard';
 import { IconArrow, IconSearch } from '../components/Icons';
-import { categories, collections, products } from '../lib/data';
+import { collections, products } from '../lib/data';
 import { useStore } from '../lib/store';
+
+const dashCategories = [
+  'All pieces',
+  'Jeans and Leather Skirt',
+  'Elegant Dresses',
+  'Knit',
+  'Barrel Pants',
+  'Tops',
+  'Bodysuits',
+  'Blazer Jacket',
+  'Fancy Jacket',
+];
 
 function greeting() {
   const h = new Date().getHours();
@@ -55,14 +67,14 @@ export default function Home() {
         </div>
       </Link>
 
-      <div className="chips">
-        {categories.map((c, i) => (
+      <div className="chips chips--wrap">
+        {dashCategories.map((name, i) => (
           <Link
-            key={c.name}
+            key={name}
             className={`chip ${i === 0 ? 'chip--soft' : ''}`}
-            to={c.name === 'All pieces' ? '/shop' : `/shop/category/${encodeURIComponent(c.name)}`}
+            to={name === 'All pieces' ? '/shop' : `/shop/category/${encodeURIComponent(name)}`}
           >
-            {c.name}
+            {name}
           </Link>
         ))}
       </div>
