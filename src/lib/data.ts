@@ -4,6 +4,7 @@ export type Category =
   | 'Barrel Pants'
   | 'Adire and Aso Oke Skirt'
   | 'Tops'
+  | 'Bodysuits'
   | 'Blazer Jacket'
   | 'Corporate Dresses';
 
@@ -983,6 +984,97 @@ export const products: Product[] = [
     care: 'Specialist clean only',
     collection: 'Lavender Hour',
   },
+  {
+    id: 'bodysuit-chocolate-overlay',
+    name: 'Chocolate overlay bodysuit',
+    price: 86000,
+    category: 'Bodysuits',
+    sub: 'Faux leather',
+    image: img('bodysuit-chocolate-overlay'),
+    badge: 'NEW',
+    rating: 4.8,
+    reviews: 7,
+    colours: [{ name: 'Chocolate', hex: '#4e352a' }],
+    sizes: ['XS', 'S', 'M', 'L', 'XL'],
+    desc: 'A cropped faux-leather overlay drapes across one shoulder over a matching chocolate knit bodysuit, with gathered puff sleeves and ribbed cuffs.',
+    fabric: 'Faux-leather overlay, knit bodysuit',
+    care: 'Hand wash cold, dry flat',
+    collection: 'Lavender Hour',
+  },
+  {
+    id: 'bodysuit-cream-overlay',
+    name: 'Cream overlay bodysuit',
+    price: 86000,
+    category: 'Bodysuits',
+    sub: 'Faux leather',
+    image: img('bodysuit-cream-overlay'),
+    rating: 4.7,
+    reviews: 5,
+    colours: [
+      { name: 'Cream', hex: '#e9dfc9' },
+      { name: 'Taupe body', hex: '#9b7c67' },
+    ],
+    sizes: ['XS', 'S', 'M', 'L', 'XL'],
+    desc: 'An ivory faux-leather overlay cuts a curved line across a taupe knit bodysuit, with puff sleeves, clean edges and a high-cut leg.',
+    fabric: 'Faux-leather overlay, knit bodysuit',
+    care: 'Hand wash cold, dry flat',
+    collection: 'The Soft Power Edit',
+  },
+  {
+    id: 'bodysuit-taupe-overlay',
+    name: 'Taupe long-sleeve overlay bodysuit',
+    price: 84000,
+    category: 'Bodysuits',
+    sub: 'Faux leather',
+    image: img('bodysuit-taupe-overlay'),
+    rating: 4.7,
+    reviews: 4,
+    colours: [
+      { name: 'Taupe', hex: '#6d5244' },
+      { name: 'Chocolate body', hex: '#5d4335' },
+    ],
+    sizes: ['XS', 'S', 'M', 'L', 'XL'],
+    desc: 'A taupe leather-look overlay over a chocolate knit body, pointed at the waist and finished with long sleeves and ribbed cuffs.',
+    fabric: 'Faux-leather overlay, knit bodysuit',
+    care: 'Hand wash cold, dry flat',
+    collection: 'The Soft Power Edit',
+  },
+  {
+    id: 'bodysuit-beige-scoop',
+    name: 'Beige scoop overlay bodysuit',
+    price: 78000,
+    category: 'Bodysuits',
+    sub: 'Faux leather',
+    image: img('bodysuit-beige-scoop'),
+    rating: 4.6,
+    reviews: 4,
+    colours: [
+      { name: 'Beige', hex: '#efe3d0' },
+      { name: 'Nude body', hex: '#a98d79' },
+    ],
+    sizes: ['XS', 'S', 'M', 'L', 'XL'],
+    desc: 'A soft beige overlay sweeps across a scoop-neck nude bodysuit, with unstructured shoulders and a high-cut leg.',
+    fabric: 'Faux-leather overlay, knit bodysuit',
+    care: 'Hand wash cold, dry flat',
+    collection: 'Lavender Hour',
+  },
+  {
+    id: 'bodysuit-camel-hooded',
+    name: 'Camel hooded zip bodysuit',
+    price: 92000,
+    category: 'Bodysuits',
+    sub: 'Knit',
+    image: img('bodysuit-camel-hooded'),
+    badge: 'NEW',
+    rating: 4.8,
+    reviews: 6,
+    colours: [{ name: 'Camel', hex: '#b07a4a' }],
+    sizes: ['XS', 'S', 'M', 'L', 'XL'],
+    desc: 'A cropped camel hoodie with a zip front and dropped shoulders, layered over a matching knit bodysuit.',
+    fabric: 'Brushed knit bodysuit with hood',
+    care: 'Machine wash cold, dry flat',
+    collection: 'Lavender Hour',
+  },
 ];
 
 export const byId = (id: string) => products.find((p) => p.id === id);
@@ -1071,6 +1163,7 @@ export const categories: { name: Category | 'All pieces'; image?: string; note: 
   { name: 'Barrel Pants', image: '/assets/products/barrel-check-wool.jpg', note: 'The new trouser line' },
   { name: 'Adire and Aso Oke Skirt', note: 'Indigo and handwoven texture' },
   { name: 'Tops', image: '/assets/products/top-sculpted-drape.jpg', note: 'Sculpted shoulders, soft drape' },
+  { name: 'Bodysuits', image: '/assets/products/bodysuit-chocolate-overlay.jpg', note: 'Second-skin layering' },
   { name: 'Blazer Jacket', note: 'Shoulders and structure' },
   { name: 'Corporate Dresses', note: 'Tailored for the room' },
 ];
